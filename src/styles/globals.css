@@ -15,10 +15,10 @@
   --color-ink-2: oklch(50% 0 0);
   --color-rule: oklch(92% 0.008 80);
 
-  /* Accent — cam là màu CTA chính */
-  --color-accent: oklch(72% 0.17 52);
-  /* Chữ trên nền cam: dùng mực đậm để đạt tương phản (khớp design.md) */
-  --color-accent-ink: oklch(28% 0.005 60);
+  /* Accent — hồng-đỏ (raspberry) lấy từ logo Tân Châu Thành */
+  --color-accent: oklch(57% 0.2 13);
+  /* Chữ trên nền accent: trắng (đạt tương phản trên nền hồng-đỏ) */
+  --color-accent-ink: oklch(99% 0 0);
   --color-focus: oklch(43% 0.08 245);
 
   /* Bộ màu thương hiệu phụ */
@@ -57,6 +57,25 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+/* Gradient thương hiệu — cam → hồng → tím (từ logo Tân Châu Thành) */
+.bg-brand-gradient {
+  background-image: linear-gradient(
+    120deg,
+    oklch(66% 0.18 48) 0%,
+    oklch(57% 0.2 12) 50%,
+    oklch(48% 0.19 322) 100%
+  );
+}
+/* Đảo chiều: tím → hồng → cam (chữ căn trái nằm trên vùng tối, dễ đọc) */
+.bg-brand-gradient-rev {
+  background-image: linear-gradient(
+    120deg,
+    oklch(48% 0.19 322) 0%,
+    oklch(57% 0.2 12) 50%,
+    oklch(66% 0.18 48) 100%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

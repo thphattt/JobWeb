@@ -1,11 +1,13 @@
 {
   "meta": {
-    "title": "Công ty ABC — Đối tác cho thành công",
-    "description": "Công ty ABC cung cấp giải pháp tổ chức sự kiện, thiết kế và truyền thông chuyên nghiệp. Đối tác đáng tin cậy cho thành công của bạn."
+    "title": "Công ty TNHH Tân Châu Thành — Tổ chức sự kiện & Truyền thông",
+    "description": "Tân Châu Thành — đối tác tổ chức sự kiện và truyền thông chuyên nghiệp tại Hà Nội từ năm 2018. Đạo diễn, sản xuất chương trình, nhân sự và thiết bị sự kiện."
   },
   "brand": {
-    "name": "Công ty ABC",
-    "hotline": "1900 0000"
+    "name": "Tân Châu Thành",
+    "fullName": "Công ty TNHH Tân Châu Thành",
+    "hotline": "091.353.2566",
+    "email": "tanchauthanhhn@gmail.com"
   },
   "nav": {
     "home": "Trang chủ",
@@ -19,57 +21,58 @@
     "close": "Đóng"
   },
   "hero": {
-    "eyebrow": "Đối tác cho thành công",
-    "title": "Chúng tôi kiến tạo những trải nghiệm đáng nhớ",
-    "subtitle": "Từ ý tưởng đến thực thi — đồng hành cùng doanh nghiệp bằng giải pháp sự kiện, thiết kế và truyền thông trọn gói.",
+    "eyebrow": "Tổ chức sự kiện · Truyền thông",
+    "title": "Kiến tạo những chương trình sự kiện tầm vóc",
+    "subtitle": "Từ ý tưởng, kịch bản đến sản xuất trọn gói — Tân Châu Thành đồng hành cùng các sự kiện chính trị, văn hóa quy mô lớn từ năm 2018.",
     "ctaPrimary": "Liên hệ ngay",
     "ctaSecondary": "Xem dịch vụ"
   },
+  "stats": {
+    "a": { "value": "2018", "label": "Năm thành lập" },
+    "b": { "value": "2", "label": "Văn phòng tại Hà Nội" }
+  },
   "about": {
     "eyebrow": "Về chúng tôi",
-    "title": "Đối tác đồng hành cùng sự phát triển của bạn",
-    "body": "Với đội ngũ giàu kinh nghiệm, chúng tôi mang đến giải pháp toàn diện — thấu hiểu mục tiêu của khách hàng và biến chúng thành kết quả thực tế.",
+    "title": "Đối tác tổ chức sự kiện & truyền thông từ 2018",
+    "body": "Tân Châu Thành cung cấp giải pháp sự kiện trọn gói: đạo diễn, kịch bản, tổ chức sản xuất, nhân sự và thiết bị. Đội ngũ giàu kinh nghiệm, từng tham gia nhiều chương trình cấp quốc gia như bế mạc SEA Games 22 và Đại lễ 1000 năm Thăng Long – Hà Nội.",
     "cta": "Tìm hiểu thêm"
   },
   "services": {
     "eyebrow": "Dịch vụ",
     "title": "Những gì chúng tôi làm",
     "items": {
-      "events": {
-        "title": "Tổ chức sự kiện",
-        "desc": "Lên ý tưởng, lập kế hoạch và triển khai sự kiện trọn gói, chuyên nghiệp."
+      "direction": {
+        "title": "Đạo diễn & Kịch bản",
+        "desc": "Xây dựng ý tưởng, kịch bản và đạo diễn cho các chương trình, sự kiện."
       },
-      "design": {
-        "title": "Thiết kế",
-        "desc": "Nhận diện thương hiệu, ấn phẩm và không gian sự kiện ấn tượng."
+      "production": {
+        "title": "Tổ chức sản xuất",
+        "desc": "Quản lý và tổ chức sản xuất chương trình trọn gói, chuyên nghiệp."
       },
-      "media": {
-        "title": "Truyền thông",
-        "desc": "Chiến lược nội dung và truyền thông đa kênh, lan tỏa thông điệp."
+      "talent": {
+        "title": "Nhân sự sự kiện",
+        "desc": "Ban nhạc, ca sĩ, MC, nhóm múa, nhóm nhảy, lễ tân chuyên nghiệp."
       },
-      "tech": {
-        "title": "Công nghệ & Thiết bị",
-        "desc": "Giải pháp âm thanh, ánh sáng và công nghệ trình diễn hiện đại."
+      "equipment": {
+        "title": "Thiết bị sự kiện",
+        "desc": "Âm thanh, ánh sáng, sân khấu, nhạc cụ hiện đại, quy mô hoành tráng."
       }
     }
   },
-  "stats": {
-    "a": { "value": "—", "label": "Năm kinh nghiệm" },
-    "b": { "value": "—", "label": "Dự án hoàn thành" },
-    "note": "Cập nhật số liệu thật của bạn"
-  },
   "contact": {
     "eyebrow": "Liên hệ",
-    "title": "Bắt đầu dự án của bạn",
-    "subtitle": "Để lại thông tin, chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+    "title": "Bắt đầu sự kiện của bạn",
+    "subtitle": "Liên hệ Tân Châu Thành để được tư vấn và đồng hành cùng chương trình của bạn.",
     "cta": "Gửi yêu cầu"
   },
   "footer": {
-    "tagline": "Đối tác cho thành công của bạn.",
+    "tagline": "Đối tác tổ chức sự kiện & truyền thông chuyên nghiệp.",
     "offices": "Văn phòng",
-    "quickLinks": "Liên kết nhanh",
+    "contactTitle": "Liên hệ",
     "follow": "Kết nối",
-    "rights": "© {year} Công ty ABC. Bảo lưu mọi quyền."
+    "rights": "© {year} Công ty TNHH Tân Châu Thành. Bảo lưu mọi quyền.",
+    "hqLabel": "Trụ sở chính",
+    "office2Label": "Văn phòng 2"
   },
   "lang": {
     "vi": "Tiếng Việt",

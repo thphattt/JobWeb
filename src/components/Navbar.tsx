@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Phone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -20,9 +21,17 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="font-display text-lg font-extrabold tracking-tight text-ink"
+          className="flex items-center"
+          aria-label={tb('fullName')}
         >
-          {tb('name')}
+          <Image
+            src="/logo.png"
+            alt={tb('fullName')}
+            width={469}
+            height={231}
+            priority
+            className="h-9 w-auto sm:h-10"
+          />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -39,7 +48,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-4">
           <a
-            href={`tel:${hotline.replace(/\s/g, '')}`}
+            href={`tel:${hotline.replace(/[.\s]/g, '')}`}
             className="hidden items-center gap-2 rounded-pill bg-paper-2 px-3 py-1.5 text-sm font-semibold text-ink sm:inline-flex"
           >
             <Phone className="size-4 text-accent" aria-hidden />

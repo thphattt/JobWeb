@@ -1,11 +1,13 @@
 {
   "meta": {
-    "title": "ABC Company — Partner for your success",
-    "description": "ABC Company delivers professional event, design and communications solutions. A trusted partner for your success."
+    "title": "Tan Chau Thanh Co., Ltd — Events & Communications",
+    "description": "Tan Chau Thanh — professional event and communications partner in Hanoi since 2018. Directing, production, event staffing and equipment."
   },
   "brand": {
-    "name": "ABC Company",
-    "hotline": "1900 0000"
+    "name": "Tân Châu Thành",
+    "fullName": "Tan Chau Thanh Co., Ltd",
+    "hotline": "091.353.2566",
+    "email": "tanchauthanhhn@gmail.com"
   },
   "nav": {
     "home": "Home",
@@ -19,57 +21,58 @@
     "close": "Close"
   },
   "hero": {
-    "eyebrow": "Partner for success",
-    "title": "We craft experiences worth remembering",
-    "subtitle": "From idea to execution — partnering with businesses through end-to-end event, design and communications solutions.",
+    "eyebrow": "Events · Communications",
+    "title": "Crafting events of national scale",
+    "subtitle": "From concept and script to full production — Tan Chau Thanh has delivered large-scale political and cultural events since 2018.",
     "ctaPrimary": "Get in touch",
     "ctaSecondary": "Our services"
   },
+  "stats": {
+    "a": { "value": "2018", "label": "Established" },
+    "b": { "value": "2", "label": "Offices in Hanoi" }
+  },
   "about": {
     "eyebrow": "About us",
-    "title": "A partner for your growth",
-    "body": "With an experienced team, we deliver comprehensive solutions — understanding our clients' goals and turning them into real results.",
+    "title": "Your events & communications partner since 2018",
+    "body": "Tan Chau Thanh delivers end-to-end event solutions: directing, scripting, production, staffing and equipment. Our experienced team has contributed to national-scale programs including the SEA Games 22 closing ceremony and the 1000th Anniversary of Thang Long – Hanoi.",
     "cta": "Learn more"
   },
   "services": {
     "eyebrow": "Services",
     "title": "What we do",
     "items": {
-      "events": {
-        "title": "Event production",
-        "desc": "End-to-end event ideation, planning and professional execution."
+      "direction": {
+        "title": "Directing & Scripting",
+        "desc": "Concept development, scripting and directing for programs and events."
       },
-      "design": {
-        "title": "Design",
-        "desc": "Striking brand identity, collateral and event spaces."
+      "production": {
+        "title": "Production",
+        "desc": "End-to-end, professional program production management."
       },
-      "media": {
-        "title": "Communications",
-        "desc": "Multi-channel content and communications strategy that resonates."
+      "talent": {
+        "title": "Event talent",
+        "desc": "Bands, singers, MCs, dance and performance groups, hostesses."
       },
-      "tech": {
-        "title": "Technology & Equipment",
-        "desc": "Modern audio, lighting and show-technology solutions."
+      "equipment": {
+        "title": "Event equipment",
+        "desc": "Modern sound, lighting, staging and instruments at grand scale."
       }
     }
   },
-  "stats": {
-    "a": { "value": "—", "label": "Years of experience" },
-    "b": { "value": "—", "label": "Projects delivered" },
-    "note": "Replace with your real numbers"
-  },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Start your project",
-    "subtitle": "Leave your details and we'll get back to you shortly.",
+    "title": "Start your event",
+    "subtitle": "Contact Tan Chau Thanh for consultation and to bring your program to life.",
     "cta": "Send request"
   },
   "footer": {
-    "tagline": "A partner for your success.",
+    "tagline": "Your professional events & communications partner.",
     "offices": "Offices",
-    "quickLinks": "Quick links",
+    "contactTitle": "Contact",
     "follow": "Follow us",
-    "rights": "© {year} ABC Company. All rights reserved."
+    "rights": "© {year} Tan Chau Thanh Co., Ltd. All rights reserved.",
+    "hqLabel": "Head office",
+    "office2Label": "Office 2"
   },
   "lang": {
     "vi": "Tiếng Việt",
