@@ -74,6 +74,59 @@
     "hqLabel": "Trụ sở chính",
     "office2Label": "Văn phòng 2"
   },
+  "aboutPage": {
+    "eyebrow": "Về chúng tôi",
+    "title": "Công ty TNHH Tân Châu Thành",
+    "lead": "Thành lập năm 2018, Tân Châu Thành là đối tác tổ chức sự kiện và truyền thông chuyên nghiệp tại Hà Nội — cung cấp giải pháp trọn gói từ ý tưởng, kịch bản đến sản xuất, nhân sự và thiết bị.",
+    "leadershipTitle": "Đội ngũ lãnh đạo",
+    "leaders": {
+      "director": { "role": "Giám đốc", "name": "Bà Ngô Thị Ninh" },
+      "deputy": { "role": "Phó Giám đốc", "name": "Bà Nguyễn Thị Hạnh Nguyên" },
+      "accountant": { "role": "Kế toán trưởng", "name": "Ông Nguyễn Anh Tuấn" },
+      "advisor": { "role": "Cố vấn nghệ thuật", "name": "Ths. Lại Hồng Đăng" }
+    },
+    "programsTitle": "Chương trình tiêu biểu",
+    "programs": {
+      "p1": "Bế mạc SEA Games 22 (2003) — SVĐ Mỹ Đình",
+      "p2": "Đại lễ 1000 năm Thăng Long – Hà Nội (2010) — Sân khấu số 5 “Thành phố vì hòa bình”",
+      "p3": "“Tôi yêu Tổ quốc tôi” (2015) — Quảng trường Mỹ Đình, màn xếp hình 10.000 đoàn viên",
+      "p4": "Kỷ niệm 10 năm mở rộng địa giới hành chính Thủ đô (2018)",
+      "p5": "“Tôi yêu Tổ quốc tôi” tại Đền Hùng (2019) — TW Hội LHTN Việt Nam",
+      "p6": "Chào mừng các Đại hội Đảng bộ hướng tới Đại hội Đảng toàn quốc lần thứ XIV"
+    },
+    "collaboratorsTitle": "Cộng tác viên nghệ thuật",
+    "collaborators": "Đội ngũ biên đạo, nhạc sĩ, vũ đoàn, nhóm hát chuyên nghiệp cùng nhiều NSND, NSƯT và ca sĩ nổi tiếng: Quang Thọ, Quốc Hưng, Lan Anh, Đăng Dương, Trọng Tấn, Anh Thơ, Việt Hoàn… và các MC Sơn Lâm, Hoài Anh, Hồng Nhung."
+  },
+  "servicesPage": {
+    "eyebrow": "Dịch vụ",
+    "title": "Giải pháp sự kiện trọn gói",
+    "lead": "Tân Châu Thành đảm nhận toàn bộ các khâu của một chương trình — từ sáng tạo nội dung đến sản xuất và vận hành tại hiện trường."
+  },
+  "contactPage": {
+    "eyebrow": "Liên hệ",
+    "title": "Liên hệ với Tân Châu Thành",
+    "lead": "Để lại thông tin hoặc liên hệ trực tiếp — chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+    "infoTitle": "Thông tin liên hệ",
+    "phoneLabel": "Điện thoại",
+    "emailLabel": "Email",
+    "officesLabel": "Văn phòng"
+  },
+  "form": {
+    "title": "Gửi yêu cầu",
+    "name": "Họ và tên",
+    "namePlaceholder": "Nguyễn Văn A",
+    "contact": "Email hoặc số điện thoại",
+    "contactPlaceholder": "email@vidu.com hoặc 09xxxxxxxx",
+    "message": "Nội dung",
+    "messagePlaceholder": "Mô tả sự kiện hoặc yêu cầu của bạn…",
+    "submit": "Gửi yêu cầu",
+    "sending": "Đang gửi…",
+    "success": "Cảm ơn bạn! Chúng tôi sẽ liên hệ lại sớm nhất.",
+    "error": "Có lỗi xảy ra, vui lòng thử lại.",
+    "errName": "Vui lòng nhập họ tên (ít nhất 2 ký tự).",
+    "errContact": "Vui lòng nhập email hoặc số điện thoại hợp lệ.",
+    "errMessage": "Vui lòng nhập nội dung (ít nhất 10 ký tự)."
+  },
   "lang": {
     "vi": "Tiếng Việt",
     "en": "English",

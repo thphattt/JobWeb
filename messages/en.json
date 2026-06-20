@@ -74,6 +74,59 @@
     "hqLabel": "Head office",
     "office2Label": "Office 2"
   },
+  "aboutPage": {
+    "eyebrow": "About us",
+    "title": "Tan Chau Thanh Co., Ltd",
+    "lead": "Founded in 2018, Tan Chau Thanh is a professional event and communications partner in Hanoi — delivering end-to-end solutions from concept and script to production, staffing and equipment.",
+    "leadershipTitle": "Leadership",
+    "leaders": {
+      "director": { "role": "Director", "name": "Ms. Ngô Thị Ninh" },
+      "deputy": { "role": "Deputy Director", "name": "Ms. Nguyễn Thị Hạnh Nguyên" },
+      "accountant": { "role": "Chief Accountant", "name": "Mr. Nguyễn Anh Tuấn" },
+      "advisor": { "role": "Artistic Advisor", "name": "MA. Lại Hồng Đăng" }
+    },
+    "programsTitle": "Notable programs",
+    "programs": {
+      "p1": "SEA Games 22 closing ceremony (2003) — My Dinh Stadium",
+      "p2": "1000th Anniversary of Thang Long – Hanoi (2010) — Stage No. 5 “City for Peace”",
+      "p3": "“I love my Fatherland” (2015) — My Dinh Square, a 10,000-member card stunt",
+      "p4": "10th anniversary of Hanoi's administrative expansion (2018)",
+      "p5": "“I love my Fatherland” at Hung Temple (2019) — Vietnam Youth Federation",
+      "p6": "Welcoming Party congresses toward the 14th National Party Congress"
+    },
+    "collaboratorsTitle": "Artistic collaborators",
+    "collaborators": "A professional network of choreographers, composers, dance and vocal groups, with many People's/Meritorious Artists and renowned singers: Quang Tho, Quoc Hung, Lan Anh, Dang Duong, Trong Tan, Anh Tho, Viet Hoan… and MCs Son Lam, Hoai Anh, Hong Nhung."
+  },
+  "servicesPage": {
+    "eyebrow": "Services",
+    "title": "End-to-end event solutions",
+    "lead": "Tan Chau Thanh handles every stage of a program — from creative content to production and on-site operations."
+  },
+  "contactPage": {
+    "eyebrow": "Contact",
+    "title": "Get in touch with Tan Chau Thanh",
+    "lead": "Leave your details or reach us directly — we'll get back to you as soon as possible.",
+    "infoTitle": "Contact information",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "officesLabel": "Offices"
+  },
+  "form": {
+    "title": "Send a request",
+    "name": "Full name",
+    "namePlaceholder": "John Doe",
+    "contact": "Email or phone",
+    "contactPlaceholder": "email@example.com or 09xxxxxxxx",
+    "message": "Message",
+    "messagePlaceholder": "Describe your event or request…",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "success": "Thank you! We'll get back to you shortly.",
+    "error": "Something went wrong, please try again.",
+    "errName": "Please enter your name (at least 2 characters).",
+    "errContact": "Please enter a valid email or phone.",
+    "errMessage": "Please enter a message (at least 10 characters)."
+  },
   "lang": {
     "vi": "Tiếng Việt",
     "en": "English",
