@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Be_Vietnam_Pro, Beau_Rivage } from 'next/font/google';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import '@/styles/globals.css';
@@ -47,7 +47,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
   setRequestLocale(locale);
