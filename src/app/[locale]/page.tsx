@@ -35,7 +35,7 @@ export default async function HomePage({
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6">
         {/* Hero (ô lớn) */}
         <article className="rounded-card border border-rule bg-paper p-8 sm:col-span-2 sm:p-10 lg:col-span-4 lg:row-span-2 lg:p-12">
-          <p className="font-script text-3xl text-accent sm:text-4xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
             {t('hero.eyebrow')}
           </p>
           <h1
@@ -94,7 +94,7 @@ export default async function HomePage({
         <article className="rounded-card bg-ink p-8 sm:col-span-2 lg:col-span-6 lg:p-12">
           <div className="grid gap-6 lg:grid-cols-2 lg:items-end">
             <div>
-              <p className="font-script text-2xl text-clay">
+              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-clay">
                 {t('about.eyebrow')}
               </p>
               <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-paper sm:text-4xl">
@@ -117,7 +117,7 @@ export default async function HomePage({
 
       {/* DỊCH VỤ — lưới thẻ */}
       <section className="mt-10">
-        <p className="font-script text-2xl text-accent">
+        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
           {t('services.eyebrow')}
         </p>
         <h2 className="mt-1 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
@@ -148,7 +148,7 @@ export default async function HomePage({
       {/* CTA Liên hệ — thẻ sáng */}
       <section className="mt-10">
         <article className="rounded-card border border-rule bg-paper-2 px-8 py-12 text-center sm:px-16 sm:py-16">
-          <p className="font-script text-2xl text-accent">
+          <p className="text-sm font-semibold uppercase tracking-[0.25em] text-accent">
             {t('contact.eyebrow')}
           </p>
           <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">

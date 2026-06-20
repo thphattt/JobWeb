@@ -3,7 +3,7 @@
 /*
   Token thiết kế trích từ design.md (DNA của nguyenle.com.vn).
   LƯU Ý: đây là token của bản gốc — tái tạo lại khi có brand thật của khách.
-  next/font đặt biến --font-sans / --font-script trên <html>.
+  next/font đặt biến --font-sans trên <html>.
 */
 @theme {
   /* Paper — bề mặt sáng, ấm/blush */
@@ -26,10 +26,9 @@
   --color-olive: oklch(40% 0.025 105);
   --color-clay: oklch(73% 0.045 52);
 
-  /* Font — Be Vietnam Pro (đủ dấu VN) + Beau Rivage (script) */
+  /* Font — Be Vietnam Pro (đủ dấu VN) cho cả display & body */
   --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-script: var(--font-script), cursive;
 
   /* Bo góc */
   --radius-card: 20px;

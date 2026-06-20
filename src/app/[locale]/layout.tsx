@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
-import { Be_Vietnam_Pro, Beau_Rivage } from 'next/font/google';
+import { Be_Vietnam_Pro } from 'next/font/google';
 import { routing, type Locale } from '@/i18n/routing';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
@@ -12,13 +12,6 @@ const sans = Be_Vietnam_Pro({
   subsets: ['latin', 'vietnamese'],
   weight: ['400', '500', '600', '700', '800'],
   variable: '--font-sans',
-  display: 'swap'
-});
-
-const script = Beau_Rivage({
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-script',
   display: 'swap'
 });
 
@@ -55,7 +48,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={`${sans.variable} ${script.variable}`}>
+    <html lang={locale} className={sans.variable}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
