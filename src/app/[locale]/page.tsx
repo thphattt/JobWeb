@@ -50,14 +50,14 @@ export default async function HomePage({
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
-              href="/"
+              href="/lien-he"
               className="inline-flex items-center gap-2 rounded-pill bg-brand-gradient px-7 py-3.5 text-sm font-semibold text-accent-ink transition-transform hover:-translate-y-0.5"
             >
               {t('hero.ctaPrimary')}
               <ArrowRight className="size-4" aria-hidden />
             </Link>
             <Link
-              href="/"
+              href="/dich-vu"
               className="inline-flex items-center gap-2 rounded-pill border border-ink/15 px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-ink/40"
             >
               {t('hero.ctaSecondary')}
@@ -100,7 +100,7 @@ export default async function HomePage({
             <div>
               <p className="text-lg text-paper/70">{t('about.body')}</p>
               <Link
-                href="/"
+                href="/gioi-thieu"
                 className="mt-5 inline-flex items-center gap-2 font-semibold text-accent hover:underline"
               >
                 {t('about.cta')}
@@ -156,7 +156,7 @@ export default async function HomePage({
             {t('contact.subtitle')}
           </p>
           <Link
-            href="/"
+            href="/lien-he"
             className="mt-8 inline-flex items-center gap-2 rounded-pill bg-brand-gradient px-7 py-3.5 text-sm font-semibold text-accent-ink transition-transform hover:-translate-y-0.5"
           >
             {t('contact.cta')}
