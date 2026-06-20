@@ -1,0 +1,68 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
+import { Be_Vietnam_Pro, Beau_Rivage } from 'next/font/google';
+import { routing } from '@/i18n/routing';
+import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
+import '@/styles/globals.css';
+
+const sans = Be_Vietnam_Pro({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
+  display: 'swap'
+});
+
+const script = Beau_Rivage({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-script',
+  display: 'swap'
+});
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  return {
+    title: t('title'),
+    description: t('description')
+  };
+}
+
+export default async function LocaleLayout({
+  children,
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
+
+  const messages = await getMessages();
+
+  return (
+    <html lang={locale} className={`${sans.variable} ${script.variable}`}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
