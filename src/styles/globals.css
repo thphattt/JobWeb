@@ -17,7 +17,8 @@
 
   /* Accent — cam là màu CTA chính */
   --color-accent: oklch(72% 0.17 52);
-  --color-accent-ink: oklch(98% 0.01 90);
+  /* Chữ trên nền cam: dùng mực đậm để đạt tương phản (khớp design.md) */
+  --color-accent-ink: oklch(28% 0.005 60);
   --color-focus: oklch(43% 0.08 245);
 
   /* Bộ màu thương hiệu phụ */

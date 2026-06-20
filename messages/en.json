@@ -53,6 +53,11 @@
       }
     }
   },
+  "stats": {
+    "a": { "value": "—", "label": "Years of experience" },
+    "b": { "value": "—", "label": "Projects delivered" },
+    "note": "Replace with your real numbers"
+  },
   "contact": {
     "eyebrow": "Contact",
     "title": "Start your project",

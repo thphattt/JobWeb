@@ -7,7 +7,7 @@ read this file first; pages defer to it. Amend intentionally — the file is the
 
 ## System
 - Genre · editorial (warm corporate / event-agency)
-- Macrostructure · Feature Stack (alt: Photographic)
+- Macrostructure · Bento Grid (modern) — redesign 2026-06-20 · alt: Feature Stack / Photographic
 - Theme · studied-DNA (source: https://nguyenle.com.vn/)
 - Axes · light paper / soft-geometric-sans display / warm accent (orange + earth)
 

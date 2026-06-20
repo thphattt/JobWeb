@@ -53,6 +53,11 @@
       }
     }
   },
+  "stats": {
+    "a": { "value": "—", "label": "Năm kinh nghiệm" },
+    "b": { "value": "—", "label": "Dự án hoàn thành" },
+    "note": "Cập nhật số liệu thật của bạn"
+  },
   "contact": {
     "eyebrow": "Liên hệ",
     "title": "Bắt đầu dự án của bạn",
