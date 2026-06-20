@@ -11,9 +11,9 @@ export function Navbar() {
 
   // P0: các mục tạm trỏ về '/'; P1 sẽ thêm trang riêng (/gioi-thieu, /dich-vu, /lien-he).
   const links = [
-    { href: '/', label: t('about') },
-    { href: '/', label: t('services') },
-    { href: '/', label: t('contact') }
+    { href: '/gioi-thieu', label: t('about') },
+    { href: '/dich-vu', label: t('services') },
+    { href: '/lien-he', label: t('contact') }
   ];
 
   return (
