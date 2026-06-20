@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "ABC Company — Partner for your success",
+    "description": "ABC Company delivers professional event, design and communications solutions. A trusted partner for your success."
+  },
+  "brand": {
+    "name": "ABC Company",
+    "hotline": "1900 0000"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "news": "News",
+    "careers": "Careers",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "hero": {
+    "eyebrow": "Partner for success",
+    "title": "We craft experiences worth remembering",
+    "subtitle": "From idea to execution — partnering with businesses through end-to-end event, design and communications solutions.",
+    "ctaPrimary": "Get in touch",
+    "ctaSecondary": "Our services"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "A partner for your growth",
+    "body": "With an experienced team, we deliver comprehensive solutions — understanding our clients' goals and turning them into real results.",
+    "cta": "Learn more"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "What we do",
+    "items": {
+      "events": {
+        "title": "Event production",
+        "desc": "End-to-end event ideation, planning and professional execution."
+      },
+      "design": {
+        "title": "Design",
+        "desc": "Striking brand identity, collateral and event spaces."
+      },
+      "media": {
+        "title": "Communications",
+        "desc": "Multi-channel content and communications strategy that resonates."
+      },
+      "tech": {
+        "title": "Technology & Equipment",
+        "desc": "Modern audio, lighting and show-technology solutions."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Start your project",
+    "subtitle": "Leave your details and we'll get back to you shortly.",
+    "cta": "Send request"
+  },
+  "footer": {
+    "tagline": "A partner for your success.",
+    "offices": "Offices",
+    "quickLinks": "Quick links",
+    "follow": "Follow us",
+    "rights": "© {year} ABC Company. All rights reserved."
+  },
+  "lang": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "switch": "Switch language"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or has been moved.",
+    "cta": "Back to home"
+  }
+}

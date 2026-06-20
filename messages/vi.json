@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Công ty ABC — Đối tác cho thành công",
+    "description": "Công ty ABC cung cấp giải pháp tổ chức sự kiện, thiết kế và truyền thông chuyên nghiệp. Đối tác đáng tin cậy cho thành công của bạn."
+  },
+  "brand": {
+    "name": "Công ty ABC",
+    "hotline": "1900 0000"
+  },
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "services": "Dịch vụ",
+    "projects": "Dự án",
+    "news": "Tin tức",
+    "careers": "Tuyển dụng",
+    "contact": "Liên hệ",
+    "menu": "Menu",
+    "close": "Đóng"
+  },
+  "hero": {
+    "eyebrow": "Đối tác cho thành công",
+    "title": "Chúng tôi kiến tạo những trải nghiệm đáng nhớ",
+    "subtitle": "Từ ý tưởng đến thực thi — đồng hành cùng doanh nghiệp bằng giải pháp sự kiện, thiết kế và truyền thông trọn gói.",
+    "ctaPrimary": "Liên hệ ngay",
+    "ctaSecondary": "Xem dịch vụ"
+  },
+  "about": {
+    "eyebrow": "Về chúng tôi",
+    "title": "Đối tác đồng hành cùng sự phát triển của bạn",
+    "body": "Với đội ngũ giàu kinh nghiệm, chúng tôi mang đến giải pháp toàn diện — thấu hiểu mục tiêu của khách hàng và biến chúng thành kết quả thực tế.",
+    "cta": "Tìm hiểu thêm"
+  },
+  "services": {
+    "eyebrow": "Dịch vụ",
+    "title": "Những gì chúng tôi làm",
+    "items": {
+      "events": {
+        "title": "Tổ chức sự kiện",
+        "desc": "Lên ý tưởng, lập kế hoạch và triển khai sự kiện trọn gói, chuyên nghiệp."
+      },
+      "design": {
+        "title": "Thiết kế",
+        "desc": "Nhận diện thương hiệu, ấn phẩm và không gian sự kiện ấn tượng."
+      },
+      "media": {
+        "title": "Truyền thông",
+        "desc": "Chiến lược nội dung và truyền thông đa kênh, lan tỏa thông điệp."
+      },
+      "tech": {
+        "title": "Công nghệ & Thiết bị",
+        "desc": "Giải pháp âm thanh, ánh sáng và công nghệ trình diễn hiện đại."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Liên hệ",
+    "title": "Bắt đầu dự án của bạn",
+    "subtitle": "Để lại thông tin, chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+    "cta": "Gửi yêu cầu"
+  },
+  "footer": {
+    "tagline": "Đối tác cho thành công của bạn.",
+    "offices": "Văn phòng",
+    "quickLinks": "Liên kết nhanh",
+    "follow": "Kết nối",
+    "rights": "© {year} Công ty ABC. Bảo lưu mọi quyền."
+  },
+  "lang": {
+    "vi": "Tiếng Việt",
+    "en": "English",
+    "switch": "Đổi ngôn ngữ"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "body": "Trang bạn tìm không tồn tại hoặc đã được di chuyển.",
+    "cta": "Về trang chủ"
+  }
+}

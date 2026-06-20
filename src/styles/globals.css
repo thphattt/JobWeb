@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+/*
+  Token thiết kế trích từ design.md (DNA của nguyenle.com.vn).
+  LƯU Ý: đây là token của bản gốc — tái tạo lại khi có brand thật của khách.
+  next/font đặt biến --font-sans / --font-script trên <html>.
+*/
+@theme {
+  /* Paper — bề mặt sáng, ấm/blush */
+  --color-paper: oklch(96.3% 0.006 50);
+  --color-paper-2: oklch(92% 0.008 80);
+
+  /* Ink — chữ */
+  --color-ink: oklch(28% 0.005 60);
+  --color-ink-2: oklch(50% 0 0);
+  --color-rule: oklch(92% 0.008 80);
+
+  /* Accent — cam là màu CTA chính */
+  --color-accent: oklch(72% 0.17 52);
+  --color-accent-ink: oklch(98% 0.01 90);
+  --color-focus: oklch(43% 0.08 245);
+
+  /* Bộ màu thương hiệu phụ */
+  --color-brand-blue: oklch(43% 0.08 245);
+  --color-olive: oklch(40% 0.025 105);
+  --color-clay: oklch(73% 0.045 52);
+
+  /* Font — Be Vietnam Pro (đủ dấu VN) + Beau Rivage (script) */
+  --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-script), cursive;
+
+  /* Bo góc */
+  --radius-card: 20px;
+  --radius-input: 6px;
+  --radius-pill: 1000px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset/base */
+html,
+body {
+  overflow-x: clip; /* không cuộn ngang (Hallmark gate 34) */
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus ring rõ ràng, không animate */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
