@@ -57,6 +57,7 @@ export function Navbar() {
           <LanguageSwitcher />
           <MobileNav
             links={links}
+            title={tb('name')}
             menuLabel={t('menu')}
             closeLabel={t('close')}
             hotline={hotline}

@@ -26,8 +26,8 @@ export function LanguageSwitcher() {
             aria-current={loc === locale ? 'true' : undefined}
             className={
               loc === locale
-                ? 'font-semibold text-accent'
-                : 'text-ink-2 transition-colors hover:text-ink'
+                ? 'font-semibold text-accent hover:cursor-pointer'
+                : 'text-ink-2 transition-colors hover:text-ink hover:cursor-pointer'
             }
           >
             {loc.toUpperCase()}
