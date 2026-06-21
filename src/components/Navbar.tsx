@@ -3,13 +3,13 @@ import { useTranslations } from 'next-intl';
 import { Phone } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { MobileNav } from './MobileNav';
 
 export function Navbar() {
   const t = useTranslations('nav');
   const tb = useTranslations('brand');
   const hotline = tb('hotline');
 
-  // P0: các mục tạm trỏ về '/'; P1 sẽ thêm trang riêng (/gioi-thieu, /dich-vu, /lien-he).
   const links = [
     { href: '/gioi-thieu', label: t('about') },
     { href: '/dich-vu', label: t('services') },
@@ -55,6 +55,12 @@ export function Navbar() {
             {hotline}
           </a>
           <LanguageSwitcher />
+          <MobileNav
+            links={links}
+            menuLabel={t('menu')}
+            closeLabel={t('close')}
+            hotline={hotline}
+          />
         </div>
       </div>
     </header>

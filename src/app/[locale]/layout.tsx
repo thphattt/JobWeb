@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { Be_Vietnam_Pro } from 'next/font/google';
 import { routing, type Locale } from '@/i18n/routing';
+import { siteUrl, languageAlternates } from '@/lib/site';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import '@/styles/globals.css';
@@ -26,9 +27,31 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'meta' });
+  const tb = await getTranslations({ locale, namespace: 'brand' });
   return {
-    title: t('title'),
-    description: t('description')
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: t('title'),
+      template: `%s · ${tb('name')}`
+    },
+    description: t('description'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: languageAlternates('')
+    },
+    openGraph: {
+      type: 'website',
+      siteName: tb('fullName'),
+      title: t('title'),
+      description: t('description'),
+      url: `/${locale}`,
+      locale: locale === 'vi' ? 'vi_VN' : 'en_US'
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description')
+    }
   };
 }
 
