@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Clapperboard, CalendarCheck, Users, Speaker } from 'lucide-react';
+import { languageAlternates } from '@/lib/site';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },
@@ -7,6 +9,29 @@ const services = [
   { key: 'talent', Icon: Users },
   { key: 'equipment', Icon: Speaker }
 ] as const;
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  const path = '/dich-vu';
+  return {
+    title: t('services.title'),
+    description: t('services.description'),
+    alternates: {
+      canonical: `/${locale}${path}`,
+      languages: languageAlternates(path)
+    },
+    openGraph: {
+      title: t('services.title'),
+      description: t('services.description'),
+      url: `/${locale}${path}`
+    }
+  };
+}
 
 export default async function ServicesPage({
   params
