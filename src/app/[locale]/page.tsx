@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { EventGallery } from '@/components/EventGallery';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },
@@ -139,6 +140,21 @@ export default async function HomePage({
               />
             </article>
           ))}
+        </div>
+      </section>
+
+      {/* SỰ KIỆN — thư viện ảnh, hover hiện thông tin */}
+      <section className="mt-10">
+        <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
+          <span className="h-px w-8 bg-accent" aria-hidden />
+          {t('events.eyebrow')}
+        </p>
+        <h2 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
+          {t('events.title')}
+        </h2>
+        <p className="mt-4 max-w-2xl text-ink-2">{t('events.lead')}</p>
+        <div className="mt-6">
+          <EventGallery />
         </div>
       </section>
 

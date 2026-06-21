@@ -149,5 +149,42 @@
     "title": "Không tìm thấy trang",
     "body": "Trang bạn tìm không tồn tại hoặc đã được di chuyển.",
     "cta": "Về trang chủ"
+  },
+  "events": {
+    "eyebrow": "Dự án tiêu biểu",
+    "title": "Những sự kiện chúng tôi đã thực hiện",
+    "lead": "Một số chương trình quy mô quốc gia mà Tân Châu Thành từng tổ chức và tham gia sản xuất.",
+    "items": {
+      "seaGames22": {
+        "title": "Bế mạc SEA Games 22",
+        "year": "2003",
+        "venue": "SVĐ Mỹ Đình, Hà Nội"
+      },
+      "thangLong1000": {
+        "title": "Đại lễ 1000 năm Thăng Long – Hà Nội",
+        "year": "2010",
+        "venue": "Sân khấu số 5 “Thành phố vì hòa bình”"
+      },
+      "toQuoc2015": {
+        "title": "“Tôi yêu Tổ quốc tôi”",
+        "year": "2015",
+        "venue": "Quảng trường Mỹ Đình — màn xếp hình 10.000 đoàn viên"
+      },
+      "thuDo10": {
+        "title": "Kỷ niệm 10 năm mở rộng địa giới hành chính Thủ đô",
+        "year": "2018",
+        "venue": "Hà Nội"
+      },
+      "denHung2019": {
+        "title": "“Tôi yêu Tổ quốc tôi” tại Đền Hùng",
+        "year": "2019",
+        "venue": "TW Hội LHTN Việt Nam"
+      },
+      "daiHoiDang": {
+        "title": "Chào mừng Đại hội Đảng bộ các cấp",
+        "year": "",
+        "venue": "Hướng tới Đại hội Đảng toàn quốc lần thứ XIV"
+      }
+    }
   }
 }

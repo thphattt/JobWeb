@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { CheckCircle2 } from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
+import { EventGallery } from '@/components/EventGallery';
 
 const leaders = ['director', 'deputy', 'accountant', 'advisor'] as const;
-const programs = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'] as const;
 
 export async function generateMetadata({
   params
@@ -74,17 +73,9 @@ export default async function AboutPage({
         <h2 className="font-display text-2xl font-bold text-ink">
           {t('programsTitle')}
         </h2>
-        <ul className="mt-6 space-y-3">
-          {programs.map((k) => (
-            <li key={k} className="flex gap-3 text-ink-2">
-              <CheckCircle2
-                className="mt-0.5 size-5 shrink-0 text-accent"
-                aria-hidden
-              />
-              <span>{t(`programs.${k}`)}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-6">
+          <EventGallery />
+        </div>
       </section>
 
       <section className="mt-16 rounded-card bg-ink p-8 sm:p-10">
