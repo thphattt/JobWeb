@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { languageAlternates } from '@/lib/site';
 import { ContactForm } from './ContactForm';
 
 const offices = [
@@ -8,6 +10,29 @@ const offices = [
 ] as const;
 
 const phones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  const path = '/lien-he';
+  return {
+    title: t('contact.title'),
+    description: t('contact.description'),
+    alternates: {
+      canonical: `/${locale}${path}`,
+      languages: languageAlternates(path)
+    },
+    openGraph: {
+      title: t('contact.title'),
+      description: t('contact.description'),
+      url: `/${locale}${path}`
+    }
+  };
+}
 
 export default async function ContactPage({
   params
@@ -107,6 +132,32 @@ export default async function ContactPage({
           </div>
         </div>
       </div>
+
+      {/* Bản đồ — vị trí 2 văn phòng (Google Maps embed, không cần API key) */}
+      <section className="mt-14">
+        <h2 className="font-display text-xl font-bold text-ink">
+          {t('contactPage.mapTitle')}
+        </h2>
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          {offices.map((o) => (
+            <div
+              key={o.labelKey}
+              className="overflow-hidden rounded-card border border-rule"
+            >
+              <iframe
+                title={`${t(`footer.${o.labelKey}`)} — ${o.addr}`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(
+                  o.addr
+                )}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+                className="h-64 w-full border-0"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

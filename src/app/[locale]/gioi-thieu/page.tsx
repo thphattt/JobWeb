@@ -1,8 +1,33 @@
+import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { CheckCircle2 } from 'lucide-react';
+import { languageAlternates } from '@/lib/site';
 
 const leaders = ['director', 'deputy', 'accountant', 'advisor'] as const;
 const programs = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6'] as const;
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'meta' });
+  const path = '/gioi-thieu';
+  return {
+    title: t('about.title'),
+    description: t('about.description'),
+    alternates: {
+      canonical: `/${locale}${path}`,
+      languages: languageAlternates(path)
+    },
+    openGraph: {
+      title: t('about.title'),
+      description: t('about.description'),
+      url: `/${locale}${path}`
+    }
+  };
+}
 
 export default async function AboutPage({
   params
