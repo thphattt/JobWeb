@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { Facebook, Youtube, MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 
 const offices = [
   { labelKey: 'hqLabel', addr: '26 Trần Quốc Toản, P. Cửa Nam, Hà Nội' },
@@ -7,6 +7,24 @@ const offices = [
 ] as const;
 
 const phones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
+
+// Icon thương hiệu vẽ inline (lucide đã deprecate các icon mạng xã hội).
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
+      <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.026 4.388 11.02 10.125 11.927v-8.437H7.078v-3.49h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.313 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.93-1.956 1.886v2.264h3.328l-.532 3.49h-2.796v8.437C19.612 23.094 24 18.1 24 12.073z" />
+    </svg>
+  );
+}
+
+// Chỉ render icon mạng xã hội có URL thật (thêm YouTube… khi có kênh).
+const socials = [
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/TanChauThanhhn/',
+    Icon: FacebookIcon
+  }
+] as const;
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -23,20 +41,18 @@ export function Footer() {
           </div>
           <p className="mt-3 max-w-xs text-sm text-ink-2">{t('tagline')}</p>
           <div className="mt-5 flex gap-3">
-            <a
-              href="#"
-              aria-label="Facebook"
-              className="flex size-9 items-center justify-center rounded-pill border border-rule text-ink-2 transition-colors hover:border-accent hover:text-accent"
-            >
-              <Facebook className="size-4" aria-hidden />
-            </a>
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="flex size-9 items-center justify-center rounded-pill border border-rule text-ink-2 transition-colors hover:border-accent hover:text-accent"
-            >
-              <Youtube className="size-4" aria-hidden />
-            </a>
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-9 items-center justify-center rounded-pill border border-rule text-ink-2 transition-colors hover:border-accent hover:text-accent"
+              >
+                <Icon className="size-4" />
+              </a>
+            ))}
           </div>
         </div>
 
