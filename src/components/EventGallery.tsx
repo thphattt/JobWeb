@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { events } from '@/lib/events';
+import { Reveal } from './Reveal';
 
 export async function EventGallery() {
   const t = await getTranslations('events');
@@ -13,10 +14,8 @@ export async function EventGallery() {
         const venue = t(`items.${ev.id}.venue`);
 
         return (
-          <article
-            key={ev.id}
-            className="group relative aspect-[4/3] overflow-hidden rounded-card border border-rule"
-          >
+          <Reveal key={ev.id} index={i}>
+            <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule">
             {/* Ảnh thật nếu có, ngược lại là ô gradient thương hiệu */}
             {ev.image ? (
               <Image
@@ -39,7 +38,7 @@ export async function EventGallery() {
             )}
 
             {/* Lớp phủ tối giúp chữ dễ đọc, đậm thêm khi hover */}
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/0 opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-ink/0 opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Năm */}
             {year && (
@@ -57,7 +56,8 @@ export async function EventGallery() {
                 {venue}
               </p>
             </div>
-          </article>
+            </article>
+          </Reveal>
         );
       })}
     </div>
