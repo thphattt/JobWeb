@@ -13,6 +13,10 @@
     "contact": {
       "title": "Contact",
       "description": "Contact Tan Chau Thanh: two offices in Hanoi, hotline and a consultation request form."
+    },
+    "news": {
+      "title": "News",
+      "description": "Latest news and activities from Tan Chau Thanh: projects, events and behind-the-scenes production."
     }
   },
   "brand": {
@@ -210,5 +214,19 @@
         "desc": "Years of delivering political and cultural events."
       }
     }
+  },
+  "news": {
+    "eyebrow": "News",
+    "title": "News & Activities",
+    "lead": "Updates on Tan Chau Thanh's activities, projects and behind-the-scenes production.",
+    "readMore": "Read more",
+    "viewAll": "View all news",
+    "empty": "No articles yet.",
+    "backToList": "All news"
+  },
+  "collaborators": {
+    "eyebrow": "Artistic partners",
+    "title": "Notable collaborators",
+    "lead": "Artists, MCs and People's/Meritorious Artists who have joined our programs."
   }
 }

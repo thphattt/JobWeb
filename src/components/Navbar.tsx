@@ -13,6 +13,7 @@ export function Navbar() {
   const links = [
     { href: '/gioi-thieu', label: t('about') },
     { href: '/dich-vu', label: t('services') },
+    { href: '/tin-tuc', label: t('news') },
     { href: '/lien-he', label: t('contact') }
   ];
 

@@ -13,6 +13,10 @@
     "contact": {
       "title": "Liên hệ",
       "description": "Liên hệ Tân Châu Thành: hai văn phòng tại Hà Nội, hotline và biểu mẫu yêu cầu tư vấn tổ chức sự kiện."
+    },
+    "news": {
+      "title": "Tin tức",
+      "description": "Tin tức và hoạt động mới nhất của Tân Châu Thành: dự án, sự kiện và hậu trường sản xuất chương trình."
     }
   },
   "brand": {
@@ -210,5 +214,19 @@
         "desc": "Nhiều năm đồng hành cùng các sự kiện chính trị, văn hóa."
       }
     }
+  },
+  "news": {
+    "eyebrow": "Tin tức",
+    "title": "Tin tức & Hoạt động",
+    "lead": "Cập nhật hoạt động, dự án và hậu trường sản xuất chương trình của Tân Châu Thành.",
+    "readMore": "Đọc tiếp",
+    "viewAll": "Xem tất cả tin",
+    "empty": "Chưa có bài viết nào.",
+    "backToList": "Tất cả tin tức"
+  },
+  "collaborators": {
+    "eyebrow": "Đối tác nghệ thuật",
+    "title": "Gương mặt hợp tác tiêu biểu",
+    "lead": "Những nghệ sĩ, MC, NSND/NSƯT đã đồng hành cùng các chương trình của chúng tôi."
   }
 }

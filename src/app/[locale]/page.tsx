@@ -22,7 +22,16 @@ import type { Locale } from '@/i18n/routing';
 import { EventGallery } from '@/components/EventGallery';
 import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
-import { getHero, getAbout, getWhy, getServices } from '@/lib/content';
+import { CollaboratorGrid } from '@/components/CollaboratorGrid';
+import { NewsCard } from '@/components/NewsCard';
+import {
+  getHero,
+  getAbout,
+  getWhy,
+  getServices,
+  getCollaborators,
+  getNews
+} from '@/lib/content';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },
@@ -91,11 +100,13 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, why, svcDocs] = await Promise.all([
+  const [hero, about, why, svcDocs, collaborators, news] = await Promise.all([
     getHero(locale as Locale),
     getAbout(locale as Locale),
     getWhy(locale as Locale),
-    getServices(locale as Locale)
+    getServices(locale as Locale),
+    getCollaborators(locale as Locale),
+    getNews(locale as Locale, 3)
   ]);
 
   const serviceCards = svcDocs.length
@@ -277,6 +288,57 @@ export default async function HomePage({
           </div>
         </Reveal>
       </section>
+
+      {/* GƯƠNG MẶT HỢP TÁC TIÊU BIỂU — chỉ hiện khi CMS có dữ liệu */}
+      {collaborators.length > 0 && (
+        <section className="border-t border-night-rule bg-night-2 text-white">
+          <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <SectionHead
+              eyebrow={t('collaborators.eyebrow')}
+              title={t('collaborators.title')}
+              dark
+            />
+            <p className="mt-6 max-w-2xl text-white/55">
+              {t('collaborators.lead')}
+            </p>
+            <div className="mt-10">
+              <CollaboratorGrid items={collaborators} />
+            </div>
+          </Reveal>
+        </section>
+      )}
+
+      {/* TIN TỨC MỚI NHẤT — chỉ hiện khi có bài đã xuất bản */}
+      {news.length > 0 && (
+        <section className="border-t border-night-rule bg-night text-white">
+          <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <SectionHead
+                eyebrow={t('news.eyebrow')}
+                title={t('news.title')}
+                dark
+              />
+              <Link
+                href="/tin-tuc"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-accent transition-all hover:gap-3"
+              >
+                {t('news.viewAll')}
+                <ArrowUpRight className="size-4" aria-hidden />
+              </Link>
+            </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {news.map((post) => (
+                <NewsCard
+                  key={post.id}
+                  post={post}
+                  locale={locale}
+                  readMore={t('news.readMore')}
+                />
+              ))}
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* CTA LIÊN HỆ — panel gradient (tối) */}
       <section className="bg-night">

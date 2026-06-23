@@ -29,7 +29,7 @@ async function safeGlobal<T = Record<string, unknown>>(
 }
 
 async function safeFind<T = Record<string, unknown>>(
-  collection: 'services' | 'projects',
+  collection: 'services' | 'projects' | 'collaborators',
   locale: Locale
 ): Promise<T[]> {
   try {
@@ -82,6 +82,24 @@ export type ProjectDoc = {
   venue?: string;
   image?: { url?: string; alt?: string } | null;
 };
+export type MediaRef = { url?: string; alt?: string } | null;
+export type NewsDoc = {
+  id: number;
+  title: string;
+  slug: string;
+  date?: string;
+  excerpt?: string;
+  coverImage?: MediaRef;
+  // Lexical richtext (kiểu phụ thuộc Payload) — render bằng <RichText/>.
+  content?: unknown;
+  published?: boolean;
+};
+export type CollaboratorDoc = {
+  id: number;
+  name: string;
+  role?: string;
+  photo?: MediaRef;
+};
 
 // ── API công khai ──────────────────────────────────────────────────────────
 export const getHero = (l: Locale) => safeGlobal<HeroContent>('hero', l);
@@ -92,3 +110,45 @@ export const getContact = (l: Locale) =>
 export const getBrand = (l: Locale) => safeGlobal<BrandContent>('brand', l);
 export const getServices = (l: Locale) => safeFind<ServiceDoc>('services', l);
 export const getProjects = (l: Locale) => safeFind<ProjectDoc>('projects', l);
+export const getCollaborators = (l: Locale) =>
+  safeFind<CollaboratorDoc>('collaborators', l);
+
+/** Tin tức đã xuất bản, mới nhất trước. `limit` để lấy số ít cho trang chủ. */
+export async function getNews(locale: Locale, limit = 50): Promise<NewsDoc[]> {
+  try {
+    const payload = await client();
+    const res = await payload.find({
+      collection: 'news',
+      locale,
+      where: { published: { equals: true } },
+      sort: '-date',
+      limit,
+      depth: 1
+    });
+    return res.docs as NewsDoc[];
+  } catch (err) {
+    console.error('[content] getNews failed:', err);
+    return [];
+  }
+}
+
+/** Một bài tin theo slug (đã xuất bản). Trả null nếu không có. */
+export async function getNewsBySlug(
+  slug: string,
+  locale: Locale
+): Promise<NewsDoc | null> {
+  try {
+    const payload = await client();
+    const res = await payload.find({
+      collection: 'news',
+      locale,
+      where: { slug: { equals: slug }, published: { equals: true } },
+      limit: 1,
+      depth: 1
+    });
+    return (res.docs[0] as NewsDoc) ?? null;
+  } catch (err) {
+    console.error('[content] getNewsBySlug failed:', err);
+    return null;
+  }
+}

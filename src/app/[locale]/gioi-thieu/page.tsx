@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { languageAlternates } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
+import { getCollaborators } from '@/lib/content';
 import { EventGallery } from '@/components/EventGallery';
+import { CollaboratorGrid } from '@/components/CollaboratorGrid';
 
 const leaders = ['director', 'deputy', 'accountant', 'advisor'] as const;
 
@@ -36,6 +39,7 @@ export default async function AboutPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('aboutPage');
+  const collaborators = await getCollaborators(locale as Locale);
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
@@ -77,11 +81,17 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="mt-16 border border-night-rule bg-night-2 p-8 sm:p-10">
-        <h2 className="font-display text-2xl font-bold uppercase text-white">
+      <section className="mt-16">
+        <h2 className="flex items-center gap-3 font-display text-2xl font-bold uppercase text-white">
+          <span className="size-6 shrink-0 bg-brand-gradient" aria-hidden />
           {t('collaboratorsTitle')}
         </h2>
-        <p className="mt-4 text-white/65">{t('collaborators')}</p>
+        <p className="mt-4 max-w-3xl text-white/65">{t('collaborators')}</p>
+        {collaborators.length > 0 && (
+          <div className="mt-8">
+            <CollaboratorGrid items={collaborators} />
+          </div>
+        )}
       </section>
     </div>
   );

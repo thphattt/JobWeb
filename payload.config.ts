@@ -8,6 +8,18 @@ import sharp from 'sharp';
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+/** Tạo slug thân thiện URL từ tiêu đề (giữ chữ cái có dấu → bỏ dấu cơ bản). */
+function slugify(input: string): string {
+  return input
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)+/g, '');
+}
+
 export default buildConfig({
   // ── Admin user ─────────────────────────────────────────────────────────
   admin: {
@@ -105,6 +117,69 @@ export default buildConfig({
         { name: 'year', type: 'text', label: 'Năm' },
         { name: 'venue', type: 'text', localized: true, label: 'Địa điểm / mô tả ngắn' },
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Ảnh (tuỳ chọn)' },
+        { name: 'order', type: 'number', label: 'Thứ tự', defaultValue: 0 }
+      ]
+    },
+
+    // Tin tức
+    {
+      slug: 'news',
+      labels: { singular: 'Tin tức', plural: 'Tin tức' },
+      admin: {
+        useAsTitle: 'title',
+        defaultColumns: ['title', 'date', 'published'],
+        group: 'Nội dung'
+      },
+      fields: [
+        { name: 'title', type: 'text', required: true, localized: true, label: 'Tiêu đề' },
+        {
+          name: 'slug',
+          type: 'text',
+          unique: true,
+          index: true,
+          label: 'Đường dẫn (slug)',
+          admin: { description: 'Để trống sẽ tự tạo từ tiêu đề.' },
+          hooks: {
+            beforeValidate: [
+              ({ value, data }) =>
+                value || (data?.title ? slugify(String(data.title)) : value)
+            ]
+          }
+        },
+        {
+          name: 'date',
+          type: 'date',
+          required: true,
+          defaultValue: () => new Date().toISOString(),
+          label: 'Ngày đăng',
+          admin: { date: { pickerAppearance: 'dayOnly' } }
+        },
+        { name: 'coverImage', type: 'upload', relationTo: 'media', label: 'Ảnh bìa' },
+        { name: 'excerpt', type: 'textarea', localized: true, label: 'Tóm tắt' },
+        { name: 'content', type: 'richText', localized: true, label: 'Nội dung' },
+        {
+          name: 'published',
+          type: 'checkbox',
+          defaultValue: true,
+          label: 'Hiển thị trên website'
+        }
+      ]
+    },
+
+    // Gương mặt hợp tác tiêu biểu
+    {
+      slug: 'collaborators',
+      labels: { singular: 'Gương mặt hợp tác', plural: 'Gương mặt hợp tác tiêu biểu' },
+      admin: {
+        useAsTitle: 'name',
+        defaultColumns: ['name', 'role', 'order'],
+        group: 'Nội dung'
+      },
+      orderable: true,
+      fields: [
+        { name: 'name', type: 'text', required: true, label: 'Tên' },
+        { name: 'role', type: 'text', localized: true, label: 'Vai trò / danh hiệu' },
+        { name: 'photo', type: 'upload', relationTo: 'media', label: 'Ảnh chân dung' },
         { name: 'order', type: 'number', label: 'Thứ tự', defaultValue: 0 }
       ]
     }
