@@ -30,7 +30,7 @@ export function HeroCarousel({
   useEffect(() => {
     if (paused || n <= 1) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const id = setInterval(() => setI((p) => (p + 1) % n), 5000);
+    const id = setInterval(() => setI((p) => (p + 1) % n), 3000);
     return () => clearInterval(id);
   }, [paused, n]);
 
@@ -42,7 +42,10 @@ export function HeroCarousel({
       onFocusCapture={() => setPaused(true)}
       onBlurCapture={() => setPaused(false)}
     >
-      <div className="absolute -inset-3 border border-white/10" aria-hidden />
+      <div
+        className="pointer-events-none absolute -inset-3 border border-white/10"
+        aria-hidden
+      />
 
       {/* Khung slide (vuông góc) */}
       <div className="relative aspect-4/5 overflow-hidden">
@@ -107,7 +110,7 @@ export function HeroCarousel({
             type="button"
             onClick={() => go(-1)}
             aria-label={prevLabel}
-            className="flex size-11 items-center justify-center border-2 border-white/25 text-white transition-colors hover:border-accent hover:text-accent"
+            className="flex size-11 items-center justify-center border-2 border-white/25 text-white transition-colors hover:border-accent hover:text-accent cursor-pointer"
           >
             <ChevronLeft className="size-5" aria-hidden />
           </button>
@@ -115,7 +118,7 @@ export function HeroCarousel({
             type="button"
             onClick={() => go(1)}
             aria-label={nextLabel}
-            className="flex size-11 items-center justify-center bg-brand-gradient text-accent-ink transition-transform hover:-translate-y-0.5"
+            className="flex size-11 items-center justify-center bg-brand-gradient text-accent-ink transition-transform hover:-translate-y-0.5 cursor-pointer"
           >
             <ChevronRight className="size-5" aria-hidden />
           </button>
