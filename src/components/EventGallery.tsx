@@ -32,8 +32,8 @@ export async function EventGallery() {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {tiles.map((ev, i) => (
-        <Reveal key={ev.key} index={i}>
-          <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule">
+        <Reveal key={ev.key} index={i} className="hover:z-20">
+          <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule transition-transform duration-300 ease-out will-change-transform hover:scale-[1.5] hover:shadow-2xl hover:shadow-black/40 motion-reduce:transition-none motion-reduce:hover:scale-100">
             {/* Ảnh thật nếu có, ngược lại là ô gradient thương hiệu */}
             {ev.image ? (
               <Image
@@ -41,11 +41,11 @@ export async function EventGallery() {
                 alt={ev.title}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover transition duration-500 group-hover:scale-105 group-hover:blur-[3px]"
               />
             ) : (
               <div
-                className={`absolute inset-0 flex items-center justify-center ${
+                className={`absolute inset-0 flex items-center justify-center transition duration-500 group-hover:blur-[3px] ${
                   i % 2 === 0 ? 'bg-brand-gradient' : 'bg-brand-gradient-rev'
                 }`}
               >
@@ -57,6 +57,8 @@ export async function EventGallery() {
 
             {/* Lớp phủ tối giúp chữ dễ đọc, đậm thêm khi hover */}
             <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-ink/0 opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+            {/* Hover: tối thêm + làm nền mờ để chi tiết nổi bật */}
+            <div className="absolute inset-0 bg-ink/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Năm */}
             {ev.year && (
