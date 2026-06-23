@@ -62,19 +62,19 @@ export function MobileNav({
 
       {/* Panel trượt từ phải */}
       <div
-        className={`absolute right-0 top-0 flex h-full w-72 max-w-[80%] flex-col overflow-y-auto bg-paper p-6 shadow-xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        className={`absolute right-0 top-0 flex h-full w-72 max-w-[80%] flex-col overflow-y-auto border-l border-night-rule bg-night p-6 shadow-xl transition-transform duration-300 ease-out motion-reduce:transition-none ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex items-center justify-between">
-          <span className="font-display text-base font-bold text-ink">
+          <span className="font-display text-base font-bold text-white">
             {title}
           </span>
           <button
             type="button"
             onClick={() => setOpen(false)}
             aria-label={closeLabel}
-            className="-mr-1 flex size-9 items-center justify-center rounded-pill text-ink transition-colors hover:bg-paper-2"
+            className="-mr-1 flex size-9 items-center justify-center rounded-pill text-white transition-colors hover:bg-white/10"
           >
             <X className="size-5" aria-hidden />
           </button>
@@ -86,7 +86,7 @@ export function MobileNav({
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="rounded-input px-3 py-3 text-base font-medium text-ink transition-colors hover:bg-paper-2"
+              className="rounded-input px-3 py-3 text-base font-medium text-white transition-colors hover:bg-white/10"
             >
               {l.label}
             </Link>
@@ -112,7 +112,7 @@ export function MobileNav({
         onClick={() => setOpen(true)}
         aria-label={menuLabel}
         aria-expanded={open}
-        className="flex size-9 items-center justify-center rounded-pill text-ink transition-colors hover:bg-paper-2"
+        className="flex size-9 items-center justify-center rounded-pill text-white transition-colors hover:bg-white/10"
       >
         <Menu className="size-5" aria-hidden />
       </button>

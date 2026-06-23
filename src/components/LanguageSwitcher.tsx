@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
     <div className="flex items-center text-sm" aria-label={t('switch')}>
       {routing.locales.map((loc, i) => (
         <span key={loc} className="flex items-center">
-          {i > 0 && <span className="mx-1.5 text-ink-2/40">/</span>}
+          {i > 0 && <span className="mx-1.5 text-white/30">/</span>}
           <button
             type="button"
             onClick={() => switchTo(loc)}
@@ -27,7 +27,7 @@ export function LanguageSwitcher() {
             className={
               loc === locale
                 ? 'font-semibold text-accent hover:cursor-pointer'
-                : 'text-ink-2 transition-colors hover:text-ink hover:cursor-pointer'
+                : 'text-white/60 transition-colors hover:text-white hover:cursor-pointer'
             }
           >
             {loc.toUpperCase()}

@@ -17,7 +17,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/85 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-night-rule bg-night/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -39,7 +39,7 @@ export function Navbar() {
             <Link
               key={i}
               href={l.href}
-              className="text-sm font-medium text-ink-2 transition-colors hover:text-ink"
+              className="text-xs font-semibold uppercase tracking-wide text-white/70 transition-colors hover:text-white"
             >
               {l.label}
             </Link>
@@ -49,7 +49,7 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <a
             href={`tel:${hotline.replace(/[.\s]/g, '')}`}
-            className="hidden items-center gap-2 rounded-pill bg-paper-2 px-3 py-1.5 text-sm font-semibold text-ink sm:inline-flex"
+            className="hidden items-center gap-2 rounded-pill border border-night-rule bg-night-2 px-3 py-1.5 text-sm font-semibold text-white sm:inline-flex"
           >
             <Phone className="size-4 text-accent" aria-hidden />
             {hotline}

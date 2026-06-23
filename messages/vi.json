@@ -30,7 +30,9 @@
     "careers": "Tuyển dụng",
     "contact": "Liên hệ",
     "menu": "Menu",
-    "close": "Đóng"
+    "close": "Đóng",
+    "prev": "Slide trước",
+    "next": "Slide sau"
   },
   "hero": {
     "eyebrow": "Tổ chức sự kiện · Truyền thông",
@@ -184,6 +186,28 @@
         "title": "Chào mừng Đại hội Đảng bộ các cấp",
         "year": "",
         "venue": "Hướng tới Đại hội Đảng toàn quốc lần thứ XIV"
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Vì sao chọn chúng tôi",
+    "title": "Đối tác sự kiện bạn có thể tin tưởng",
+    "items": {
+      "turnkey": {
+        "title": "Giải pháp trọn gói",
+        "desc": "Từ ý tưởng, kịch bản đến sản xuất và vận hành tại hiện trường."
+      },
+      "team": {
+        "title": "Đội ngũ giàu kinh nghiệm",
+        "desc": "Từng tham gia nhiều chương trình quy mô cấp quốc gia."
+      },
+      "equipment": {
+        "title": "Thiết bị quy mô lớn",
+        "desc": "Âm thanh, ánh sáng, sân khấu hiện đại, hoành tráng."
+      },
+      "since": {
+        "title": "Bền bỉ từ 2018",
+        "desc": "Nhiều năm đồng hành cùng các sự kiện chính trị, văn hóa."
       }
     }
   }

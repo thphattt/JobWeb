@@ -30,7 +30,9 @@
     "careers": "Careers",
     "contact": "Contact",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "prev": "Previous slide",
+    "next": "Next slide"
   },
   "hero": {
     "eyebrow": "Events · Communications",
@@ -184,6 +186,28 @@
         "title": "Welcoming Party congresses",
         "year": "",
         "venue": "Toward the 14th National Party Congress"
+      }
+    }
+  },
+  "why": {
+    "eyebrow": "Why choose us",
+    "title": "An events partner you can rely on",
+    "items": {
+      "turnkey": {
+        "title": "End-to-end solutions",
+        "desc": "From concept and script to production and on-site operations."
+      },
+      "team": {
+        "title": "Experienced team",
+        "desc": "Contributors to many national-scale programs."
+      },
+      "equipment": {
+        "title": "Large-scale equipment",
+        "desc": "Modern sound, lighting and staging at grand scale."
+      },
+      "since": {
+        "title": "Trusted since 2018",
+        "desc": "Years of delivering political and cultural events."
       }
     }
   }

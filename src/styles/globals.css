@@ -15,8 +15,8 @@
   --color-ink-2: oklch(50% 0 0);
   --color-rule: oklch(92% 0.008 80);
 
-  /* Accent — hồng-đỏ (raspberry) lấy từ logo Tân Châu Thành */
-  --color-accent: oklch(57% 0.2 13);
+  /* Accent — cam (đầu ấm của gradient logo), khớp thiết kế Colorbond */
+  --color-accent: oklch(66% 0.18 48);
   /* Chữ trên nền accent: trắng (đạt tương phản trên nền hồng-đỏ) */
   --color-accent-ink: oklch(99% 0 0);
   --color-focus: oklch(43% 0.08 245);
@@ -26,13 +26,18 @@
   --color-olive: oklch(40% 0.025 105);
   --color-clay: oklch(73% 0.045 52);
 
+  /* Nền tối (theme tối cho trang chủ + navbar/footer) */
+  --color-night: oklch(16% 0.006 60); /* near-black ấm */
+  --color-night-2: oklch(21% 0.006 60); /* bề mặt tối / card */
+  --color-night-rule: oklch(32% 0.006 60); /* hairline trên nền tối */
+
   /* Font — Be Vietnam Pro (đủ dấu VN) cho cả display & body */
   --font-display: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 
-  /* Bo góc */
-  --radius-card: 20px;
-  --radius-input: 6px;
+  /* Bo góc — card vuông góc (sắc cạnh, kiểu công nghiệp) */
+  --radius-card: 0px;
+  --radius-input: 0px;
   --radius-pill: 1000px;
 
   /* Easing */
