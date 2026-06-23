@@ -1,12 +1,23 @@
 import { useTranslations } from 'next-intl';
 import { MapPin, Phone, Mail } from 'lucide-react';
 
-const offices = [
-  { labelKey: 'hqLabel', addr: '26 Trần Quốc Toản, P. Cửa Nam, Hà Nội' },
-  { labelKey: 'office2Label', addr: '44 ngõ 36a Trần Điền, P. Phương Liệt, Hà Nội' }
-] as const;
+const officeLabelKeys = ['hqLabel', 'office2Label'] as const;
+const defaultOffices = [
+  '26 Trần Quốc Toản, P. Cửa Nam, Hà Nội',
+  '44 ngõ 36a Trần Điền, P. Phương Liệt, Hà Nội'
+];
+const defaultPhones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
+const defaultFacebook = 'https://www.facebook.com/TanChauThanhhn/';
 
-const phones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
+/** Nội dung liên hệ từ CMS (Payload). Thiếu trường nào thì dùng mặc định. */
+export type FooterData = {
+  brandName?: string;
+  tagline?: string;
+  offices?: string[];
+  phones?: string[];
+  email?: string;
+  facebook?: string;
+};
 
 // Icon thương hiệu vẽ inline (lucide đã deprecate các icon mạng xã hội).
 function FacebookIcon({ className }: { className?: string }) {
@@ -17,42 +28,36 @@ function FacebookIcon({ className }: { className?: string }) {
   );
 }
 
-// Chỉ render icon mạng xã hội có URL thật (thêm YouTube… khi có kênh).
-const socials = [
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/TanChauThanhhn/',
-    Icon: FacebookIcon
-  }
-] as const;
-
-export function Footer() {
+export function Footer({ data }: { data?: FooterData }) {
   const t = useTranslations('footer');
   const tb = useTranslations('brand');
   const year = new Date().getFullYear();
-  const email = tb('email');
+
+  const brandName = data?.brandName || tb('fullName');
+  const tagline = data?.tagline || t('tagline');
+  const email = data?.email || tb('email');
+  const facebook = data?.facebook || defaultFacebook;
+  const offices = data?.offices?.length ? data.offices : defaultOffices;
+  const phones = data?.phones?.length ? data.phones : defaultPhones;
 
   return (
     <footer className="border-t border-night-rule bg-night">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr] lg:px-8">
         <div>
           <div className="font-display text-xl font-extrabold text-white">
-            {tb('fullName')}
+            {brandName}
           </div>
-          <p className="mt-3 max-w-xs text-sm text-white/60">{t('tagline')}</p>
+          <p className="mt-3 max-w-xs text-sm text-white/60">{tagline}</p>
           <div className="mt-5 flex gap-3">
-            {socials.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex size-9 items-center justify-center rounded-pill border border-night-rule text-white/60 transition-colors hover:border-accent hover:text-accent"
-              >
-                <Icon className="size-4" />
-              </a>
-            ))}
+            <a
+              href={facebook}
+              aria-label="Facebook"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex size-9 items-center justify-center rounded-pill border border-night-rule text-white/60 transition-colors hover:border-accent hover:text-accent"
+            >
+              <FacebookIcon className="size-4" />
+            </a>
           </div>
         </div>
 
@@ -61,13 +66,15 @@ export function Footer() {
             {t('offices')}
           </h3>
           <ul className="mt-4 space-y-3 text-sm text-white/60">
-            {offices.map((o) => (
-              <li key={o.labelKey} className="flex gap-2">
+            {offices.map((addr, i) => (
+              <li key={addr} className="flex gap-2">
                 <MapPin className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
                 <span>
-                  <span className="font-medium text-white">{t(o.labelKey)}</span>
+                  <span className="font-medium text-white">
+                    {t(officeLabelKeys[i] ?? 'office2Label')}
+                  </span>
                   <br />
-                  {o.addr}
+                  {addr}
                 </span>
               </li>
             ))}

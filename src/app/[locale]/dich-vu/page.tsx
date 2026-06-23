@@ -1,7 +1,15 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Clapperboard, CalendarCheck, Users, Speaker } from 'lucide-react';
+import {
+  Clapperboard,
+  CalendarCheck,
+  Users,
+  Speaker,
+  type LucideIcon
+} from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
+import { getServices } from '@/lib/content';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },
@@ -9,6 +17,13 @@ const services = [
   { key: 'talent', Icon: Users },
   { key: 'equipment', Icon: Speaker }
 ] as const;
+
+const serviceIcons: Record<string, LucideIcon> = {
+  clapperboard: Clapperboard,
+  layers: CalendarCheck,
+  users: Users,
+  speaker: Speaker
+};
 
 export async function generateMetadata({
   params
@@ -42,6 +57,21 @@ export default async function ServicesPage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
+  const docs = await getServices(locale as Locale);
+  const cards = docs.length
+    ? docs.map((d) => ({
+        key: String(d.id),
+        Icon: serviceIcons[d.icon ?? ''] ?? Clapperboard,
+        title: d.title,
+        desc: d.description ?? ''
+      }))
+    : services.map(({ key, Icon }) => ({
+        key,
+        Icon,
+        title: t(`services.items.${key}.title`),
+        desc: t(`services.items.${key}.desc`)
+      }));
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
@@ -56,7 +86,7 @@ export default async function ServicesPage({
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2">
-        {services.map(({ key, Icon }) => (
+        {cards.map(({ key, Icon, title, desc }) => (
           <article
             key={key}
             className="group relative flex flex-col border border-night-rule bg-night-2 p-8 pb-10 transition-colors hover:border-accent"
@@ -65,11 +95,9 @@ export default async function ServicesPage({
               <Icon className="size-7" aria-hidden />
             </span>
             <h2 className="mt-6 font-display text-xl font-bold uppercase leading-tight text-white">
-              {t(`services.items.${key}.title`)}
+              {title}
             </h2>
-            <p className="mt-2 text-white/55">
-              {t(`services.items.${key}.desc`)}
-            </p>
+            <p className="mt-2 text-white/55">{desc}</p>
             <span
               className="absolute inset-x-0 bottom-0 h-1 scale-x-0 bg-brand-gradient transition-transform duration-300 group-hover:scale-x-100"
               aria-hidden

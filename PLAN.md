@@ -46,4 +46,7 @@ Logo (vector), brand color/guideline (nếu có), ảnh dự án thật, nội d
 - Payload cần DB (Neon) → tích hợp ở P1 khi có credentials.
 
 ---
-*Trạng thái hiện tại: đang thực hiện **P0 — Nền tảng**.*
+*Trạng thái hiện tại: **P1 — MVP hoàn tất** (Hero/About/Services/Contact + CMS Payload 3 + Neon).
+Nội dung chính (Hero, Giới thiệu, Vì sao chọn, Dịch vụ, Dự án, Liên hệ, Thương hiệu) đã
+quản trị qua `/admin`, đọc trên site qua Local API với fallback messages. Tiếp theo: P2
+(Tin tức/Tuyển dụng) và deploy Vercel.*

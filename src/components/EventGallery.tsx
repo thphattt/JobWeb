@@ -1,26 +1,44 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
+import type { Locale } from '@/i18n/routing';
 import { events } from '@/lib/events';
+import { getProjects } from '@/lib/content';
 import { Reveal } from './Reveal';
 
+type Tile = { key: string; title: string; year: string; venue: string; image?: string };
+
 export async function EventGallery() {
+  const locale = (await getLocale()) as Locale;
   const t = await getTranslations('events');
+
+  // Nguồn chính: CMS (Payload). Trống/ lỗi → fallback về messages.
+  const docs = await getProjects(locale);
+  const tiles: Tile[] = docs.length
+    ? docs.map((d) => ({
+        key: String(d.id),
+        title: d.title,
+        year: d.year ?? '',
+        venue: d.venue ?? '',
+        image: d.image?.url ?? undefined
+      }))
+    : events.map((ev) => ({
+        key: ev.id,
+        title: t(`items.${ev.id}.title`),
+        year: t(`items.${ev.id}.year`),
+        venue: t(`items.${ev.id}.venue`),
+        image: ev.image
+      }));
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {events.map((ev, i) => {
-        const title = t(`items.${ev.id}.title`);
-        const year = t(`items.${ev.id}.year`);
-        const venue = t(`items.${ev.id}.venue`);
-
-        return (
-          <Reveal key={ev.id} index={i}>
-            <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule">
+      {tiles.map((ev, i) => (
+        <Reveal key={ev.key} index={i}>
+          <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule">
             {/* Ảnh thật nếu có, ngược lại là ô gradient thương hiệu */}
             {ev.image ? (
               <Image
                 src={ev.image}
-                alt={title}
+                alt={ev.title}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -32,7 +50,7 @@ export async function EventGallery() {
                 }`}
               >
                 <span className="select-none font-display text-7xl font-black text-accent-ink/15">
-                  {year}
+                  {ev.year}
                 </span>
               </div>
             )}
@@ -41,25 +59,24 @@ export async function EventGallery() {
             <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/25 to-ink/0 opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
 
             {/* Năm */}
-            {year && (
+            {ev.year && (
               <span className="absolute left-4 top-4 rounded-pill bg-paper/90 px-2.5 py-1 text-xs font-bold text-ink">
-                {year}
+                {ev.year}
               </span>
             )}
 
             {/* Tên luôn hiện; địa điểm/chi tiết trượt lên khi hover */}
             <div className="absolute inset-x-0 bottom-0 p-5">
               <h3 className="font-display text-lg font-bold leading-snug text-paper">
-                {title}
+                {ev.title}
               </h3>
               <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-paper/85 opacity-0 transition-all duration-300 group-hover:mt-2 group-hover:max-h-32 group-hover:opacity-100">
-                {venue}
+                {ev.venue}
               </p>
             </div>
-            </article>
-          </Reveal>
-        );
-      })}
+          </article>
+        </Reveal>
+      ))}
     </div>
   );
 }

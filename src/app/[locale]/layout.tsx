@@ -6,7 +6,8 @@ import { Be_Vietnam_Pro } from 'next/font/google';
 import { routing, type Locale } from '@/i18n/routing';
 import { siteUrl, languageAlternates } from '@/lib/site';
 import { Navbar } from '@/components/Navbar';
-import { Footer } from '@/components/Footer';
+import { Footer, type FooterData } from '@/components/Footer';
+import { getContact, getBrand } from '@/lib/content';
 import '@/styles/globals.css';
 
 const sans = Be_Vietnam_Pro({
@@ -70,13 +71,27 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
 
+  // Nội dung liên hệ/thương hiệu từ CMS (fallback trong Footer nếu trống).
+  const [contact, brand] = await Promise.all([
+    getContact(locale as Locale),
+    getBrand(locale as Locale)
+  ]);
+  const footerData: FooterData = {
+    brandName: brand?.name,
+    tagline: brand?.tagline,
+    offices: contact?.offices?.map((o) => o.address ?? '').filter(Boolean),
+    phones: contact?.phones?.map((p) => p.number ?? '').filter(Boolean),
+    email: contact?.email,
+    facebook: contact?.facebook
+  };
+
   return (
     <html lang={locale} className={sans.variable}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Navbar />
           <main>{children}</main>
-          <Footer />
+          <Footer data={footerData} />
         </NextIntlClientProvider>
       </body>
     </html>

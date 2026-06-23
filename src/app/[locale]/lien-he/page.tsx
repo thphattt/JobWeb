@@ -2,14 +2,16 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
+import type { Locale } from '@/i18n/routing';
+import { getContact } from '@/lib/content';
 import { ContactForm } from './ContactForm';
 
-const offices = [
-  { labelKey: 'hqLabel', addr: '26 Trần Quốc Toản, P. Cửa Nam, Hà Nội' },
-  { labelKey: 'office2Label', addr: '44 ngõ 36a Trần Điền, P. Phương Liệt, Hà Nội' }
-] as const;
-
-const phones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
+const officeLabelKeys = ['hqLabel', 'office2Label'] as const;
+const defaultOffices = [
+  '26 Trần Quốc Toản, P. Cửa Nam, Hà Nội',
+  '44 ngõ 36a Trần Điền, P. Phương Liệt, Hà Nội'
+];
+const defaultPhones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
 
 export async function generateMetadata({
   params
@@ -42,7 +44,17 @@ export default async function ContactPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations();
-  const email = t('brand.email');
+
+  const contact = await getContact(locale as Locale);
+  const email = contact?.email || t('brand.email');
+  const offices = (
+    contact?.offices?.map((o) => o.address ?? '').filter(Boolean).length
+      ? contact!.offices!.map((o) => o.address ?? '').filter(Boolean)
+      : defaultOffices
+  ).map((addr, i) => ({ labelKey: officeLabelKeys[i] ?? 'office2Label', addr }));
+  const phones = contact?.phones?.map((p) => p.number ?? '').filter(Boolean).length
+    ? contact!.phones!.map((p) => p.number ?? '').filter(Boolean)
+    : defaultPhones;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">

@@ -19,3 +19,7 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# payload cms
+/public/uploads
+/src/payload-types.ts
