@@ -1,88 +1,118 @@
-<!-- Hallmark · design.md · studied: yes · DNA-source: url · source: https://nguyenle.com.vn/ · extracted 2026-06-20 -->
+<!-- Hallmark · design.md · studied: yes · source: https://nguyenle.com.vn/ (initial) → dark-industrial pivot (client Colorbond/BlueScope ref) · updated 2026-06-23 -->
 
-# Design — Nguyễn Lê
+# Design — Tân Châu Thành
 
-Locked design system, extracted from a studied reference. Future Hallmark runs
-read this file first; pages defer to it. Amend intentionally — the file is the rule.
+Locked design system for the Tân Châu Thành website (Next.js + Tailwind v4).
+Source of truth for tokens is `src/styles/globals.css` (`@theme`). Amend
+intentionally — this file is the rule; pages defer to it.
 
 ## System
-- Genre · editorial (warm corporate / event-agency)
-- Macrostructure · Bento Grid (modern) — redesign 2026-06-20 · alt: Feature Stack / Photographic
-- Theme · studied-DNA (source: https://nguyenle.com.vn/)
-- Axes · light paper / soft-geometric-sans display / warm accent (orange + earth)
+
+- **Genre** · dark industrial / event-agency — high-contrast, UPPERCASE, confident.
+- **Macrostructure** · full-bleed sections with a **dark / light rhythm** (mostly
+  dark; one light section for contrast). Modelled on a client-provided
+  Colorbond/BlueScope reference.
+- **Theme** · near-black warm surfaces + **brand gradient** accent (from logo).
+- **Axes** · warm near-black surfaces · geometric sans (Be Vietnam Pro) · orange
+  accent with an orange→pink→purple gradient.
 
 ## Provenance
-- Source mode · URL — `https://nguyenle.com.vn/`
-- Extracted · 2026-06-20
-- Attestation · (b) public reference for the user's own brand
-- Confidence · Tokens are exact (pulled from the source's theme CSS). Fonts are
-  exact (declared via Google Fonts + theme `--font-*` vars). Rhythm is unknown —
-  HTML alone can't judge density/asymmetry. **The DNA is structural; specific
-  tokens may need regenerating to match the user's brand identity rather than the
-  source's.**
 
-## Tokens (canonical · `tokens.css` is the source of truth)
+- **Initial study** · `https://nguyenle.com.vn/` (light warm editorial) — **superseded**.
+- **Current direction** · dark industrial, modelled on a **client-provided
+  Colorbond reference** (Figma export), recoloured to the **Tân Châu Thành logo**.
+- **Brand colours** · extracted from the logo mark (orange→pink→purple gradient);
+  accent is the warm orange end of that gradient.
+
+## Tokens (canonical · `src/styles/globals.css @theme` is the source of truth)
+
 ```css
-:root {
-  /* Paper — warm/blush light surfaces  (#f8f0ed, #e9e4dc) */
-  --color-paper:      oklch(96.3% 0.006 50);
-  --color-paper-2:    oklch(92% 0.008 80);
+@theme {
+  /* Light surfaces (used by the single light "Services" band + sub-page cards origin) */
+  --color-paper:      oklch(96.3% 0.006 50);  /* ≈ #F7F1EC warm off-white */
+  --color-paper-2:    oklch(92% 0.008 80);    /* ≈ #E9E4DC */
 
-  /* Ink — warm charcoal; source also declares body-text #0a1f30 (cool navy) */
-  --color-ink:        oklch(28% 0.005 60);   /* #2c2926 */
-  --color-ink-2:      oklch(50% 0.000 0);    /* #5e5e5e muted */
-  --color-rule:       oklch(92% 0.008 80);   /* #e9e4dc hairline */
+  /* Ink — dark text on light surfaces */
+  --color-ink:        oklch(28% 0.005 60);    /* ≈ #2C2926 */
+  --color-ink-2:      oklch(50% 0 0);         /* ≈ #6E6E6E muted */
+  --color-rule:       oklch(92% 0.008 80);    /* ≈ #E9E4DC hairline */
 
-  /* Accent — orange is the interactive/CTA fill */
-  --color-accent:     oklch(72% 0.170 52);   /* #f58220 orange */
-  --color-accent-ink: oklch(28% 0.005 60);   /* text on accent: warm charcoal */
-  --color-focus:      oklch(43% 0.080 245);  /* #204f75 slate-blue ring */
+  /* Accent — ORANGE (warm end of the logo gradient) */
+  --color-accent:     oklch(66% 0.18 48);     /* ≈ #E27D33 */
+  --color-accent-ink: oklch(99% 0 0);         /* white — text on gradient fills */
+  --color-focus:      oklch(43% 0.08 245);    /* ≈ #2A5680 slate-blue ring */
 
-  /* Secondary brand set — warm-earth decorative + secondary actions */
-  --color-blue:       oklch(43% 0.080 245);  /* #204f75 secondary action */
-  --color-olive:      oklch(40% 0.025 105);  /* #565440 headings/decorative */
-  --color-clay:       oklch(73% 0.045 52);   /* #c49f8a warm decorative */
+  /* Dark theme surfaces (the default — body bg is night, text is #fff) */
+  --color-night:      oklch(16% 0.006 60);    /* ≈ #181613 near-black warm */
+  --color-night-2:    oklch(21% 0.006 60);    /* ≈ #221F1B card/surface */
+  --color-night-rule: oklch(32% 0.006 60);    /* ≈ #38332E hairline on dark */
 
-  /* Type — Gilroy family (VN-subset) + Beau Rivage script eyebrow.
-     Source has no mono; the mono fallback below is a Hallmark addition. */
-  --font-display: "SVN-Gilroy", "Gilroy", "Axiforma", sans-serif; /* use 800 / XBold */
-  --font-body:    "SVN-Gilroy", "Gilroy", sans-serif;             /* 400 / 600 */
-  --font-script:  "Beau Rivage", cursive;                         /* eyebrows / subtitles */
-  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;      /* Hallmark addition */
+  /* Type — single family, full Vietnamese support */
+  --font-display: var(--font-sans);   /* Be Vietnam Pro · 800 for headings */
+  --font-body:    var(--font-sans);   /* Be Vietnam Pro · 400–600 */
 
-  /* 4-pt spacing scale, named: --space-3xs … --space-4xl. See tokens.css.
-     Source uses a fluid --spacing (20px → 80px) on an 8/12-col grid.          */
-  /* Type scale, 1.25 (major-third) ratio: --text-xs … --text-display.         */
+  /* Shape — SQUARE corners (industrial); only buttons-as-pills exception removed */
+  --radius-card:  0px;
+  --radius-input: 0px;
+  --radius-pill:  1000px;   /* available but UI uses square buttons */
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
-
-  --radius-card:   20px;
-  --radius-input:  6px;
-  --radius-pill:   1000px;   /* buttons render as pills; source also uses 30px */
 }
+
+/* body { background: var(--color-night); color: #fff } */
+
+/* Brand gradient — orange → pink → purple (from the logo), 120° */
+.bg-brand-gradient     { linear-gradient(120deg,
+                           oklch(66% 0.18 48),   /* #E27D33 orange  */
+                           oklch(57% 0.2 12),    /* #D6335A pink    */
+                           oklch(48% 0.19 322)); /* #7A3B93 purple  */ }
+.bg-brand-gradient-rev { same stops, reversed (purple → orange) }
 ```
 
-## CTA voice
-- Primary · `--color-accent` (orange) fill · pill radius · generous horizontal padding
-- Secondary · `--color-blue` fill or ghost/outline · same pill radius
+## Signature motifs (what makes it recognizable)
+
+1. **Large solid gradient SQUARE next to every UPPERCASE section title** (`size-16`
+   → `lg:size-28` on home; `size-6` accent on sub-pages).
+2. **Square corners everywhere** (radius 0) — cards, panels, inputs, image tiles.
+3. **Brand gradient on big fills** — section squares, primary buttons, stat panel,
+   icon boxes, footer copyright strip.
+4. **Dark cards** (`night-2`) with a **gradient bottom bar** (`h-1`), often
+   scale-x on hover.
+5. **Hero carousel** — gradient/image slides, `01 02 03 04` pagination (active in
+   orange + underline), square ◀ ▶ arrows (one outline, one gradient-filled).
+6. **Dark/light section rhythm** — hero/about/why/events/CTA dark; Services light.
+
+## CTA voice / buttons
+
+- **Primary** · `bg-brand-gradient` fill · white **UPPERCASE** text · **square** ·
+  letter-spacing ~0.15em · generous padding (`px-8 py-4`).
+- **Secondary** · outline (white or accent border) · square · uppercase · hover
+  fills or brightens border.
+- **"XEM THÊM" style** · outline-accent square. Never pill-shaped.
+
+## Typography
+
+- **Be Vietnam Pro** (Google, VN subset) for everything.
+- Headings: weight **800**, **UPPERCASE**, tight tracking, large (`text-4xl`–`6xl`).
+- Body: 400–500. Labels/eyebrows: 600, uppercase, letter-spacing 0.25–0.3em, accent.
+- Eyebrows: small uppercase kicker preceded by a short dash (`— LABEL`).
 
 ## Motion stance
-- Carousel-led: slick + flickity sliders, fancybox lightbox. No scroll-reveal or
-  smooth-scroll library. Keep reveals to 1–2 primitives (fade-up) — do not add a
-  motion library the source didn't use.
-- Reduced-motion fallback · ≤150 ms opacity crossfade; pause auto-rotating carousels.
 
-## Notes — do NOT carry over
-- **`transition: all`** appears 17× in the source theme CSS — replace with explicit
-  `transform`/`opacity` transitions; never animate layout properties.
-- **Auto-rotating carousels** (stats + photos) — give users a pause control and
-  don't auto-advance content they're reading.
-- **Hover-scale on cards** risk — prefer a hairline/elevation shift over `scale()`.
-- Single-family weight-split (Gilroy) is fine, but the **Beau Rivage script** is a
-  decorative eyebrow only — never set it as body or running headlines.
+- **Scroll reveal** · fade-up (translateY + opacity), ease `cubic-bezier(0.16,1,0.3,1)`,
+  ~700ms, staggered; **replays each time** an element re-enters the viewport.
+- **Hero carousel** · 3s auto-advance, **pause on hover/focus**, crossfade.
+- **Hover** · gradient underline/bottom-bar grow; subtle `-translate-y` on buttons;
+  image zoom on gallery tiles.
+- Respect **`prefers-reduced-motion`** (no auto-advance, no reveal animation).
+- **Never** `transition: all` — explicit `transform`/`opacity` only.
 
-## Exports
-`tokens.css` is the source of truth. For Tailwind v4 `@theme`, DTCG `tokens.json`,
-or shadcn/ui CSS variables, ask *"extend design.md with Tailwind exports"* (or the
-format you want) — Hallmark will append them per `export-formats.md`.
+## Notes — keep in mind
+
+- The site is **dark by default** (`body` bg = night). The only light band is the
+  homepage **Services** section (`bg-paper text-ink`), kept self-contained.
+- Accent is **orange**; avoid white text on a solid `bg-accent` (low contrast) —
+  use `bg-brand-gradient` for filled buttons instead.
+- Event gallery tiles work on both light and dark (gradient placeholder + dark
+  overlay); drop real photos into `public/events/` to replace placeholders.
+- Hero carousel accepts real images via `public/hero/` (`HeroSlide.image`).

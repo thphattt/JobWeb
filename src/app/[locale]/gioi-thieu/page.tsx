@@ -43,25 +43,23 @@ export default async function AboutPage({
         <span className="h-px w-8 bg-accent" aria-hidden />
         {t('eyebrow')}
       </p>
-      <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+      <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
         {t('title')}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-ink-2">{t('lead')}</p>
+      <p className="mt-6 max-w-2xl text-lg text-white/60">{t('lead')}</p>
 
       <section className="mt-16">
-        <h2 className="font-display text-2xl font-bold text-ink">
+        <h2 className="flex items-center gap-3 font-display text-2xl font-bold uppercase text-white">
+          <span className="size-6 shrink-0 bg-brand-gradient" aria-hidden />
           {t('leadershipTitle')}
         </h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2">
           {leaders.map((k) => (
-            <div
-              key={k}
-              className="rounded-card border border-rule bg-paper p-6"
-            >
+            <div key={k} className="border border-night-rule bg-night-2 p-6">
               <p className="text-xs font-semibold uppercase tracking-wide text-accent">
                 {t(`leaders.${k}.role`)}
               </p>
-              <p className="mt-1 font-display text-lg font-bold text-ink">
+              <p className="mt-1 font-display text-lg font-bold text-white">
                 {t(`leaders.${k}.name`)}
               </p>
             </div>
@@ -70,7 +68,8 @@ export default async function AboutPage({
       </section>
 
       <section className="mt-16">
-        <h2 className="font-display text-2xl font-bold text-ink">
+        <h2 className="flex items-center gap-3 font-display text-2xl font-bold uppercase text-white">
+          <span className="size-6 shrink-0 bg-brand-gradient" aria-hidden />
           {t('programsTitle')}
         </h2>
         <div className="mt-6">
@@ -78,11 +77,11 @@ export default async function AboutPage({
         </div>
       </section>
 
-      <section className="mt-16 rounded-card bg-ink p-8 sm:p-10">
-        <h2 className="font-display text-2xl font-bold text-paper">
+      <section className="mt-16 border border-night-rule bg-night-2 p-8 sm:p-10">
+        <h2 className="font-display text-2xl font-bold uppercase text-white">
           {t('collaboratorsTitle')}
         </h2>
-        <p className="mt-4 text-paper/70">{t('collaborators')}</p>
+        <p className="mt-4 text-white/65">{t('collaborators')}</p>
       </section>
     </div>
   );

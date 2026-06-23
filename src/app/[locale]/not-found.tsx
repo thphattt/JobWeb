@@ -7,13 +7,13 @@ export default function NotFound() {
   return (
     <section className="mx-auto flex max-w-3xl flex-col items-center px-4 py-32 text-center">
       <p className="font-display text-7xl font-extrabold text-accent">404</p>
-      <h1 className="mt-4 font-display text-2xl font-bold text-ink">
+      <h1 className="mt-4 font-display text-2xl font-bold uppercase text-white">
         {t('title')}
       </h1>
-      <p className="mt-3 text-ink-2">{t('body')}</p>
+      <p className="mt-3 text-white/60">{t('body')}</p>
       <Link
         href="/"
-        className="mt-8 rounded-pill bg-accent px-6 py-3 text-sm font-semibold text-accent-ink"
+        className="mt-8 bg-brand-gradient px-8 py-3.5 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink"
       >
         {t('cta')}
       </Link>

@@ -50,17 +50,17 @@ export default async function ContactPage({
         <span className="h-px w-8 bg-accent" aria-hidden />
         {t('contactPage.eyebrow')}
       </p>
-      <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+      <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
         {t('contactPage.title')}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-ink-2">
+      <p className="mt-6 max-w-2xl text-lg text-white/70">
         {t('contactPage.lead')}
       </p>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-2">
         {/* Thông tin liên hệ */}
         <div>
-          <h2 className="font-display text-xl font-bold text-ink">
+          <h2 className="font-display text-xl font-bold text-white">
             {t('contactPage.infoTitle')}
           </h2>
 
@@ -69,7 +69,7 @@ export default async function ContactPage({
               <p className="font-semibold uppercase tracking-wide text-accent">
                 {t('contactPage.officesLabel')}
               </p>
-              <ul className="mt-3 space-y-3 text-ink-2">
+              <ul className="mt-3 space-y-3 text-white/70">
                 {offices.map((o) => (
                   <li key={o.labelKey} className="flex gap-2">
                     <MapPin
@@ -77,7 +77,7 @@ export default async function ContactPage({
                       aria-hidden
                     />
                     <span>
-                      <span className="font-medium text-ink">
+                      <span className="font-medium text-white">
                         {t(`footer.${o.labelKey}`)}
                       </span>
                       <br />
@@ -92,13 +92,13 @@ export default async function ContactPage({
               <p className="font-semibold uppercase tracking-wide text-accent">
                 {t('contactPage.phoneLabel')}
               </p>
-              <ul className="mt-3 space-y-2 text-ink-2">
+              <ul className="mt-3 space-y-2 text-white/70">
                 {phones.map((p) => (
                   <li key={p} className="flex items-center gap-2">
                     <Phone className="size-4 shrink-0 text-accent" aria-hidden />
                     <a
                       href={`tel:${p.replace(/[.\s]/g, '')}`}
-                      className="transition-colors hover:text-ink"
+                      className="transition-colors hover:text-white"
                     >
                       {p}
                     </a>
@@ -113,7 +113,7 @@ export default async function ContactPage({
               </p>
               <a
                 href={`mailto:${email}`}
-                className="mt-3 inline-flex items-center gap-2 text-ink-2 transition-colors hover:text-ink"
+                className="mt-3 inline-flex items-center gap-2 text-white/70 transition-colors hover:text-white"
               >
                 <Mail className="size-4 shrink-0 text-accent" aria-hidden />
                 {email}
@@ -123,8 +123,8 @@ export default async function ContactPage({
         </div>
 
         {/* Form */}
-        <div className="rounded-card border border-rule bg-paper p-6 sm:p-8">
-          <h2 className="font-display text-xl font-bold text-ink">
+        <div className="border border-night-rule bg-night-2 p-6 sm:p-8">
+          <h2 className="font-display text-xl font-bold text-white">
             {t('form.title')}
           </h2>
           <div className="mt-5">
@@ -135,14 +135,14 @@ export default async function ContactPage({
 
       {/* Bản đồ — vị trí 2 văn phòng (Google Maps embed, không cần API key) */}
       <section className="mt-14">
-        <h2 className="font-display text-xl font-bold text-ink">
+        <h2 className="font-display text-xl font-bold text-white">
           {t('contactPage.mapTitle')}
         </h2>
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           {offices.map((o) => (
             <div
               key={o.labelKey}
-              className="overflow-hidden rounded-card border border-rule"
+              className="overflow-hidden rounded-card border border-night-rule"
             >
               <iframe
                 title={`${t(`footer.${o.labelKey}`)} — ${o.addr}`}

@@ -48,28 +48,32 @@ export default async function ServicesPage({
         <span className="h-px w-8 bg-accent" aria-hidden />
         {t('servicesPage.eyebrow')}
       </p>
-      <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight text-ink sm:text-5xl">
+      <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
         {t('servicesPage.title')}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-ink-2">
+      <p className="mt-6 max-w-2xl text-lg text-white/60">
         {t('servicesPage.lead')}
       </p>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+      <div className="mt-12 grid gap-5 sm:grid-cols-2">
         {services.map(({ key, Icon }) => (
           <article
             key={key}
-            className="rounded-card border border-rule bg-paper p-8"
+            className="group relative flex flex-col border border-night-rule bg-night-2 p-8 pb-10 transition-colors hover:border-accent"
           >
-            <div className="flex size-12 items-center justify-center rounded-card bg-brand-gradient text-accent-ink">
-              <Icon className="size-6" aria-hidden />
-            </div>
-            <h2 className="mt-5 font-display text-xl font-bold text-ink">
+            <span className="flex size-14 items-center justify-center bg-brand-gradient text-accent-ink">
+              <Icon className="size-7" aria-hidden />
+            </span>
+            <h2 className="mt-6 font-display text-xl font-bold uppercase leading-tight text-white">
               {t(`services.items.${key}.title`)}
             </h2>
-            <p className="mt-2 text-ink-2">
+            <p className="mt-2 text-white/55">
               {t(`services.items.${key}.desc`)}
             </p>
+            <span
+              className="absolute inset-x-0 bottom-0 h-1 scale-x-0 bg-brand-gradient transition-transform duration-300 group-hover:scale-x-100"
+              aria-hidden
+            />
           </article>
         ))}
       </div>
