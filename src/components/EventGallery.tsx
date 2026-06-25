@@ -2,35 +2,52 @@ import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/routing';
 import { events } from '@/lib/events';
-import { getProjects } from '@/lib/content';
+import { getProjects, type ProjectRole } from '@/lib/content';
 import { Reveal } from './Reveal';
 
 type Tile = { key: string; title: string; year: string; venue: string; image?: string };
 
-export async function EventGallery() {
+/**
+ * Lưới sự kiện tiêu biểu. `role` lọc theo vai trò (Đạo diễn / Nhà sản xuất),
+ * `limit` giới hạn số card (vd 4 = một hàng). Không truyền `role` → hiện tất cả.
+ */
+export async function EventGallery({
+  role,
+  limit
+}: {
+  role?: ProjectRole;
+  limit?: number;
+} = {}) {
   const locale = (await getLocale()) as Locale;
   const t = await getTranslations('events');
 
-  // Nguồn chính: CMS (Payload). Trống/ lỗi → fallback về messages.
+  // Nguồn chính: CMS (Payload). Trống/lỗi → fallback messages (chỉ khi không lọc role).
   const docs = await getProjects(locale);
-  const tiles: Tile[] = docs.length
-    ? docs.map((d) => ({
-        key: String(d.id),
-        title: d.title,
-        year: d.year ?? '',
-        venue: d.venue ?? '',
-        image: d.image?.url ?? undefined
-      }))
-    : events.map((ev) => ({
-        key: ev.id,
-        title: t(`items.${ev.id}.title`),
-        year: t(`items.${ev.id}.year`),
-        venue: t(`items.${ev.id}.venue`),
-        image: ev.image
-      }));
+  let tiles: Tile[] = docs.length
+    ? docs
+        .filter((d) => (role ? d.role === role : true))
+        .map((d) => ({
+          key: String(d.id),
+          title: d.title,
+          year: d.year ?? '',
+          venue: d.venue ?? '',
+          image: d.image?.url ?? undefined
+        }))
+    : role
+      ? []
+      : events.map((ev) => ({
+          key: ev.id,
+          title: t(`items.${ev.id}.title`),
+          year: t(`items.${ev.id}.year`),
+          venue: t(`items.${ev.id}.venue`),
+          image: ev.image
+        }));
+
+  if (limit) tiles = tiles.slice(0, limit);
+  if (tiles.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {tiles.map((ev, i) => (
         <Reveal key={ev.key} index={i} className="hover:z-20">
           <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule transition-transform duration-300 ease-out will-change-transform hover:scale-[1.5] hover:shadow-2xl hover:shadow-black/40 motion-reduce:transition-none motion-reduce:hover:scale-100">
