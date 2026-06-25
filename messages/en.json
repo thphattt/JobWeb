@@ -160,6 +160,10 @@
     "eyebrow": "Featured work",
     "title": "Events we've delivered",
     "lead": "A selection of national-scale programs Tan Chau Thanh has organized and produced.",
+    "directorTitle": "As Director",
+    "directorLead": "Notable events where Tan Chau Thanh members took the director's role.",
+    "producerTitle": "As Producer",
+    "producerLead": "Events where Tan Chau Thanh participated as the producer.",
     "items": {
       "seaGames22": {
         "title": "SEA Games 22 closing ceremony",

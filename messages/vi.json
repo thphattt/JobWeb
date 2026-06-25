@@ -88,7 +88,7 @@
     "offices": "Văn phòng",
     "contactTitle": "Liên hệ",
     "follow": "Kết nối",
-    "rights": "© {year} Công ty TNHH Tân Châu Thành. Bảo lưu mọi quyền.",
+    "rights": "© {year} Công ty TNHH Tân Châu Thành.",
     "hqLabel": "Trụ sở chính",
     "office2Label": "Văn phòng 2"
   },
@@ -160,6 +160,10 @@
     "eyebrow": "Dự án tiêu biểu",
     "title": "Những sự kiện chúng tôi đã thực hiện",
     "lead": "Một số chương trình quy mô quốc gia mà Tân Châu Thành từng tổ chức và tham gia sản xuất.",
+    "directorTitle": "Vai trò Đạo diễn",
+    "directorLead": "Những sự kiện tiêu biểu thành viên Tân Châu Thành tham gia với vai trò đạo diễn.",
+    "producerTitle": "Vai trò Nhà sản xuất",
+    "producerLead": "Những sự kiện Công ty Tân Châu Thành tham gia với vai trò nhà sản xuất.",
     "items": {
       "seaGames22": {
         "title": "Bế mạc SEA Games 22",
@@ -226,7 +230,7 @@
   },
   "collaborators": {
     "eyebrow": "Đối tác nghệ thuật",
-    "title": "Gương mặt hợp tác tiêu biểu",
+    "title": "Những gương mặt nghệ sĩ nổi tiếng đã tham gia các chương trình của chúng tôi",
     "lead": "Những nghệ sĩ, MC, NSND/NSƯT đã đồng hành cùng các chương trình của chúng tôi."
   }
 }
