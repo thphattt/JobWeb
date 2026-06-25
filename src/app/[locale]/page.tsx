@@ -12,7 +12,7 @@ import { EventGallery } from '@/components/EventGallery';
 import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { CollaboratorGrid } from '@/components/CollaboratorGrid';
-import { NewsCard } from '@/components/NewsCard';
+import { NewsCarousel } from '@/components/NewsCarousel';
 import { getHero, getAbout, getCollaborators, getNews } from '@/lib/content';
 
 const btnPrimary =
@@ -64,7 +64,7 @@ export default async function HomePage({
     getHero(locale as Locale),
     getAbout(locale as Locale),
     getCollaborators(locale as Locale),
-    getNews(locale as Locale, 3)
+    getNews(locale as Locale, 9)
   ]);
 
   // Slide hero: số liệu + sự kiện tiêu biểu (thêm `image` để dùng ảnh thật).
@@ -230,15 +230,22 @@ export default async function HomePage({
                 <ArrowUpRight className="size-4" aria-hidden />
               </Link>
             </div>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {news.map((post) => (
-                <NewsCard
-                  key={post.id}
-                  post={post}
-                  locale={locale}
-                  readMore={t('news.readMore')}
-                />
-              ))}
+            <div className="mt-10">
+              <NewsCarousel
+                posts={news.map((p) => ({
+                  id: p.id,
+                  title: p.title,
+                  slug: p.slug,
+                  date: p.date,
+                  excerpt: p.excerpt,
+                  coverImage: p.coverImage
+                }))}
+                locale={locale}
+                readMore={t('news.readMore')}
+                prevLabel={t('nav.prev')}
+                nextLabel={t('nav.next')}
+                showControls={false}
+              />
             </div>
           </Reveal>
         </section>
