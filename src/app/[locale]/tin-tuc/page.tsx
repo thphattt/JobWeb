@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getNews } from '@/lib/content';
-import { NewsCard } from '@/components/NewsCard';
+import { NewsCarousel } from '@/components/NewsCarousel';
 
 export async function generateMetadata({
   params
@@ -36,6 +36,7 @@ export default async function NewsListPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('news');
+  const tn = await getTranslations('nav');
   const posts = await getNews(locale as Locale);
 
   return (
@@ -50,15 +51,21 @@ export default async function NewsListPage({
       <p className="mt-6 max-w-2xl text-lg text-white/60">{t('lead')}</p>
 
       {posts.length ? (
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((post) => (
-            <NewsCard
-              key={post.id}
-              post={post}
-              locale={locale}
-              readMore={t('readMore')}
-            />
-          ))}
+        <div className="mt-12">
+          <NewsCarousel
+            posts={posts.map((p) => ({
+              id: p.id,
+              title: p.title,
+              slug: p.slug,
+              date: p.date,
+              excerpt: p.excerpt,
+              coverImage: p.coverImage
+            }))}
+            locale={locale}
+            readMore={t('readMore')}
+            prevLabel={tn('prev')}
+            nextLabel={tn('next')}
+          />
         </div>
       ) : (
         <p className="mt-12 text-white/50">{t('empty')}</p>
