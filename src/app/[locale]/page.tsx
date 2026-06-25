@@ -3,19 +3,8 @@
  * pre-emit critique: P5 H4 E5 S4 R5 V5
  * Nội dung: đọc từ Payload CMS (fallback messages) — xem src/lib/content.ts
  */
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Clapperboard,
-  CalendarCheck,
-  Users,
-  Speaker,
-  PackageCheck,
-  Award,
-  Wrench,
-  CalendarClock,
-  type LucideIcon
-} from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -24,36 +13,7 @@ import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { CollaboratorGrid } from '@/components/CollaboratorGrid';
 import { NewsCard } from '@/components/NewsCard';
-import {
-  getHero,
-  getAbout,
-  getWhy,
-  getServices,
-  getCollaborators,
-  getNews
-} from '@/lib/content';
-
-const services = [
-  { key: 'direction', Icon: Clapperboard },
-  { key: 'production', Icon: CalendarCheck },
-  { key: 'talent', Icon: Users },
-  { key: 'equipment', Icon: Speaker }
-] as const;
-
-const strengths = [
-  { key: 'turnkey', Icon: PackageCheck },
-  { key: 'team', Icon: Award },
-  { key: 'equipment', Icon: Wrench },
-  { key: 'since', Icon: CalendarClock }
-] as const;
-
-/** Ánh xạ giá trị `icon` (select trong CMS) → icon lucide cho thẻ dịch vụ. */
-const serviceIcons: Record<string, LucideIcon> = {
-  clapperboard: Clapperboard,
-  layers: CalendarCheck,
-  users: Users,
-  speaker: Speaker
-};
+import { getHero, getAbout, getCollaborators, getNews } from '@/lib/content';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';
@@ -100,43 +60,12 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, why, svcDocs, collaborators, news] = await Promise.all([
+  const [hero, about, collaborators, news] = await Promise.all([
     getHero(locale as Locale),
     getAbout(locale as Locale),
-    getWhy(locale as Locale),
-    getServices(locale as Locale),
     getCollaborators(locale as Locale),
     getNews(locale as Locale, 3)
   ]);
-
-  const serviceCards = svcDocs.length
-    ? svcDocs.map((d) => ({
-        key: String(d.id),
-        Icon: serviceIcons[d.icon ?? ''] ?? Clapperboard,
-        title: d.title,
-        desc: d.description ?? ''
-      }))
-    : services.map(({ key, Icon }) => ({
-        key,
-        Icon,
-        title: t(`services.items.${key}.title`),
-        desc: t(`services.items.${key}.desc`)
-      }));
-
-  const whyItems = why?.items?.length;
-  const whyCards = whyItems
-    ? why!.items!.map((it, idx) => ({
-        key: String(idx),
-        Icon: strengths[idx]?.Icon ?? PackageCheck,
-        title: it.title ?? '',
-        desc: it.description ?? ''
-      }))
-    : strengths.map(({ key, Icon }) => ({
-        key,
-        Icon,
-        title: t(`why.items.${key}.title`),
-        desc: t(`why.items.${key}.desc`)
-      }));
 
   // Slide hero: số liệu + sự kiện tiêu biểu (thêm `image` để dùng ảnh thật).
   const heroSlides: HeroSlide[] = [
@@ -160,8 +89,16 @@ export default async function HomePage({
           className="pointer-events-none absolute -right-40 -top-40 size-112 bg-brand-gradient opacity-20 blur-3xl"
           aria-hidden
         />
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-8 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-16 lg:px-8 lg:pb-28 lg:pt-12">
           <div>
+            <Image
+              src="/logo.png"
+              alt={t('brand.fullName')}
+              width={469}
+              height={231}
+              priority
+              className="mx-auto mb-14 block h-28 w-auto sm:h-36 lg:h-44"
+            />
             <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
               <span className="h-px w-8 bg-accent" aria-hidden />
               {hero?.eyebrow ?? t('hero.eyebrow')}
@@ -172,7 +109,7 @@ export default async function HomePage({
             <p className="mt-6 max-w-xl text-lg text-white/60">
               {hero?.subtitle ?? t('hero.subtitle')}
             </p>
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div className="mt-14 flex flex-wrap items-center gap-3">
               <Link href="/lien-he" className={btnPrimary}>
                 {hero?.ctaPrimary ?? t('hero.ctaPrimary')}
                 <ArrowRight className="size-4" aria-hidden />
@@ -203,23 +140,46 @@ export default async function HomePage({
             title={t('events.title')}
             dark
           />
-          <p className="mt-6 max-w-2xl text-white/55">{t('events.lead')}</p>
-          <div className="mt-10">
-            <EventGallery />
+
+          {/* Mục 1 — vai trò Đạo diễn */}
+          <div className="mt-12">
+            <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-white">
+              <span className="size-5 shrink-0 bg-brand-gradient" aria-hidden />
+              {t('events.directorTitle')}
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm text-white/55">
+              {t('events.directorLead')}
+            </p>
+            <div className="mt-6">
+              <EventGallery role="director" limit={4} />
+            </div>
+          </div>
+
+          {/* Mục 2 — vai trò Nhà sản xuất */}
+          <div className="mt-14">
+            <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-white">
+              <span className="size-5 shrink-0 bg-brand-gradient" aria-hidden />
+              {t('events.producerTitle')}
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm text-white/55">
+              {t('events.producerLead')}
+            </p>
+            <div className="mt-6">
+              <EventGallery role="producer" limit={4} />
+            </div>
           </div>
         </Reveal>
       </section>
 
-      {/* GIỚI THIỆU — dải tối phụ */}
-      <section className="border-t border-night-rule bg-night-2 text-white">
+      {/* GIỚI THIỆU — dải sáng (tông tương phản) */}
+      <section className="border-t border-rule bg-paper text-ink">
         <Reveal className="mx-auto grid max-w-7xl gap-8 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:items-center lg:px-8">
           <SectionHead
             eyebrow={about?.eyebrow ?? t('about.eyebrow')}
             title={about?.title ?? t('about.title')}
-            dark
           />
           <div>
-            <p className="text-lg text-white/65">
+            <p className="text-lg text-ink-2">
               {about?.body ?? t('about.body')}
             </p>
             <Link
@@ -229,62 +189,6 @@ export default async function HomePage({
               {t('about.cta')}
               <ArrowUpRight className="size-4" aria-hidden />
             </Link>
-          </div>
-        </Reveal>
-      </section>
-
-      {/* DỊCH VỤ — dải sáng (nhịp tương phản), đưa lên trước Vì sao chọn */}
-      <section className="bg-paper text-ink">
-        <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHead
-            eyebrow={t('services.eyebrow')}
-            title={t('services.title')}
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {serviceCards.map(({ key, Icon, title, desc }) => (
-              <article
-                key={key}
-                className="group relative flex flex-col border border-rule bg-paper p-8 pb-10 transition-colors hover:border-accent"
-              >
-                <span className="flex size-14 items-center justify-center bg-brand-gradient">
-                  <Icon className="size-7 text-white" aria-hidden />
-                </span>
-                <h3 className="mt-6 font-display text-lg font-bold uppercase leading-tight text-ink">
-                  {title}
-                </h3>
-                <p className="mt-2 text-sm text-ink-2">{desc}</p>
-                <span
-                  className="absolute inset-x-0 bottom-0 h-1 scale-x-0 bg-brand-gradient transition-transform duration-300 group-hover:scale-x-100"
-                  aria-hidden
-                />
-              </article>
-            ))}
-          </div>
-        </Reveal>
-      </section>
-
-      {/* VÌ SAO CHỌN — 4 thẻ tối, viền dưới gradient */}
-      <section className="border-t border-night-rule bg-night text-white">
-        <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHead
-            eyebrow={why?.eyebrow ?? t('why.eyebrow')}
-            title={why?.title ?? t('why.title')}
-            dark
-          />
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {whyCards.map(({ key, Icon, title, desc }) => (
-              <div key={key} className="relative flex flex-col bg-night-2 p-8 pb-10">
-                <Icon className="size-10 text-accent" aria-hidden />
-                <h3 className="mt-6 font-display text-xl font-bold uppercase leading-tight">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/55">{desc}</p>
-                <span
-                  className="absolute inset-x-0 bottom-0 h-1 bg-brand-gradient"
-                  aria-hidden
-                />
-              </div>
-            ))}
           </div>
         </Reveal>
       </section>
