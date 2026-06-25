@@ -67,19 +67,25 @@ export default async function HomePage({
     getNews(locale as Locale, 9)
   ]);
 
-  // Slide hero: số liệu + sự kiện tiêu biểu (thêm `image` để dùng ảnh thật).
-  const heroSlides: HeroSlide[] = [
-    { value: t('stats.a.value'), label: t('stats.a.label') },
-    { value: t('stats.b.value'), label: t('stats.b.label') },
-    {
-      value: t('events.items.seaGames22.year'),
-      label: t('events.items.seaGames22.title')
-    },
-    {
-      value: t('events.items.thangLong1000.year'),
-      label: t('events.items.thangLong1000.title')
-    }
-  ];
+  // Slide hero: lấy từ CMS (Hero → Slide carousel); trống → fallback messages.
+  const heroSlides: HeroSlide[] = hero?.slides?.length
+    ? hero.slides.map((s) => ({
+        value: s.value ?? '',
+        label: s.label ?? '',
+        image: s.image?.url ?? undefined
+      }))
+    : [
+        { value: t('stats.a.value'), label: t('stats.a.label') },
+        { value: t('stats.b.value'), label: t('stats.b.label') },
+        {
+          value: t('events.items.seaGames22.year'),
+          label: t('events.items.seaGames22.title')
+        },
+        {
+          value: t('events.items.thangLong1000.year'),
+          label: t('events.items.thangLong1000.title')
+        }
+      ];
 
   return (
     <>

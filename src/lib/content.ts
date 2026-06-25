@@ -55,6 +55,7 @@ export type HeroContent = {
   subtitle?: string;
   ctaPrimary?: string;
   ctaSecondary?: string;
+  slides?: { value?: string; label?: string; image?: MediaRef }[];
 };
 export type AboutContent = { eyebrow?: string; title?: string; body?: string };
 export type WhyContent = {
