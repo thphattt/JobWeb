@@ -114,6 +114,16 @@ export default buildConfig({
       orderable: true,
       fields: [
         { name: 'title', type: 'text', required: true, localized: true, label: 'Tên chương trình' },
+        {
+          name: 'role',
+          type: 'select',
+          label: 'Vai trò',
+          defaultValue: 'director',
+          options: [
+            { label: 'Đạo diễn (thành viên Tân Châu Thành)', value: 'director' },
+            { label: 'Nhà sản xuất (Công ty Tân Châu Thành)', value: 'producer' }
+          ]
+        },
         { name: 'year', type: 'text', label: 'Năm' },
         { name: 'venue', type: 'text', localized: true, label: 'Địa điểm / mô tả ngắn' },
         { name: 'image', type: 'upload', relationTo: 'media', label: 'Ảnh (tuỳ chọn)' },
