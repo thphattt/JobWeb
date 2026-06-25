@@ -1,7 +1,17 @@
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import type { NewsDoc } from '@/lib/content';
+import type { MediaRef } from '@/lib/content';
+
+/** Dữ liệu tối thiểu để render thẻ tin (an toàn truyền qua client/carousel). */
+export type NewsCardPost = {
+  id: number;
+  title: string;
+  slug: string;
+  date?: string;
+  excerpt?: string;
+  coverImage?: MediaRef;
+};
 
 function formatDate(date: string | undefined, locale: string): string {
   if (!date) return '';
@@ -22,13 +32,13 @@ export function NewsCard({
   locale,
   readMore
 }: {
-  post: NewsDoc;
+  post: NewsCardPost;
   locale: string;
   readMore: string;
 }) {
   const cover = post.coverImage?.url;
   return (
-    <article className="group flex flex-col border border-night-rule bg-night-2 transition-colors hover:border-accent">
+    <article className="group flex h-full w-full flex-col border border-night-rule bg-night-2 transition-colors hover:border-accent">
       <Link href={`/tin-tuc/${post.slug}`} className="block">
         <div className="relative aspect-video overflow-hidden">
           {cover ? (
@@ -48,7 +58,7 @@ export function NewsCard({
         <time className="text-xs font-semibold uppercase tracking-wide text-accent">
           {formatDate(post.date, locale)}
         </time>
-        <h3 className="mt-2 font-display text-lg font-bold leading-snug text-white">
+        <h3 className="mt-2 line-clamp-2 font-display text-lg font-bold leading-snug text-white">
           <Link
             href={`/tin-tuc/${post.slug}`}
             className="transition-colors hover:text-accent"
@@ -61,7 +71,7 @@ export function NewsCard({
         )}
         <Link
           href={`/tin-tuc/${post.slug}`}
-          className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold uppercase tracking-wide text-accent transition-all hover:gap-2.5"
+          className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-bold uppercase tracking-wide text-accent transition-all hover:gap-2.5"
         >
           {readMore}
           <ArrowUpRight className="size-4" aria-hidden />
