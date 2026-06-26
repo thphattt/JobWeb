@@ -83,6 +83,34 @@ body {
   );
 }
 
+/* Logo hero — hiện vào mượt khi tải trang rồi trôi nhẹ liên tục cho sinh động */
+@keyframes logo-in {
+  from {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes logo-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+.hero-logo {
+  animation:
+    logo-in 0.9s var(--ease-out) both,
+    logo-float 5s ease-in-out 0.9s infinite;
+  filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.35));
+  will-change: transform, opacity;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

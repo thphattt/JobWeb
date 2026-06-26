@@ -103,7 +103,7 @@ export default async function HomePage({
               width={469}
               height={231}
               priority
-              className="mx-auto mb-14 block h-28 w-auto sm:h-36 lg:h-44"
+              className="hero-logo mx-auto mb-14 block h-28 w-auto sm:h-36 lg:h-44"
             />
             <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
               <span className="h-px w-8 bg-accent" aria-hidden />
