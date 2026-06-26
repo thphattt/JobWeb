@@ -17,6 +17,10 @@
     "news": {
       "title": "Tin tức",
       "description": "Tin tức và hoạt động mới nhất của Tân Châu Thành: dự án, sự kiện và hậu trường sản xuất chương trình."
+    },
+    "careers": {
+      "title": "Tuyển dụng",
+      "description": "Cơ hội nghề nghiệp tại Công ty TNHH Tân Châu Thành — tổ chức sự kiện & truyền thông tại Hà Nội."
     }
   },
   "brand": {
@@ -232,5 +236,31 @@
     "eyebrow": "Đối tác nghệ thuật",
     "title": "Những gương mặt nghệ sĩ nổi tiếng đã tham gia các chương trình của chúng tôi",
     "lead": "Những nghệ sĩ, MC, NSND/NSƯT đã đồng hành cùng các chương trình của chúng tôi."
+  },
+  "careers": {
+    "eyebrow": "Tuyển dụng",
+    "title": "Cơ hội nghề nghiệp",
+    "lead": "Gia nhập đội ngũ Tân Châu Thành — cùng kiến tạo những chương trình sự kiện tầm vóc.",
+    "empty": "Hiện chưa có vị trí tuyển dụng nào.",
+    "viewDetail": "Xem chi tiết",
+    "apply": "Ứng tuyển ngay",
+    "applyHint": "Gửi CV về email hoặc gọi hotline để ứng tuyển vị trí này.",
+    "backToList": "Tất cả vị trí",
+    "deadline": "Hạn nộp",
+    "location": "Địa điểm",
+    "types": {
+      "fulltime": "Toàn thời gian",
+      "parttime": "Bán thời gian",
+      "contract": "Cộng tác viên"
+    }
+  },
+  "statsBlock": {
+    "eyebrow": "Con số ấn tượng",
+    "title": "Tân Châu Thành trong những con số"
+  },
+  "testimonials": {
+    "eyebrow": "Cảm nhận",
+    "title": "Khách hàng nói về chúng tôi",
+    "clientsTitle": "Khách hàng & đối tác"
   }
 }

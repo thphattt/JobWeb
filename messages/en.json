@@ -17,6 +17,10 @@
     "news": {
       "title": "News",
       "description": "Latest news and activities from Tan Chau Thanh: projects, events and behind-the-scenes production."
+    },
+    "careers": {
+      "title": "Careers",
+      "description": "Career opportunities at Tan Chau Thanh Co., Ltd — events & communications in Hanoi."
     }
   },
   "brand": {
@@ -232,5 +236,31 @@
     "eyebrow": "Artistic partners",
     "title": "Notable collaborators",
     "lead": "Artists, MCs and People's/Meritorious Artists who have joined our programs."
+  },
+  "careers": {
+    "eyebrow": "Careers",
+    "title": "Career opportunities",
+    "lead": "Join the Tan Chau Thanh team — let's create events of national scale together.",
+    "empty": "No open positions at the moment.",
+    "viewDetail": "View details",
+    "apply": "Apply now",
+    "applyHint": "Send your CV by email or call our hotline to apply for this position.",
+    "backToList": "All positions",
+    "deadline": "Deadline",
+    "location": "Location",
+    "types": {
+      "fulltime": "Full-time",
+      "parttime": "Part-time",
+      "contract": "Collaborator"
+    }
+  },
+  "statsBlock": {
+    "eyebrow": "By the numbers",
+    "title": "Tan Chau Thanh in numbers"
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "title": "What our clients say",
+    "clientsTitle": "Clients & partners"
   }
 }
