@@ -4,11 +4,11 @@
  * Nội dung: đọc từ Payload CMS (fallback messages) — xem src/lib/content.ts
  */
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { EventGallery } from '@/components/EventGallery';
+import { HeroLogo } from '@/components/HeroLogo';
 import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { CollaboratorGrid } from '@/components/CollaboratorGrid';
@@ -97,14 +97,7 @@ export default async function HomePage({
         />
         <div className="mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-8 sm:px-6 lg:grid-cols-2 lg:items-start lg:gap-16 lg:px-8 lg:pb-28 lg:pt-12">
           <div>
-            <Image
-              src="/logo.png"
-              alt={t('brand.fullName')}
-              width={469}
-              height={231}
-              priority
-              className="hero-logo mx-auto mb-14 block h-28 w-auto sm:h-36 lg:h-44"
-            />
+            <HeroLogo alt={t('brand.fullName')} />
             <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
               <span className="h-px w-8 bg-accent" aria-hidden />
               {hero?.eyebrow ?? t('hero.eyebrow')}
