@@ -192,6 +192,96 @@ export default buildConfig({
         { name: 'photo', type: 'upload', relationTo: 'media', label: 'Ảnh chân dung' },
         { name: 'order', type: 'number', label: 'Thứ tự', defaultValue: 0 }
       ]
+    },
+
+    // Tuyển dụng
+    {
+      slug: 'jobs',
+      labels: { singular: 'Vị trí tuyển dụng', plural: 'Tuyển dụng' },
+      admin: {
+        useAsTitle: 'title',
+        defaultColumns: ['title', 'location', 'deadline', 'published'],
+        group: 'Nội dung'
+      },
+      fields: [
+        { name: 'title', type: 'text', required: true, localized: true, label: 'Chức danh' },
+        {
+          name: 'slug',
+          type: 'text',
+          unique: true,
+          index: true,
+          label: 'Đường dẫn (slug)',
+          admin: { description: 'Để trống sẽ tự tạo từ chức danh.' },
+          hooks: {
+            beforeValidate: [
+              ({ value, data }) =>
+                value || (data?.title ? slugify(String(data.title)) : value)
+            ]
+          }
+        },
+        { name: 'location', type: 'text', localized: true, label: 'Địa điểm' },
+        {
+          name: 'type',
+          type: 'select',
+          label: 'Hình thức',
+          defaultValue: 'fulltime',
+          options: [
+            { label: 'Toàn thời gian', value: 'fulltime' },
+            { label: 'Bán thời gian', value: 'parttime' },
+            { label: 'Cộng tác viên', value: 'contract' }
+          ]
+        },
+        {
+          name: 'deadline',
+          type: 'date',
+          label: 'Hạn nộp hồ sơ',
+          admin: { date: { pickerAppearance: 'dayOnly' } }
+        },
+        { name: 'summary', type: 'textarea', localized: true, label: 'Tóm tắt' },
+        { name: 'description', type: 'richText', localized: true, label: 'Mô tả công việc' },
+        {
+          name: 'published',
+          type: 'checkbox',
+          defaultValue: true,
+          label: 'Hiển thị trên website'
+        }
+      ]
+    },
+
+    // Cảm nhận khách hàng
+    {
+      slug: 'testimonials',
+      labels: { singular: 'Cảm nhận', plural: 'Cảm nhận khách hàng' },
+      admin: {
+        useAsTitle: 'author',
+        defaultColumns: ['author', 'role', 'order'],
+        group: 'Nội dung'
+      },
+      orderable: true,
+      fields: [
+        { name: 'quote', type: 'textarea', required: true, localized: true, label: 'Nội dung cảm nhận' },
+        { name: 'author', type: 'text', required: true, label: 'Tên người nhận xét' },
+        { name: 'role', type: 'text', localized: true, label: 'Chức vụ / đơn vị' },
+        { name: 'photo', type: 'upload', relationTo: 'media', label: 'Ảnh (tuỳ chọn)' },
+        { name: 'order', type: 'number', label: 'Thứ tự', defaultValue: 0 }
+      ]
+    },
+
+    // Khách hàng & Đối tác
+    {
+      slug: 'clients',
+      labels: { singular: 'Khách hàng', plural: 'Khách hàng & Đối tác' },
+      admin: {
+        useAsTitle: 'name',
+        defaultColumns: ['name', 'order'],
+        group: 'Nội dung'
+      },
+      orderable: true,
+      fields: [
+        { name: 'name', type: 'text', required: true, label: 'Tên khách hàng / đối tác' },
+        { name: 'logo', type: 'upload', relationTo: 'media', label: 'Logo (tuỳ chọn)' },
+        { name: 'order', type: 'number', label: 'Thứ tự', defaultValue: 0 }
+      ]
     }
   ],
 
@@ -291,6 +381,28 @@ export default buildConfig({
       fields: [
         { name: 'name', type: 'text', localized: true, label: 'Tên công ty' },
         { name: 'tagline', type: 'text', localized: true, label: 'Khẩu hiệu' }
+      ]
+    },
+
+    // Số liệu nổi bật (trang chủ)
+    {
+      slug: 'stats',
+      label: 'Trang chủ — Số liệu nổi bật',
+      admin: { group: 'Nội dung' },
+      fields: [
+        { name: 'eyebrow', type: 'text', localized: true, label: 'Dòng nhãn nhỏ' },
+        { name: 'title', type: 'text', localized: true, label: 'Tiêu đề' },
+        {
+          name: 'items',
+          type: 'array',
+          label: 'Số liệu',
+          maxRows: 4,
+          fields: [
+            { name: 'value', type: 'number', label: 'Giá trị (số)' },
+            { name: 'suffix', type: 'text', label: 'Hậu tố (vd + hoặc K)' },
+            { name: 'label', type: 'text', localized: true, label: 'Nhãn' }
+          ]
+        }
       ]
     }
   ]
