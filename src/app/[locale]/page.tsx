@@ -13,7 +13,17 @@ import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
 import { Reveal } from '@/components/Reveal';
 import { CollaboratorGrid } from '@/components/CollaboratorGrid';
 import { NewsCarousel } from '@/components/NewsCarousel';
-import { getHero, getAbout, getCollaborators, getNews } from '@/lib/content';
+import { StatsCounter } from '@/components/StatsCounter';
+import { Testimonials } from '@/components/Testimonials';
+import {
+  getHero,
+  getAbout,
+  getCollaborators,
+  getNews,
+  getStats,
+  getTestimonials,
+  getClients
+} from '@/lib/content';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';
@@ -60,12 +70,24 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, collaborators, news] = await Promise.all([
-    getHero(locale as Locale),
-    getAbout(locale as Locale),
-    getCollaborators(locale as Locale),
-    getNews(locale as Locale, 9)
-  ]);
+  const [hero, about, collaborators, news, stats, testimonials, clients] =
+    await Promise.all([
+      getHero(locale as Locale),
+      getAbout(locale as Locale),
+      getCollaborators(locale as Locale),
+      getNews(locale as Locale, 9),
+      getStats(locale as Locale),
+      getTestimonials(locale as Locale),
+      getClients(locale as Locale)
+    ]);
+
+  const statItems = (stats?.items ?? [])
+    .filter((s) => typeof s.value === 'number')
+    .map((s) => ({
+      value: s.value as number,
+      suffix: s.suffix ?? '',
+      label: s.label ?? ''
+    }));
 
   // Slide hero: lấy từ CMS (Hero → Slide carousel); trống → fallback messages.
   const heroSlides: HeroSlide[] = hero?.slides?.length
@@ -130,6 +152,23 @@ export default async function HomePage({
           />
         </div>
       </section>
+
+      {/* SỐ LIỆU NỔI BẬT — đếm số khi cuộn tới (chỉ hiện khi CMS có dữ liệu) */}
+      {statItems.length > 0 && (
+        <section className="border-t border-night-rule bg-night-2 text-white">
+          <Reveal className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+              {stats?.eyebrow ?? t('statsBlock.eyebrow')}
+            </p>
+            <h2 className="mt-2 font-display text-2xl font-extrabold uppercase tracking-tight text-white sm:text-3xl">
+              {stats?.title ?? t('statsBlock.title')}
+            </h2>
+            <div className="mt-10">
+              <StatsCounter items={statItems} />
+            </div>
+          </Reveal>
+        </section>
+      )}
 
       {/* DỰ ÁN TIÊU BIỂU — gallery (tối), đưa lên trước Giới thiệu */}
       <section className="border-t border-night-rule bg-night text-white">
@@ -206,6 +245,26 @@ export default async function HomePage({
             </p>
             <div className="mt-10">
               <CollaboratorGrid items={collaborators} />
+            </div>
+          </Reveal>
+        </section>
+      )}
+
+      {/* KHÁCH HÀNG & CẢM NHẬN — chỉ hiện khi CMS có dữ liệu */}
+      {(testimonials.length > 0 || clients.length > 0) && (
+        <section className="border-t border-night-rule bg-night text-white">
+          <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+            <SectionHead
+              eyebrow={t('testimonials.eyebrow')}
+              title={t('testimonials.title')}
+              dark
+            />
+            <div className="mt-10">
+              <Testimonials
+                items={testimonials}
+                clients={clients}
+                clientsTitle={t('testimonials.clientsTitle')}
+              />
             </div>
           </Reveal>
         </section>
