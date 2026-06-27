@@ -14,6 +14,7 @@ export function Navbar() {
     { href: '/gioi-thieu', label: t('about') },
     { href: '/dich-vu', label: t('services') },
     { href: '/tin-tuc', label: t('news') },
+    { href: '/tuyen-dung', label: t('careers') },
     { href: '/lien-he', label: t('contact') }
   ];
 
