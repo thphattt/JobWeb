@@ -16,7 +16,7 @@ function client() {
 }
 
 async function safeGlobal<T = Record<string, unknown>>(
-  slug: 'hero' | 'about' | 'why' | 'contactInfo' | 'brand',
+  slug: 'hero' | 'about' | 'why' | 'contactInfo' | 'brand' | 'stats',
   locale: Locale
 ): Promise<T | null> {
   try {
@@ -29,7 +29,12 @@ async function safeGlobal<T = Record<string, unknown>>(
 }
 
 async function safeFind<T = Record<string, unknown>>(
-  collection: 'services' | 'projects' | 'collaborators',
+  collection:
+    | 'services'
+    | 'projects'
+    | 'collaborators'
+    | 'testimonials'
+    | 'clients',
   locale: Locale
 ): Promise<T[]> {
   try {
@@ -103,6 +108,34 @@ export type CollaboratorDoc = {
   role?: string;
   photo?: MediaRef;
 };
+export type JobDoc = {
+  id: number;
+  title: string;
+  slug: string;
+  location?: string;
+  type?: 'fulltime' | 'parttime' | 'contract';
+  deadline?: string;
+  summary?: string;
+  description?: unknown;
+  published?: boolean;
+};
+export type TestimonialDoc = {
+  id: number;
+  quote: string;
+  author: string;
+  role?: string;
+  photo?: MediaRef;
+};
+export type ClientDoc = {
+  id: number;
+  name: string;
+  logo?: MediaRef;
+};
+export type StatsContent = {
+  eyebrow?: string;
+  title?: string;
+  items?: { value?: number; suffix?: string; label?: string }[];
+};
 
 // ── API công khai ──────────────────────────────────────────────────────────
 export const getHero = (l: Locale) => safeGlobal<HeroContent>('hero', l);
@@ -115,6 +148,50 @@ export const getServices = (l: Locale) => safeFind<ServiceDoc>('services', l);
 export const getProjects = (l: Locale) => safeFind<ProjectDoc>('projects', l);
 export const getCollaborators = (l: Locale) =>
   safeFind<CollaboratorDoc>('collaborators', l);
+export const getTestimonials = (l: Locale) =>
+  safeFind<TestimonialDoc>('testimonials', l);
+export const getClients = (l: Locale) => safeFind<ClientDoc>('clients', l);
+export const getStats = (l: Locale) => safeGlobal<StatsContent>('stats', l);
+
+/** Vị trí tuyển dụng đã xuất bản, mới nhất trước. */
+export async function getJobs(locale: Locale): Promise<JobDoc[]> {
+  try {
+    const payload = await client();
+    const res = await payload.find({
+      collection: 'jobs',
+      locale,
+      where: { published: { equals: true } },
+      sort: '-createdAt',
+      limit: 100,
+      depth: 1
+    });
+    return res.docs as JobDoc[];
+  } catch (err) {
+    console.error('[content] getJobs failed:', err);
+    return [];
+  }
+}
+
+/** Một vị trí tuyển dụng theo slug (đã xuất bản). */
+export async function getJobBySlug(
+  slug: string,
+  locale: Locale
+): Promise<JobDoc | null> {
+  try {
+    const payload = await client();
+    const res = await payload.find({
+      collection: 'jobs',
+      locale,
+      where: { slug: { equals: slug }, published: { equals: true } },
+      limit: 1,
+      depth: 1
+    });
+    return (res.docs[0] as JobDoc) ?? null;
+  } catch (err) {
+    console.error('[content] getJobBySlug failed:', err);
+    return null;
+  }
+}
 
 /** Tin tức đã xuất bản, mới nhất trước. `limit` để lấy số ít cho trang chủ. */
 export async function getNews(locale: Locale, limit = 50): Promise<NewsDoc[]> {
