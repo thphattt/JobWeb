@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getNews } from '@/lib/content';
-import { NewsCarousel } from '@/components/NewsCarousel';
+import { getNews } from '@/features/news/api';
+import { NewsCarousel } from '@/features/news/components/NewsCarousel';
 
 export async function generateMetadata({
   params

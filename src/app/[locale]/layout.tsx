@@ -5,9 +5,10 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { Be_Vietnam_Pro } from 'next/font/google';
 import { routing, type Locale } from '@/i18n/routing';
 import { siteUrl, languageAlternates } from '@/lib/site';
-import { Navbar } from '@/components/Navbar';
-import { Footer, type FooterData } from '@/components/Footer';
-import { getContact, getBrand } from '@/lib/content';
+import { Navbar } from '@/components/layout/Navbar';
+import { Footer, type FooterData } from '@/components/layout/Footer';
+import { getContact } from '@/features/contact/api';
+import { getBrand } from '@/features/brand/api';
 import '@/styles/globals.css';
 
 const sans = Be_Vietnam_Pro({

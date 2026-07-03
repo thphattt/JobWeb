@@ -4,7 +4,7 @@ import { ArrowUpRight, MapPin, Clock, CalendarDays } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getJobs } from '@/lib/content';
+import { getJobs } from '@/features/careers/api';
 
 export async function generateMetadata({
   params

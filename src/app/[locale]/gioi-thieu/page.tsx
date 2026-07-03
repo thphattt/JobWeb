@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getCollaborators } from '@/lib/content';
-import { EventGallery } from '@/components/EventGallery';
-import { CollaboratorGrid } from '@/components/CollaboratorGrid';
+import { getCollaborators } from '@/features/collaborators/api';
+import { EventGallery } from '@/features/projects/components/EventGallery';
+import { CollaboratorGrid } from '@/features/collaborators/components/CollaboratorGrid';
 
 const leaders = ['director', 'deputy', 'accountant', 'advisor'] as const;
 

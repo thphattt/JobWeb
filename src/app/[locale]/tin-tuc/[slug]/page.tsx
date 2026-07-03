@@ -8,7 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getNewsBySlug } from '@/lib/content';
+import { getNewsBySlug } from '@/features/news/api';
 
 function formatDate(date: string | undefined, locale: string): string {
   if (!date) return '';

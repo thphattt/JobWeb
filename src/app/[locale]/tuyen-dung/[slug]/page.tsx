@@ -7,7 +7,7 @@ import { ArrowLeft, MapPin, Clock, CalendarDays, Mail, Phone } from 'lucide-reac
 import { Link } from '@/i18n/navigation';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getJobBySlug } from '@/lib/content';
+import { getJobBySlug } from '@/features/careers/api';
 
 function formatDate(date: string | undefined, locale: string): string {
   if (!date) return '';

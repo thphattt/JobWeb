@@ -7,23 +7,20 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { EventGallery } from '@/components/EventGallery';
-import { HeroLogo } from '@/components/HeroLogo';
-import { HeroCarousel, type HeroSlide } from '@/components/HeroCarousel';
-import { Reveal } from '@/components/Reveal';
-import { CollaboratorGrid } from '@/components/CollaboratorGrid';
-import { NewsCarousel } from '@/components/NewsCarousel';
-import { StatsCounter } from '@/components/StatsCounter';
-import { Testimonials } from '@/components/Testimonials';
-import {
-  getHero,
-  getAbout,
-  getCollaborators,
-  getNews,
-  getStats,
-  getTestimonials,
-  getClients
-} from '@/lib/content';
+import { Reveal } from '@/components/ui/Reveal';
+import { HeroLogo } from '@/features/hero/components/HeroLogo';
+import { HeroCarousel, type HeroSlide } from '@/features/hero/components/HeroCarousel';
+import { getHero } from '@/features/hero/api';
+import { getAbout } from '@/features/about/api';
+import { EventGallery } from '@/features/projects/components/EventGallery';
+import { CollaboratorGrid } from '@/features/collaborators/components/CollaboratorGrid';
+import { getCollaborators } from '@/features/collaborators/api';
+import { NewsCarousel } from '@/features/news/components/NewsCarousel';
+import { getNews } from '@/features/news/api';
+import { StatsCounter } from '@/features/stats/components/StatsCounter';
+import { getStats } from '@/features/stats/api';
+import { Testimonials } from '@/features/testimonials/components/Testimonials';
+import { getTestimonials, getClients } from '@/features/testimonials/api';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';

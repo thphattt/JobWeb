@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getServices } from '@/lib/content';
+import { getServices } from '@/features/services/api';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },

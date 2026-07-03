@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
-import { getContact } from '@/lib/content';
+import { getContact } from '@/features/contact/api';
 import { ContactForm } from './ContactForm';
 
 const officeLabelKeys = ['hqLabel', 'office2Label'] as const;
