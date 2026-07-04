@@ -7,10 +7,10 @@ export type EventItem = {
 
 /** Fallback khi CMS chưa có dữ liệu projects (khớp key messages.events.items). */
 export const events: EventItem[] = [
-  { id: 'seaGames22' },
-  { id: 'thangLong1000' },
-  { id: 'toQuoc2015' },
-  { id: 'thuDo10' },
-  { id: 'denHung2019' },
-  { id: 'daiHoiDang' }
+  { id: 'seaGames22', image: '/events/sea-games-22.jpg' },
+  { id: 'thangLong1000', image: '/events/thang-long-1000.jpg' },
+  { id: 'toQuoc2015', image: '/events/to-quoc-2015.jpg' },
+  { id: 'thuDo10', image: '/events/thu-do-10.jpg' },
+  { id: 'denHung2019', image: '/events/den-hung-2019.jpg' },
+  { id: 'daiHoiDang', image: '/events/dai-hoi-dang.jpg' }
 ];

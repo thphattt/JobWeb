@@ -94,15 +94,25 @@ export default async function HomePage({
         image: s.image?.url ?? undefined
       }))
     : [
-        { value: t('stats.a.value'), label: t('stats.a.label') },
-        { value: t('stats.b.value'), label: t('stats.b.label') },
+        {
+          value: t('stats.a.value'),
+          label: t('stats.a.label'),
+          image: '/hero/hero-2018.jpg'
+        },
+        {
+          value: t('stats.b.value'),
+          label: t('stats.b.label'),
+          image: '/hero/hero-offices.jpg'
+        },
         {
           value: t('events.items.seaGames22.year'),
-          label: t('events.items.seaGames22.title')
+          label: t('events.items.seaGames22.title'),
+          image: '/hero/hero-sea-games.jpg'
         },
         {
           value: t('events.items.thangLong1000.year'),
-          label: t('events.items.thangLong1000.title')
+          label: t('events.items.thangLong1000.title'),
+          image: '/hero/hero-thang-long.jpg'
         }
       ];
 
