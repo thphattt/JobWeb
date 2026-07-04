@@ -5,6 +5,8 @@ import type { CollectionConfig } from 'payload';
 export const Media: CollectionConfig = {
   slug: 'media',
   admin: { group: 'Hệ thống' },
+  // Ảnh phải xem được công khai (khách chưa đăng nhập); ghi vẫn cần đăng nhập.
+  access: { read: () => true },
   upload: {
     staticDir: path.resolve(process.cwd(), 'public/uploads'),
     mimeTypes: ['image/*']
