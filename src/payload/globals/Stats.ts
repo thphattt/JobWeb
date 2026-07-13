@@ -3,8 +3,11 @@ import type { GlobalConfig } from 'payload';
 /** Trang chủ — Số liệu nổi bật (đếm số). */
 export const Stats: GlobalConfig = {
   slug: 'stats',
-  label: 'Trang chủ — Số liệu nổi bật',
-  admin: { group: 'Nội dung' },
+  label: 'Số liệu nổi bật',
+  admin: {
+    group: 'Trang chủ',
+    description: 'Dải số liệu đếm tăng (vd: 7+ năm, 500+ chương trình) ngay dưới đầu trang.'
+  },
   fields: [
     { name: 'eyebrow', type: 'text', localized: true, label: 'Dòng nhãn nhỏ' },
     { name: 'title', type: 'text', localized: true, label: 'Tiêu đề' },
