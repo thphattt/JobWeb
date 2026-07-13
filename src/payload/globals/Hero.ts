@@ -3,8 +3,11 @@ import type { GlobalConfig } from 'payload';
 /** Trang chủ — Hero (tiêu đề + carousel slide). */
 export const Hero: GlobalConfig = {
   slug: 'hero',
-  label: 'Trang chủ — Hero',
-  admin: { group: 'Nội dung' },
+  label: 'Đầu trang (Hero)',
+  admin: {
+    group: 'Trang chủ',
+    description: 'Khối đầu trang chủ: tiêu đề lớn, mô tả, 2 nút và carousel bên phải.'
+  },
   fields: [
     { name: 'eyebrow', type: 'text', localized: true, label: 'Dòng nhãn nhỏ' },
     { name: 'title', type: 'text', localized: true, label: 'Tiêu đề lớn' },
