@@ -4,7 +4,10 @@ import type { GlobalConfig } from 'payload';
 export const ContactInfo: GlobalConfig = {
   slug: 'contactInfo',
   label: 'Thông tin liên hệ',
-  admin: { group: 'Nội dung' },
+  admin: {
+    group: 'Thông tin công ty',
+    description: 'Địa chỉ văn phòng, điện thoại, email, Facebook — hiển thị ở trang Liên hệ và chân trang.'
+  },
   fields: [
     {
       name: 'offices',
