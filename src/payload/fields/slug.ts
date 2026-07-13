@@ -20,7 +20,10 @@ export function slugField(source = 'title'): Field {
     unique: true,
     index: true,
     label: 'Đường dẫn (slug)',
-    admin: { description: 'Để trống sẽ tự tạo từ tiêu đề.' },
+    admin: {
+      position: 'sidebar',
+      description: 'Phần đuôi địa chỉ trang. Cứ để trống — hệ thống tự tạo từ tiêu đề.'
+    },
     hooks: {
       beforeValidate: [
         ({ value, data }) =>
