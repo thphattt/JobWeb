@@ -15,12 +15,10 @@ import { getAbout } from '@/features/about/api';
 import { EventGallery } from '@/features/projects/components/EventGallery';
 import { CollaboratorGrid } from '@/features/collaborators/components/CollaboratorGrid';
 import { getCollaborators } from '@/features/collaborators/api';
-import { NewsCarousel } from '@/features/news/components/NewsCarousel';
+import { NewsPager } from '@/features/news/components/NewsPager';
 import { getNews } from '@/features/news/api';
 import { StatsCounter } from '@/features/stats/components/StatsCounter';
 import { getStats } from '@/features/stats/api';
-import { Testimonials } from '@/features/testimonials/components/Testimonials';
-import { getTestimonials, getClients } from '@/features/testimonials/api';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';
@@ -67,16 +65,13 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, collaborators, news, stats, testimonials, clients] =
-    await Promise.all([
-      getHero(locale as Locale),
-      getAbout(locale as Locale),
-      getCollaborators(locale as Locale),
-      getNews(locale as Locale, 9),
-      getStats(locale as Locale),
-      getTestimonials(locale as Locale),
-      getClients(locale as Locale)
-    ]);
+  const [hero, about, collaborators, news, stats] = await Promise.all([
+    getHero(locale as Locale),
+    getAbout(locale as Locale),
+    getCollaborators(locale as Locale),
+    getNews(locale as Locale, 9),
+    getStats(locale as Locale)
+  ]);
 
   const statItems = (stats?.items ?? [])
     .filter((s) => typeof s.value === 'number')
@@ -257,26 +252,6 @@ export default async function HomePage({
         </section>
       )}
 
-      {/* KHÁCH HÀNG & CẢM NHẬN — chỉ hiện khi CMS có dữ liệu */}
-      {(testimonials.length > 0 || clients.length > 0) && (
-        <section className="border-t border-night-rule bg-night text-white">
-          <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-            <SectionHead
-              eyebrow={t('testimonials.eyebrow')}
-              title={t('testimonials.title')}
-              dark
-            />
-            <div className="mt-10">
-              <Testimonials
-                items={testimonials}
-                clients={clients}
-                clientsTitle={t('testimonials.clientsTitle')}
-              />
-            </div>
-          </Reveal>
-        </section>
-      )}
-
       {/* TIN TỨC MỚI NHẤT — chỉ hiện khi có bài đã xuất bản */}
       {news.length > 0 && (
         <section className="border-t border-night-rule bg-night text-white">
@@ -296,7 +271,7 @@ export default async function HomePage({
               </Link>
             </div>
             <div className="mt-10">
-              <NewsCarousel
+              <NewsPager
                 posts={news.map((p) => ({
                   id: p.id,
                   title: p.title,
@@ -309,7 +284,7 @@ export default async function HomePage({
                 readMore={t('news.readMore')}
                 prevLabel={t('nav.prev')}
                 nextLabel={t('nav.next')}
-                showControls={false}
+                perPage={3}
               />
             </div>
           </Reveal>
