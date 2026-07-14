@@ -1,5 +1,6 @@
 'use server';
 
+import { headers } from 'next/headers';
 import { z } from 'zod';
 
 export type ContactState = {
@@ -13,10 +14,43 @@ const schema = z.object({
   message: z.string().trim().min(10)
 });
 
+// ── Chống spam: rate-limit theo IP (in-memory) ────────────────────────────
+// Đủ dùng cho 1 tiến trình (VPS). Trên serverless nhiều instance sẽ nới lỏng
+// hơn nhưng vẫn có tác dụng, và không phụ thuộc thư viện ngoài.
+const RATE_LIMIT = 3; // số lần gửi tối đa
+const RATE_WINDOW_MS = 10 * 60 * 1000; // trong 10 phút
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  // Dọn bớt bộ nhớ khi map phình to.
+  if (hits.size > 5000) {
+    for (const [key, times] of hits) {
+      if (times.every((t) => now - t >= RATE_WINDOW_MS)) hits.delete(key);
+    }
+  }
+  return recent.length > RATE_LIMIT;
+}
+
+async function clientIp(): Promise<string> {
+  const h = await headers();
+  const fwd = h.get('x-forwarded-for');
+  return (fwd ? fwd.split(',')[0].trim() : h.get('x-real-ip')) || 'unknown';
+}
+
 export async function submitContact(
   _prev: ContactState,
   formData: FormData
 ): Promise<ContactState> {
+  // Honeypot: trường ẩn "company" — người thật không thấy nên để trống.
+  // Bot điền vào → coi như thành công (không gửi email, không lộ là bị chặn).
+  if (String(formData.get('company') ?? '').trim() !== '') {
+    return { status: 'success' };
+  }
+
   const parsed = schema.safeParse({
     name: formData.get('name'),
     contact: formData.get('contact'),
@@ -28,6 +62,11 @@ export async function submitContact(
       ...new Set(parsed.error.issues.map((i) => String(i.path[0])))
     ];
     return { status: 'error', fields };
+  }
+
+  // Giới hạn tần suất theo IP (chống spam làm ngập hộp thư / cạn quota Resend).
+  if (rateLimited(await clientIp())) {
+    return { status: 'error' };
   }
 
   const data = parsed.data;

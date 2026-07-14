@@ -18,6 +18,12 @@ export function ContactForm() {
 
   return (
     <form action={action} className="space-y-4" noValidate>
+      {/* Honeypot chống bot: ẩn khỏi người dùng & trình đọc màn hình. Bỏ trống. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-0 w-0 overflow-hidden">
+        <label htmlFor="company">Company</label>
+        <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <div>
         <label htmlFor="name" className="text-sm font-medium text-white">
           {t('name')}

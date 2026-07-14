@@ -57,6 +57,12 @@ export default buildConfig({
 
   editor: lexicalEditor(),
 
+  // Bảo mật GraphQL: ẩn Playground + introspection ở production (giảm lộ schema).
+  graphQL: {
+    disablePlaygroundInProduction: true,
+    disableIntrospectionInProduction: true
+  },
+
   // Email hệ thống (khôi phục mật khẩu admin, thông báo…) gửi qua Resend.
   // Dùng chung RESEND_API_KEY với form liên hệ. Thiếu key → Payload log ra console.
   email: resendAdapter({
