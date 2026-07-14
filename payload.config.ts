@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { resendAdapter } from '@payloadcms/email-resend';
 import { vi } from '@payloadcms/translations/languages/vi';
 import { en } from '@payloadcms/translations/languages/en';
 import sharp from 'sharp';
@@ -56,10 +57,21 @@ export default buildConfig({
 
   editor: lexicalEditor(),
 
-  // Neon Postgres. Dev: push:true tự đồng bộ schema; deploy nên dùng migrations.
+  // Email hệ thống (khôi phục mật khẩu admin, thông báo…) gửi qua Resend.
+  // Dùng chung RESEND_API_KEY với form liên hệ. Thiếu key → Payload log ra console.
+  email: resendAdapter({
+    defaultFromName: 'Tân Châu Thành',
+    defaultFromAddress: process.env.CONTACT_FROM_ADDRESS || 'onboarding@resend.dev',
+    apiKey: process.env.RESEND_API_KEY || ''
+  }),
+
+  // Neon Postgres.
+  // - Dev: push:true tự đồng bộ schema cho nhanh.
+  // - Production: push:false + chạy migrations (an toàn, không tự sửa DB thật).
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI || '' },
-    push: true
+    push: process.env.NODE_ENV !== 'production',
+    migrationDir: path.resolve(dirname, 'src/migrations')
   }),
 
   secret: process.env.PAYLOAD_SECRET || '',
