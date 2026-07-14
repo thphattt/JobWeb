@@ -3,6 +3,8 @@ import { fileURLToPath } from 'url';
 import { buildConfig } from 'payload';
 import { postgresAdapter } from '@payloadcms/db-postgres';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { vi } from '@payloadcms/translations/languages/vi';
+import { en } from '@payloadcms/translations/languages/en';
 import sharp from 'sharp';
 
 import { Users } from './src/payload/collections/Users';
@@ -26,9 +28,23 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default buildConfig({
-  admin: { user: 'users' },
+  admin: {
+    user: 'users',
+    // Thương hiệu trang quản trị (thẻ trình duyệt, trang đăng nhập).
+    meta: {
+      title: 'Quản trị nội dung',
+      titleSuffix: ' · Tân Châu Thành',
+      description: 'Trang quản trị nội dung website Tân Châu Thành'
+    }
+  },
 
-  // Song ngữ: bật bản dịch theo trường (vi mặc định, en tuỳ chọn).
+  // Giao diện trang quản trị hiển thị Tiếng Việt (nút bấm, menu, cột, lịch…).
+  i18n: {
+    fallbackLanguage: 'vi',
+    supportedLanguages: { vi, en }
+  },
+
+  // Song ngữ nội dung: bật bản dịch theo trường (vi mặc định, en tuỳ chọn).
   localization: {
     locales: [
       { label: 'Tiếng Việt', code: 'vi' },
@@ -53,17 +69,29 @@ export default buildConfig({
     outputFile: path.resolve(dirname, 'src/payload-types.ts')
   },
 
+  // Thứ tự trong mảng = thứ tự hiển thị trong từng nhóm ở menu bên trái.
   collections: [
-    Users,
-    Media,
-    Services,
-    Projects,
+    // Nhóm "Nội dung" — nơi khách thêm/sửa hằng ngày
     News,
-    Collaborators,
+    Projects,
+    Services,
     Jobs,
+    Collaborators,
     Testimonials,
-    Clients
+    Clients,
+    // Nhóm "Hệ thống"
+    Media,
+    Users
   ],
 
-  globals: [Hero, About, Why, ContactInfo, Brand, Stats]
+  globals: [
+    // Nhóm "Trang chủ"
+    Hero,
+    Stats,
+    About,
+    Why,
+    // Nhóm "Thông tin công ty"
+    Brand,
+    ContactInfo
+  ]
 });
