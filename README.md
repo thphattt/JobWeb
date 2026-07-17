@@ -24,16 +24,6 @@ Song ngữ Việt/Anh · nội dung quản trị hoàn toàn qua CMS · triển 
 
 </div>
 
-## Hình ảnh
-
-<p align="center">
-  <img src="public/hero/hero-sea-games.jpg" alt="SEA Games 22" width="24%" />
-  <img src="public/hero/hero-thang-long.jpg" alt="Đại lễ 1000 năm Thăng Long" width="24%" />
-  <img src="public/hero/hero-2018.jpg" alt="Thành lập 2018" width="24%" />
-  <img src="public/hero/hero-offices.jpg" alt="Văn phòng" width="24%" />
-</p>
-<p align="center"><em>Một số sự kiện tiêu biểu hiển thị trên website (hero carousel trang chủ)</em></p>
-
 ## Công nghệ
 
 | Lớp | Công nghệ |
