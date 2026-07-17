@@ -1,8 +1,38 @@
+<div align="center">
+
+<img src="public/logo.png" alt="Logo Tân Châu Thành" width="200" />
+
 # Tân Châu Thành — Website doanh nghiệp
 
-Website giới thiệu Công ty TNHH Tân Châu Thành — tổ chức sự kiện & truyền thông tại Hà Nội. Song ngữ Việt/Anh, nội dung quản trị hoàn toàn qua CMS, triển khai trên VPS đặt tại Việt Nam.
+Website giới thiệu Công ty TNHH Tân Châu Thành — tổ chức sự kiện & truyền thông tại Hà Nội.
+Song ngữ Việt/Anh · nội dung quản trị hoàn toàn qua CMS · triển khai trên VPS đặt tại Việt Nam.
 
-**Production:** [truyenthongtanchauthanh.vn](https://truyenthongtanchauthanh.vn) · **Repo:** [github.com/thphattt/JobWeb](https://github.com/thphattt/JobWeb)
+[![Next.js](https://img.shields.io/badge/Next.js%2015-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![React](https://img.shields.io/badge/React%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS%204-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Payload CMS](https://img.shields.io/badge/Payload%20CMS%203-000000?style=for-the-badge&logo=payloadcms&logoColor=white)](https://payloadcms.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org)
+
+[![Node.js](https://img.shields.io/badge/Node.js%20%E2%89%A5%2020-5FA04E?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)](https://nginx.org)
+[![PM2](https://img.shields.io/badge/PM2-2B037A?style=for-the-badge&logo=pm2&logoColor=white)](https://pm2.keymetrics.io)
+[![Let's Encrypt](https://img.shields.io/badge/Let%27s%20Encrypt-003A70?style=for-the-badge&logo=letsencrypt&logoColor=white)](https://letsencrypt.org)
+[![Resend](https://img.shields.io/badge/Resend-000000?style=for-the-badge&logo=resend&logoColor=white)](https://resend.com)
+
+**[truyenthongtanchauthanh.vn](https://truyenthongtanchauthanh.vn)** · [Hướng dẫn deploy](DEPLOY-VPS.md) · [Kế hoạch dự án](PLAN.md)
+
+</div>
+
+## Hình ảnh
+
+<p align="center">
+  <img src="public/hero/hero-sea-games.jpg" alt="SEA Games 22" width="24%" />
+  <img src="public/hero/hero-thang-long.jpg" alt="Đại lễ 1000 năm Thăng Long" width="24%" />
+  <img src="public/hero/hero-2018.jpg" alt="Thành lập 2018" width="24%" />
+  <img src="public/hero/hero-offices.jpg" alt="Văn phòng" width="24%" />
+</p>
+<p align="center"><em>Một số sự kiện tiêu biểu hiển thị trên website (hero carousel trang chủ)</em></p>
 
 ## Công nghệ
 
