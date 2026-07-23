@@ -25,6 +25,8 @@ const serviceIcons: Record<string, LucideIcon> = {
   speaker: Speaker
 };
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {

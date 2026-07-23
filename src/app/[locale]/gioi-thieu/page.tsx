@@ -8,6 +8,8 @@ import { CollaboratorGrid } from '@/features/collaborators/components/Collaborat
 
 const leaders = ['director', 'deputy', 'accountant', 'advisor'] as const;
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {

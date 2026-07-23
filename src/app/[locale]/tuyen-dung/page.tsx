@@ -6,6 +6,8 @@ import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getJobs } from '@/features/careers/api';
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {

@@ -13,6 +13,8 @@ const defaultOffices = [
 ];
 const defaultPhones = ['0243.822.9251', '091.353.2566', '091.949.6886'];
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {

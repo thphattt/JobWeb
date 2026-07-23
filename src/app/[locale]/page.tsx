@@ -55,6 +55,10 @@ function SectionHead({
   );
 }
 
+// Render động: nội dung CMS (ảnh, bài viết, chỉnh sửa của khách trong /admin)
+// hiện ngay khi lưu, không cần build lại.
+export const dynamic = 'force-dynamic';
+
 export default async function HomePage({
   params
 }: {

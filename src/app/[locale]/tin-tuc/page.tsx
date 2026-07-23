@@ -9,6 +9,8 @@ import { NewsCard } from '@/features/news/components/NewsCard';
 
 const PER_PAGE = 6;
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({
   params
 }: {
