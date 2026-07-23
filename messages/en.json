@@ -99,7 +99,7 @@
   "aboutPage": {
     "eyebrow": "About us",
     "title": "Tan Chau Thanh Co., Ltd",
-    "lead": "Founded in 2018, Tan Chau Thanh is a professional event and communications partner in Hanoi — delivering end-to-end solutions from concept and script to production, staffing and equipment.",
+    "lead": "Tan Chau Thanh has delivered events and communications programs in Hanoi since 2018. With a team that has contributed to national-scale productions, we cover the full scope: scripting, directing, production, staffing and event equipment.",
     "leadershipTitle": "Leadership",
     "leaders": {
       "director": { "role": "Director", "name": "Ms. Ngô Thị Ninh" },
@@ -122,12 +122,12 @@
   "servicesPage": {
     "eyebrow": "Services",
     "title": "End-to-end event solutions",
-    "lead": "Tan Chau Thanh handles every stage of a program — from creative content to production and on-site operations."
+    "lead": "Tan Chau Thanh handles every stage of a program, from concept and script to production and on-site operations. You work with a single point of contact throughout."
   },
   "contactPage": {
     "eyebrow": "Contact",
     "title": "Get in touch with Tan Chau Thanh",
-    "lead": "Leave your details or reach us directly — we'll get back to you as soon as possible.",
+    "lead": "Call our hotline, send an email or leave your details in the form below. The Tan Chau Thanh team will get in touch to discuss your program.",
     "infoTitle": "Contact information",
     "phoneLabel": "Phone",
     "emailLabel": "Email",
@@ -163,11 +163,11 @@
   "events": {
     "eyebrow": "Featured work",
     "title": "Events we've delivered",
-    "lead": "A selection of national-scale programs Tan Chau Thanh has organized and produced.",
+    "lead": "From the SEA Games 22 closing ceremony to the 1000th Anniversary of Thang Long – Hanoi, the Tan Chau Thanh team has contributed to national-scale programs as directors and producers.",
     "directorTitle": "As Director",
-    "directorLead": "Notable events where Tan Chau Thanh members took the director's role.",
+    "directorLead": "Landmark events directed by Tan Chau Thanh members.",
     "producerTitle": "As Producer",
-    "producerLead": "Events where Tan Chau Thanh participated as the producer.",
+    "producerLead": "Programs where Tan Chau Thanh Co., Ltd served as producer.",
     "items": {
       "seaGames22": {
         "title": "SEA Games 22 closing ceremony",
@@ -226,7 +226,7 @@
   "news": {
     "eyebrow": "News",
     "title": "News & Activities",
-    "lead": "Updates on Tan Chau Thanh's activities, projects and behind-the-scenes production.",
+    "lead": "New projects, company activities and behind-the-scenes stories from Tan Chau Thanh productions.",
     "readMore": "Read more",
     "viewAll": "View all news",
     "empty": "No articles yet.",
@@ -235,12 +235,12 @@
   "collaborators": {
     "eyebrow": "Artistic partners",
     "title": "Notable collaborators",
-    "lead": "Artists, MCs and People's/Meritorious Artists who have joined our programs."
+    "lead": "Leading artists, People's and Meritorious Artists, singers and MCs have staged and performed in Tan Chau Thanh programs."
   },
   "careers": {
     "eyebrow": "Careers",
     "title": "Career opportunities",
-    "lead": "Join the Tan Chau Thanh team — let's create events of national scale together.",
+    "lead": "Tan Chau Thanh welcomes people who love event production. Join the team and help deliver large-scale programs.",
     "empty": "No open positions at the moment.",
     "viewDetail": "View details",
     "apply": "Apply now",

@@ -99,7 +99,7 @@
   "aboutPage": {
     "eyebrow": "Về chúng tôi",
     "title": "Công ty TNHH Tân Châu Thành",
-    "lead": "Thành lập năm 2018, Tân Châu Thành là đối tác tổ chức sự kiện và truyền thông chuyên nghiệp tại Hà Nội — cung cấp giải pháp trọn gói từ ý tưởng, kịch bản đến sản xuất, nhân sự và thiết bị.",
+    "lead": "Tân Châu Thành hoạt động trong lĩnh vực tổ chức sự kiện và truyền thông tại Hà Nội từ năm 2018. Với đội ngũ từng góp mặt tại nhiều chương trình cấp quốc gia, công ty cung cấp giải pháp trọn gói: kịch bản, đạo diễn, tổ chức sản xuất, nhân sự và thiết bị sự kiện.",
     "leadershipTitle": "Đội ngũ lãnh đạo",
     "leaders": {
       "director": { "role": "Giám đốc", "name": "Bà Ngô Thị Ninh" },
@@ -122,12 +122,12 @@
   "servicesPage": {
     "eyebrow": "Dịch vụ",
     "title": "Giải pháp sự kiện trọn gói",
-    "lead": "Tân Châu Thành đảm nhận toàn bộ các khâu của một chương trình — từ sáng tạo nội dung đến sản xuất và vận hành tại hiện trường."
+    "lead": "Tân Châu Thành đảm nhận toàn bộ các khâu của một chương trình, từ ý tưởng, kịch bản đến sản xuất và vận hành tại hiện trường. Khách hàng chỉ làm việc với một đầu mối duy nhất trong suốt quá trình."
   },
   "contactPage": {
     "eyebrow": "Liên hệ",
     "title": "Liên hệ với Tân Châu Thành",
-    "lead": "Để lại thông tin hoặc liên hệ trực tiếp — chúng tôi sẽ phản hồi trong thời gian sớm nhất.",
+    "lead": "Gọi hotline, gửi email hoặc để lại thông tin qua biểu mẫu bên dưới. Đội ngũ Tân Châu Thành sẽ liên hệ tư vấn cho chương trình của bạn.",
     "infoTitle": "Thông tin liên hệ",
     "phoneLabel": "Điện thoại",
     "emailLabel": "Email",
@@ -163,11 +163,11 @@
   "events": {
     "eyebrow": "Dự án tiêu biểu",
     "title": "Những sự kiện chúng tôi đã thực hiện",
-    "lead": "Một số chương trình quy mô quốc gia mà Tân Châu Thành từng tổ chức và tham gia sản xuất.",
+    "lead": "Từ Bế mạc SEA Games 22 đến Đại lễ 1000 năm Thăng Long – Hà Nội, đội ngũ Tân Châu Thành đã góp mặt trong nhiều chương trình cấp quốc gia với vai trò đạo diễn và nhà sản xuất.",
     "directorTitle": "Vai trò Đạo diễn",
-    "directorLead": "Những sự kiện tiêu biểu thành viên Tân Châu Thành tham gia với vai trò đạo diễn.",
+    "directorLead": "Những sự kiện tiêu biểu do thành viên Tân Châu Thành trực tiếp đạo diễn.",
     "producerTitle": "Vai trò Nhà sản xuất",
-    "producerLead": "Những sự kiện Công ty Tân Châu Thành tham gia với vai trò nhà sản xuất.",
+    "producerLead": "Những chương trình Công ty Tân Châu Thành đảm nhận vai trò tổ chức sản xuất.",
     "items": {
       "seaGames22": {
         "title": "Bế mạc SEA Games 22",
@@ -226,7 +226,7 @@
   "news": {
     "eyebrow": "Tin tức",
     "title": "Tin tức & Hoạt động",
-    "lead": "Cập nhật hoạt động, dự án và hậu trường sản xuất chương trình của Tân Châu Thành.",
+    "lead": "Dự án mới, hoạt động công ty và những câu chuyện hậu trường từ các chương trình của Tân Châu Thành.",
     "readMore": "Đọc tiếp",
     "viewAll": "Xem tất cả tin",
     "empty": "Chưa có bài viết nào.",
@@ -235,12 +235,12 @@
   "collaborators": {
     "eyebrow": "Đối tác nghệ thuật",
     "title": "Những gương mặt nghệ sĩ nổi tiếng đã tham gia các chương trình của chúng tôi",
-    "lead": "Những nghệ sĩ, MC, NSND/NSƯT đã đồng hành cùng các chương trình của chúng tôi."
+    "lead": "Các NSND, NSƯT, ca sĩ và MC hàng đầu đã cùng Tân Châu Thành dàn dựng và biểu diễn trong nhiều chương trình quy mô lớn."
   },
   "careers": {
     "eyebrow": "Tuyển dụng",
     "title": "Cơ hội nghề nghiệp",
-    "lead": "Gia nhập đội ngũ Tân Châu Thành — cùng kiến tạo những chương trình sự kiện tầm vóc.",
+    "lead": "Tân Châu Thành chào đón những người yêu nghề tổ chức sự kiện. Gia nhập đội ngũ để góp sức vào những chương trình quy mô lớn.",
     "empty": "Hiện chưa có vị trí tuyển dụng nào.",
     "viewDetail": "Xem chi tiết",
     "apply": "Ứng tuyển ngay",
