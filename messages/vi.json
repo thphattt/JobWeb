@@ -4,23 +4,23 @@
     "description": "Tân Châu Thành - đối tác tổ chức sự kiện và truyền thông chuyên nghiệp tại Hà Nội từ năm 2018. Đạo diễn, sản xuất chương trình, nhân sự và thiết bị sự kiện.",
     "about": {
       "title": "Giới thiệu",
-      "description": "Tân Châu Thành - đối tác tổ chức sự kiện & truyền thông tại Hà Nội từ 2018. Đội ngũ lãnh đạo, cộng tác viên nghệ thuật và những chương trình tiêu biểu."
+      "description": "Tân Châu Thành tổ chức sự kiện và truyền thông tại Hà Nội từ năm 2018. Tìm hiểu đội ngũ lãnh đạo, cộng tác viên nghệ thuật và các chương trình tiêu biểu của công ty."
     },
     "services": {
       "title": "Dịch vụ",
-      "description": "Giải pháp sự kiện trọn gói: đạo diễn & kịch bản, tổ chức sản xuất, nhân sự và thiết bị sự kiện."
+      "description": "Tân Châu Thành cung cấp giải pháp sự kiện trọn gói: kịch bản, đạo diễn, tổ chức sản xuất, nhân sự và thiết bị. Một đầu mối cho toàn bộ chương trình."
     },
     "contact": {
       "title": "Liên hệ",
-      "description": "Liên hệ Tân Châu Thành: hai văn phòng tại Hà Nội, hotline và biểu mẫu yêu cầu tư vấn tổ chức sự kiện."
+      "description": "Liên hệ Tân Châu Thành để được tư vấn tổ chức sự kiện qua hotline, email, biểu mẫu trực tuyến hoặc hai văn phòng tại Hà Nội."
     },
     "news": {
       "title": "Tin tức",
-      "description": "Tin tức và hoạt động mới nhất của Tân Châu Thành: dự án, sự kiện và hậu trường sản xuất chương trình."
+      "description": "Dự án mới, hoạt động công ty và hậu trường sản xuất các chương trình của Tân Châu Thành."
     },
     "careers": {
       "title": "Tuyển dụng",
-      "description": "Cơ hội nghề nghiệp tại Công ty TNHH Tân Châu Thành — tổ chức sự kiện & truyền thông tại Hà Nội."
+      "description": "Cơ hội nghề nghiệp tại Công ty TNHH Tân Châu Thành. Gia nhập đội ngũ tổ chức sự kiện và truyền thông tại Hà Nội, cùng tham gia các chương trình quy mô lớn."
     }
   },
   "brand": {
@@ -65,19 +65,19 @@
     "items": {
       "direction": {
         "title": "Đạo diễn & Kịch bản",
-        "desc": "Xây dựng ý tưởng, kịch bản và đạo diễn cho các chương trình, sự kiện."
+        "desc": "Xây dựng ý tưởng, viết kịch bản và đạo diễn dàn dựng cho từng chương trình."
       },
       "production": {
         "title": "Tổ chức sản xuất",
-        "desc": "Quản lý và tổ chức sản xuất chương trình trọn gói, chuyên nghiệp."
+        "desc": "Lập kế hoạch, điều phối ê-kíp và giám sát sản xuất từ khâu chuẩn bị đến khi kết thúc chương trình."
       },
       "talent": {
         "title": "Nhân sự sự kiện",
-        "desc": "Ban nhạc, ca sĩ, MC, nhóm múa, nhóm nhảy, lễ tân chuyên nghiệp."
+        "desc": "Cung cấp ban nhạc, ca sĩ, MC, nhóm múa, nhóm nhảy và đội ngũ lễ tân cho sự kiện."
       },
       "equipment": {
         "title": "Thiết bị sự kiện",
-        "desc": "Âm thanh, ánh sáng, sân khấu, nhạc cụ hiện đại, quy mô hoành tráng."
+        "desc": "Cung cấp và vận hành hệ thống âm thanh, ánh sáng, sân khấu, nhạc cụ cho các sự kiện quy mô lớn."
       }
     }
   },
@@ -117,7 +117,7 @@
       "p6": "Chào mừng các Đại hội Đảng bộ hướng tới Đại hội Đảng toàn quốc lần thứ XIV"
     },
     "collaboratorsTitle": "Cộng tác viên nghệ thuật",
-    "collaborators": "Đội ngũ biên đạo, nhạc sĩ, vũ đoàn, nhóm hát chuyên nghiệp cùng nhiều NSND, NSƯT và ca sĩ nổi tiếng: Quang Thọ, Quốc Hưng, Lan Anh, Đăng Dương, Trọng Tấn, Anh Thơ, Việt Hoàn… và các MC Sơn Lâm, Hoài Anh, Hồng Nhung."
+    "collaborators": "Các chương trình của Tân Châu Thành có sự tham gia của đội ngũ biên đạo, nhạc sĩ, vũ đoàn, nhóm hát cùng nhiều NSND, NSƯT và ca sĩ tên tuổi: Quang Thọ, Quốc Hưng, Lan Anh, Đăng Dương, Trọng Tấn, Anh Thơ, Việt Hoàn và các MC Sơn Lâm, Hoài Anh, Hồng Nhung."
   },
   "servicesPage": {
     "eyebrow": "Dịch vụ",
@@ -241,10 +241,10 @@
     "eyebrow": "Tuyển dụng",
     "title": "Cơ hội nghề nghiệp",
     "lead": "Tân Châu Thành chào đón những người yêu nghề tổ chức sự kiện. Gia nhập đội ngũ để góp sức vào những chương trình quy mô lớn.",
-    "empty": "Hiện chưa có vị trí tuyển dụng nào.",
+    "empty": "Hiện chưa có vị trí đang tuyển. Bạn có thể gửi CV về email công ty để được liên hệ khi có vị trí phù hợp.",
     "viewDetail": "Xem chi tiết",
     "apply": "Ứng tuyển ngay",
-    "applyHint": "Gửi CV về email hoặc gọi hotline để ứng tuyển vị trí này.",
+    "applyHint": "Ứng viên gửi CV qua email của công ty hoặc liên hệ hotline để được hướng dẫn ứng tuyển.",
     "backToList": "Tất cả vị trí",
     "deadline": "Hạn nộp",
     "location": "Địa điểm",
