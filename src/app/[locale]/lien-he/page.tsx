@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getContact } from '@/features/contact/api';
+import { getPageText } from '@/features/pageText/api';
 import { ContactForm } from './ContactForm';
 
 const officeLabelKeys = ['hqLabel', 'office2Label'] as const;
@@ -47,7 +48,10 @@ export default async function ContactPage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const contact = await getContact(locale as Locale);
+  const [contact, px] = await Promise.all([
+    getContact(locale as Locale),
+    getPageText(locale as Locale)
+  ]);
   const email = contact?.email || t('brand.email');
   const offices = (
     contact?.offices?.map((o) => o.address ?? '').filter(Boolean).length
@@ -61,13 +65,13 @@ export default async function ContactPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-        {t('contactPage.eyebrow')}
+        {px?.contact?.eyebrow || t('contactPage.eyebrow')}
       </p>
       <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
-        {t('contactPage.title')}
+        {px?.contact?.title || t('contactPage.title')}
       </h1>
       <p className="mt-6 max-w-2xl text-lg text-white/70">
-        {t('contactPage.lead')}
+        {px?.contact?.lead || t('contactPage.lead')}
       </p>
 
       <div className="mt-12 grid gap-10 lg:grid-cols-2">

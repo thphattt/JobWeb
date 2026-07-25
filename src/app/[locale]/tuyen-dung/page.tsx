@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getJobs } from '@/features/careers/api';
+import { getPageText } from '@/features/pageText/api';
 
 export const dynamic = 'force-dynamic';
 
@@ -52,17 +53,22 @@ export default async function CareersPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations('careers');
-  const jobs = await getJobs(locale as Locale);
+  const [jobs, px] = await Promise.all([
+    getJobs(locale as Locale),
+    getPageText(locale as Locale)
+  ]);
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-        {t('eyebrow')}
+        {px?.careers?.eyebrow || t('eyebrow')}
       </p>
       <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
-        {t('title')}
+        {px?.careers?.title || t('title')}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-white/60">{t('lead')}</p>
+      <p className="mt-6 max-w-2xl text-lg text-white/60">
+        {px?.careers?.lead || t('lead')}
+      </p>
 
       {jobs.length ? (
         <div className="mt-12 space-y-4">

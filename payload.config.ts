@@ -24,6 +24,7 @@ import { Why } from './src/payload/globals/Why';
 import { ContactInfo } from './src/payload/globals/ContactInfo';
 import { Brand } from './src/payload/globals/Brand';
 import { Stats } from './src/payload/globals/Stats';
+import { PageText } from './src/payload/globals/PageText';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -108,6 +109,8 @@ export default buildConfig({
     Stats,
     About,
     Why,
+    // Nhóm "Nội dung trang"
+    PageText,
     // Nhóm "Thông tin công ty"
     Brand,
     ContactInfo

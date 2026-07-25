@@ -19,6 +19,7 @@ import { NewsPager } from '@/features/news/components/NewsPager';
 import { getNews } from '@/features/news/api';
 import { StatsCounter } from '@/features/stats/components/StatsCounter';
 import { getStats } from '@/features/stats/api';
+import { getPageText } from '@/features/pageText/api';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';
@@ -69,12 +70,13 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, collaborators, news, stats] = await Promise.all([
+  const [hero, about, collaborators, news, stats, px] = await Promise.all([
     getHero(locale as Locale),
     getAbout(locale as Locale),
     getCollaborators(locale as Locale),
     getNews(locale as Locale, 9),
-    getStats(locale as Locale)
+    getStats(locale as Locale),
+    getPageText(locale as Locale)
   ]);
 
   const statItems = (stats?.items ?? [])
@@ -179,8 +181,8 @@ export default async function HomePage({
       <section className="border-t border-night-rule bg-night text-white">
         <Reveal className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <SectionHead
-            eyebrow={t('events.eyebrow')}
-            title={t('events.title')}
+            eyebrow={px?.projects?.eyebrow || t('events.eyebrow')}
+            title={px?.projects?.title || t('events.title')}
             dark
           />
 
@@ -188,10 +190,10 @@ export default async function HomePage({
           <div className="mt-12">
             <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-white">
               <span className="size-5 shrink-0 bg-brand-gradient" aria-hidden />
-              {t('events.directorTitle')}
+              {px?.projects?.directorTitle || t('events.directorTitle')}
             </h3>
             <p className="mt-2 max-w-2xl text-sm text-white/55">
-              {t('events.directorLead')}
+              {px?.projects?.directorLead || t('events.directorLead')}
             </p>
             <div className="mt-6">
               <EventGallery role="director" limit={4} />
@@ -202,10 +204,10 @@ export default async function HomePage({
           <div className="mt-14">
             <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-white">
               <span className="size-5 shrink-0 bg-brand-gradient" aria-hidden />
-              {t('events.producerTitle')}
+              {px?.projects?.producerTitle || t('events.producerTitle')}
             </h3>
             <p className="mt-2 max-w-2xl text-sm text-white/55">
-              {t('events.producerLead')}
+              {px?.projects?.producerLead || t('events.producerLead')}
             </p>
             <div className="mt-6">
               <EventGallery role="producer" limit={4} />

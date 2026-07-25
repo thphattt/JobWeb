@@ -10,6 +10,7 @@ import {
 import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getServices } from '@/features/services/api';
+import { getPageText } from '@/features/pageText/api';
 
 const services = [
   { key: 'direction', Icon: Clapperboard },
@@ -59,7 +60,10 @@ export default async function ServicesPage({
   setRequestLocale(locale);
   const t = await getTranslations();
 
-  const docs = await getServices(locale as Locale);
+  const [docs, px] = await Promise.all([
+    getServices(locale as Locale),
+    getPageText(locale as Locale)
+  ]);
   const cards = docs.length
     ? docs.map((d) => ({
         key: String(d.id),
@@ -77,13 +81,13 @@ export default async function ServicesPage({
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-        {t('servicesPage.eyebrow')}
+        {px?.services?.eyebrow || t('servicesPage.eyebrow')}
       </p>
       <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
-        {t('servicesPage.title')}
+        {px?.services?.title || t('servicesPage.title')}
       </h1>
       <p className="mt-6 max-w-2xl text-lg text-white/60">
-        {t('servicesPage.lead')}
+        {px?.services?.lead || t('servicesPage.lead')}
       </p>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2">

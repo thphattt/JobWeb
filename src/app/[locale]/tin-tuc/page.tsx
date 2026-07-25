@@ -6,6 +6,7 @@ import { languageAlternates } from '@/lib/site';
 import type { Locale } from '@/i18n/routing';
 import { getNewsPage } from '@/features/news/api';
 import { NewsCard } from '@/features/news/components/NewsCard';
+import { getPageText } from '@/features/pageText/api';
 
 const PER_PAGE = 6;
 
@@ -48,21 +49,22 @@ export default async function NewsListPage({
   const tn = await getTranslations('nav');
 
   const requested = Math.max(1, Number.parseInt(pageParam ?? '1', 10) || 1);
-  const { docs: posts, page, totalPages } = await getNewsPage(
-    locale as Locale,
-    requested,
-    PER_PAGE
-  );
+  const [{ docs: posts, page, totalPages }, px] = await Promise.all([
+    getNewsPage(locale as Locale, requested, PER_PAGE),
+    getPageText(locale as Locale)
+  ]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-        {t('eyebrow')}
+        {px?.news?.eyebrow || t('eyebrow')}
       </p>
       <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
-        {t('title')}
+        {px?.news?.title || t('title')}
       </h1>
-      <p className="mt-6 max-w-2xl text-lg text-white/60">{t('lead')}</p>
+      <p className="mt-6 max-w-2xl text-lg text-white/60">
+        {px?.news?.lead || t('lead')}
+      </p>
 
       {posts.length ? (
         <>
