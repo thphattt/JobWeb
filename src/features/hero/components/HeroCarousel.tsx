@@ -48,7 +48,7 @@ export function HeroCarousel({
       />
 
       {/* Khung slide (vuông góc) */}
-      <div className="relative aspect-4/3 overflow-hidden lg:aspect-square">
+      <div className="relative aspect-5/7 overflow-hidden">
         {slides.map((s, idx) => (
           <div
             key={idx}

@@ -127,7 +127,6 @@ export default async function HomePage({
           <div>
             <HeroLogo alt={t('brand.fullName')} />
             <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-              <span className="h-px w-8 bg-accent" aria-hidden />
               {hero?.eyebrow ?? t('hero.eyebrow')}
             </p>
             <h1 className="mt-5 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">

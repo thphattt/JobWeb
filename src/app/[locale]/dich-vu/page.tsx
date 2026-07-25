@@ -77,7 +77,6 @@ export default async function ServicesPage({
   return (
     <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
       <p className="flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.25em] text-accent">
-        <span className="h-px w-8 bg-accent" aria-hidden />
         {t('servicesPage.eyebrow')}
       </p>
       <h1 className="mt-3 font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-5xl">
