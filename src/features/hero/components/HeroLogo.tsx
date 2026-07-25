@@ -24,7 +24,7 @@ export function HeroLogo({ alt }: { alt: string }) {
 
   return (
     <div
-      className="hero-logo perspective-midrange mx-auto mb-10 w-fit"
+      className="hero-logo perspective-midrange mx-auto mb-12 w-fit"
       onMouseMove={onMove}
       onMouseLeave={reset}
     >
