@@ -34,8 +34,12 @@ export function Reveal({
     const io = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
-          // Bật/tắt theo tầm nhìn → cuộn ra rồi cuộn vào lại vẫn chạy hiệu ứng.
-          setShown(e.isIntersecting);
+          // Hiện MỘT LẦN rồi ngừng theo dõi — tránh nhấp nháy khi cuộn
+          // qua lại ranh giới ngưỡng (nhất là trên điện thoại).
+          if (e.isIntersecting) {
+            setShown(true);
+            io.disconnect();
+          }
         }
       },
       { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
