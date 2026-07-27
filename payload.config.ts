@@ -17,6 +17,7 @@ import { Collaborators } from './src/payload/collections/Collaborators';
 import { Jobs } from './src/payload/collections/Jobs';
 import { Testimonials } from './src/payload/collections/Testimonials';
 import { Clients } from './src/payload/collections/Clients';
+import { GalleryImages } from './src/payload/collections/GalleryImages';
 
 import { Hero } from './src/payload/globals/Hero';
 import { About } from './src/payload/globals/About';
@@ -98,6 +99,7 @@ export default buildConfig({
     Collaborators,
     Testimonials,
     Clients,
+    GalleryImages,
     // Nhóm "Hệ thống"
     Media,
     Users

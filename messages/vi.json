@@ -21,6 +21,10 @@
     "careers": {
       "title": "Tuyển dụng",
       "description": "Cơ hội nghề nghiệp tại Công ty TNHH Tân Châu Thành. Gia nhập đội ngũ tổ chức sự kiện và truyền thông tại Hà Nội, cùng tham gia các chương trình quy mô lớn."
+    },
+    "gallery": {
+      "title": "Thư viện",
+      "description": "Hình ảnh các chương trình, sự kiện do Tân Châu Thành thực hiện."
     }
   },
   "brand": {
@@ -40,7 +44,8 @@
     "menu": "Menu",
     "close": "Đóng",
     "prev": "Slide trước",
-    "next": "Slide sau"
+    "next": "Slide sau",
+    "gallery": "Thư viện"
   },
   "hero": {
     "eyebrow": "Tổ chức sự kiện · Truyền thông",
@@ -50,8 +55,14 @@
     "ctaSecondary": "Xem dịch vụ"
   },
   "stats": {
-    "a": { "value": "2018", "label": "Năm thành lập" },
-    "b": { "value": "2", "label": "Văn phòng tại Hà Nội" }
+    "a": {
+      "value": "2018",
+      "label": "Năm thành lập"
+    },
+    "b": {
+      "value": "2",
+      "label": "Văn phòng tại Hà Nội"
+    }
   },
   "about": {
     "eyebrow": "Về chúng tôi",
@@ -102,10 +113,22 @@
     "lead": "Tân Châu Thành hoạt động trong lĩnh vực tổ chức sự kiện và truyền thông tại Hà Nội từ năm 2018. Với đội ngũ từng góp mặt tại nhiều chương trình cấp quốc gia, công ty cung cấp giải pháp trọn gói: kịch bản, đạo diễn, tổ chức sản xuất, nhân sự và thiết bị sự kiện.",
     "leadershipTitle": "Đội ngũ lãnh đạo",
     "leaders": {
-      "director": { "role": "Giám đốc", "name": "Bà Ngô Thị Ninh" },
-      "deputy": { "role": "Phó Giám đốc", "name": "Bà Nguyễn Thị Hạnh Nguyên" },
-      "accountant": { "role": "Kế toán trưởng", "name": "Ông Nguyễn Anh Tuấn" },
-      "advisor": { "role": "Cố vấn nghệ thuật", "name": "Ths. Lại Hồng Đăng" }
+      "director": {
+        "role": "Giám đốc",
+        "name": "Bà Ngô Thị Ninh"
+      },
+      "deputy": {
+        "role": "Phó Giám đốc",
+        "name": "Bà Nguyễn Thị Hạnh Nguyên"
+      },
+      "accountant": {
+        "role": "Kế toán trưởng",
+        "name": "Ông Nguyễn Anh Tuấn"
+      },
+      "advisor": {
+        "role": "Cố vấn nghệ thuật",
+        "name": "Ths. Lại Hồng Đăng"
+      }
     },
     "programsTitle": "Chương trình tiêu biểu",
     "programs": {
@@ -262,5 +285,11 @@
     "eyebrow": "Cảm nhận",
     "title": "Khách hàng nói về chúng tôi",
     "clientsTitle": "Khách hàng & đối tác"
+  },
+  "galleryPage": {
+    "eyebrow": "Thư viện",
+    "title": "Khoảnh khắc sự kiện",
+    "lead": "",
+    "empty": "Chưa có ảnh nào trong thư viện."
   }
 }

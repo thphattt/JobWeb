@@ -21,6 +21,10 @@
     "careers": {
       "title": "Careers",
       "description": "Career opportunities at Tan Chau Thanh Co., Ltd. Join our Hanoi events and communications team and work on large-scale programs."
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "Photos of programs and events delivered by Tan Chau Thanh."
     }
   },
   "brand": {
@@ -40,7 +44,8 @@
     "menu": "Menu",
     "close": "Close",
     "prev": "Previous slide",
-    "next": "Next slide"
+    "next": "Next slide",
+    "gallery": "Gallery"
   },
   "hero": {
     "eyebrow": "Events · Communications",
@@ -50,8 +55,14 @@
     "ctaSecondary": "Our services"
   },
   "stats": {
-    "a": { "value": "2018", "label": "Established" },
-    "b": { "value": "2", "label": "Offices in Hanoi" }
+    "a": {
+      "value": "2018",
+      "label": "Established"
+    },
+    "b": {
+      "value": "2",
+      "label": "Offices in Hanoi"
+    }
   },
   "about": {
     "eyebrow": "About us",
@@ -102,10 +113,22 @@
     "lead": "Tan Chau Thanh has delivered events and communications programs in Hanoi since 2018. With a team that has contributed to national-scale productions, we cover the full scope: scripting, directing, production, staffing and event equipment.",
     "leadershipTitle": "Leadership",
     "leaders": {
-      "director": { "role": "Director", "name": "Ms. Ngô Thị Ninh" },
-      "deputy": { "role": "Deputy Director", "name": "Ms. Nguyễn Thị Hạnh Nguyên" },
-      "accountant": { "role": "Chief Accountant", "name": "Mr. Nguyễn Anh Tuấn" },
-      "advisor": { "role": "Artistic Advisor", "name": "MA. Lại Hồng Đăng" }
+      "director": {
+        "role": "Director",
+        "name": "Ms. Ngô Thị Ninh"
+      },
+      "deputy": {
+        "role": "Deputy Director",
+        "name": "Ms. Nguyễn Thị Hạnh Nguyên"
+      },
+      "accountant": {
+        "role": "Chief Accountant",
+        "name": "Mr. Nguyễn Anh Tuấn"
+      },
+      "advisor": {
+        "role": "Artistic Advisor",
+        "name": "MA. Lại Hồng Đăng"
+      }
     },
     "programsTitle": "Notable programs",
     "programs": {
@@ -262,5 +285,11 @@
     "eyebrow": "Testimonials",
     "title": "What our clients say",
     "clientsTitle": "Clients & partners"
+  },
+  "galleryPage": {
+    "eyebrow": "Gallery",
+    "title": "Event moments",
+    "lead": "",
+    "empty": "No images in the gallery yet."
   }
 }
