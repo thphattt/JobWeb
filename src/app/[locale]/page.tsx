@@ -324,13 +324,14 @@ export default async function HomePage({
               </Link>
             </div>
           </div>
-          <div className="relative mt-8 h-[62vh] min-h-110 w-full">
+          <div className="relative mt-8 h-[70vh] min-h-110 w-full">
             <DomeGallery
               images={galleryImages}
               grayscale={false}
               overlayBlurColor={NIGHT}
               fit={0.6}
               segments={22}
+              padFactor={0.08}
               imageBorderRadius="18px"
               openedImageBorderRadius="18px"
               openedImageWidth=""

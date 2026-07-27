@@ -66,6 +66,7 @@ export default async function GalleryPage({
             overlayBlurColor={NIGHT}
             fit={0.6}
             segments={22}
+            padFactor={0.08}
             imageBorderRadius="18px"
             openedImageBorderRadius="18px"
             openedImageWidth=""
