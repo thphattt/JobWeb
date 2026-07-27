@@ -23,3 +23,8 @@ next-env.d.ts
 # payload cms
 /public/uploads
 /src/payload-types.ts
+
+# tài liệu bàn giao — chỉ giữ ở máy, không đẩy lên git
+/BANGIAO.md
+/Huong-dan-quan-tri-website.docx
+*.docx
