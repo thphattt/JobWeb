@@ -330,8 +330,11 @@ export default async function HomePage({
               grayscale={false}
               overlayBlurColor={NIGHT}
               fit={0.6}
+              segments={22}
               imageBorderRadius="18px"
               openedImageBorderRadius="18px"
+              openedImageWidth=""
+              openedImageHeight=""
             />
           </div>
         </section>
