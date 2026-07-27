@@ -9,4 +9,6 @@ export type ProjectDoc = {
   year?: string;
   venue?: string;
   image?: MediaRef;
+  description?: unknown;
+  gallery?: { id?: string; image?: MediaRef }[];
 };

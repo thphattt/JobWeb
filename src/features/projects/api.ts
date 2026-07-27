@@ -19,3 +19,21 @@ export const getProjects = (locale: Locale) =>
     },
     []
   );
+
+/** Một dự án theo id — cho trang chi tiết. Trả null nếu không có. */
+export const getProjectById = (id: number, locale: Locale) =>
+  safe<ProjectDoc | null>(
+    'getProjectById',
+    async () => {
+      const p = await payloadClient();
+      const r = await p.find({
+        collection: 'projects',
+        locale,
+        where: { id: { equals: id } },
+        limit: 1,
+        depth: 1
+      });
+      return (r.docs[0] as ProjectDoc) ?? null;
+    },
+    null
+  );

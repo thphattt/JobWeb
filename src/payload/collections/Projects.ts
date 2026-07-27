@@ -35,6 +35,26 @@ export const Projects: CollectionConfig = {
       admin: { description: 'Ảnh ngang (4:3). Để trống sẽ hiện nền màu thương hiệu kèm năm.' }
     },
     {
+      name: 'description',
+      type: 'richText',
+      localized: true,
+      label: 'Nội dung chi tiết',
+      admin: {
+        description:
+          'Mô tả chi tiết sự kiện — hiển thị ở trang chi tiết khi khách bấm vào card.'
+      }
+    },
+    {
+      name: 'gallery',
+      type: 'array',
+      label: 'Album ảnh',
+      labels: { singular: 'Ảnh', plural: 'Ảnh' },
+      admin: { description: 'Nhiều ảnh của sự kiện, hiển thị ở cuối trang chi tiết.' },
+      fields: [
+        { name: 'image', type: 'upload', relationTo: 'media', required: true, label: 'Ảnh' }
+      ]
+    },
+    {
       name: 'order',
       type: 'number',
       label: 'Thứ tự',

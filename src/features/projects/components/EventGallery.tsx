@@ -1,12 +1,21 @@
 import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { Reveal } from '@/components/ui/Reveal';
 import { getProjects } from '../api';
 import { events } from '../data';
 import type { ProjectRole } from '../types';
 
-type Tile = { key: string; title: string; year: string; venue: string; image?: string };
+type Tile = {
+  key: string;
+  title: string;
+  year: string;
+  venue: string;
+  image?: string;
+  href?: string;
+};
 
 /**
  * Lưới sự kiện tiêu biểu. `role` lọc theo vai trò (Đạo diễn / Nhà sản xuất),
@@ -32,7 +41,8 @@ export async function EventGallery({
           title: d.title,
           year: d.year ?? '',
           venue: d.venue ?? '',
-          image: d.image?.url ?? undefined
+          image: d.image?.url ?? undefined,
+          href: `/du-an/${d.id}`
         }))
     : role
       ? []
@@ -47,11 +57,14 @@ export async function EventGallery({
   if (limit) tiles = tiles.slice(0, limit);
   if (tiles.length === 0) return null;
 
+  const cardClass =
+    'group relative block aspect-4/3 overflow-hidden rounded-card border border-rule transition-transform duration-300 ease-out will-change-transform hover:scale-[1.5] hover:shadow-2xl hover:shadow-black/40 motion-reduce:transition-none motion-reduce:hover:scale-100';
+
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {tiles.map((ev, i) => (
-        <Reveal key={ev.key} index={i} className="hover:z-20">
-          <article className="group relative aspect-4/3 overflow-hidden rounded-card border border-rule transition-transform duration-300 ease-out will-change-transform hover:scale-[1.5] hover:shadow-2xl hover:shadow-black/40 motion-reduce:transition-none motion-reduce:hover:scale-100">
+      {tiles.map((ev, i) => {
+        const inner = (
+          <>
             {/* Ảnh thật nếu có, ngược lại là ô gradient thương hiệu */}
             {ev.image ? (
               <Image
@@ -93,10 +106,28 @@ export async function EventGallery({
               <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-paper/85 opacity-0 transition-all duration-300 group-hover:mt-2 group-hover:max-h-32 group-hover:opacity-100">
                 {ev.venue}
               </p>
+              {ev.href && (
+                <span className="mt-0 flex max-h-0 items-center gap-1.5 overflow-hidden text-xs font-bold uppercase tracking-wide text-accent opacity-0 transition-all duration-300 group-hover:mt-3 group-hover:max-h-8 group-hover:opacity-100">
+                  {t('viewDetail')}
+                  <ArrowUpRight className="size-4" aria-hidden />
+                </span>
+              )}
             </div>
-          </article>
-        </Reveal>
-      ))}
+          </>
+        );
+
+        return (
+          <Reveal key={ev.key} index={i} className="hover:z-20">
+            {ev.href ? (
+              <Link href={ev.href} className={cardClass} aria-label={ev.title}>
+                {inner}
+              </Link>
+            ) : (
+              <article className={cardClass}>{inner}</article>
+            )}
+          </Reveal>
+        );
+      })}
     </div>
   );
 }

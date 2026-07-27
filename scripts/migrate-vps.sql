@@ -59,7 +59,21 @@ CREATE UNIQUE INDEX IF NOT EXISTS "gallery_images_locales_locale_parent_id_uniqu
 CREATE INDEX IF NOT EXISTS "payload_locked_documents_rels_gallery_images_id_idx"
   ON "payload_locked_documents_rels" USING btree ("gallery_images_id");
 
--- ── 3) Khoá ngoại (bọc trong DO để không lỗi khi chạy lại) ──────────────────
+-- ── 3) Chi tiết dự án: album ảnh + nội dung chi tiết ────────────────────────
+CREATE TABLE IF NOT EXISTS "projects_gallery" (
+  "_order" integer NOT NULL,
+  "_parent_id" integer NOT NULL,
+  "id" varchar PRIMARY KEY NOT NULL,
+  "image_id" integer NOT NULL
+);
+
+ALTER TABLE "projects_locales" ADD COLUMN IF NOT EXISTS "description" jsonb;
+
+CREATE INDEX IF NOT EXISTS "projects_gallery_order_idx" ON "projects_gallery" USING btree ("_order");
+CREATE INDEX IF NOT EXISTS "projects_gallery_parent_id_idx" ON "projects_gallery" USING btree ("_parent_id");
+CREATE INDEX IF NOT EXISTS "projects_gallery_image_idx" ON "projects_gallery" USING btree ("image_id");
+
+-- ── 4) Khoá ngoại (bọc trong DO để không lỗi khi chạy lại) ──────────────────
 DO $$
 BEGIN
   IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'page_text_locales_parent_id_fk') THEN
@@ -89,10 +103,24 @@ BEGIN
       FOREIGN KEY ("gallery_images_id") REFERENCES "public"."gallery_images"("id")
       ON DELETE cascade ON UPDATE no action;
   END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'projects_gallery_image_id_media_id_fk') THEN
+    ALTER TABLE "projects_gallery"
+      ADD CONSTRAINT "projects_gallery_image_id_media_id_fk"
+      FOREIGN KEY ("image_id") REFERENCES "public"."media"("id")
+      ON DELETE set null ON UPDATE no action;
+  END IF;
+
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'projects_gallery_parent_id_fk') THEN
+    ALTER TABLE "projects_gallery"
+      ADD CONSTRAINT "projects_gallery_parent_id_fk"
+      FOREIGN KEY ("_parent_id") REFERENCES "public"."projects"("id")
+      ON DELETE cascade ON UPDATE no action;
+  END IF;
 END $$;
 
 -- ── Kiểm tra nhanh: liệt kê 4 bảng vừa đảm bảo tồn tại ───────────────────────
 SELECT table_name FROM information_schema.tables
 WHERE table_schema='public'
-  AND table_name IN ('page_text','page_text_locales','gallery_images','gallery_images_locales')
+  AND table_name IN ('page_text','page_text_locales','gallery_images','gallery_images_locales','projects_gallery')
 ORDER BY table_name;

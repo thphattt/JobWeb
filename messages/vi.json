@@ -222,6 +222,13 @@
         "year": "",
         "venue": "Hướng tới Đại hội Đảng toàn quốc lần thứ XIV"
       }
+    },
+    "viewDetail": "Xem chi tiết",
+    "detailBack": "Về trang chủ",
+    "photos": "Hình ảnh sự kiện",
+    "roles": {
+      "director": "Đạo diễn",
+      "producer": "Nhà sản xuất"
     }
   },
   "why": {

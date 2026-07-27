@@ -222,6 +222,13 @@
         "year": "",
         "venue": "Toward the 14th National Party Congress"
       }
+    },
+    "viewDetail": "View details",
+    "detailBack": "Back to home",
+    "photos": "Event photos",
+    "roles": {
+      "director": "Director",
+      "producer": "Producer"
     }
   },
   "why": {
