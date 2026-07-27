@@ -20,9 +20,13 @@ import { getNews } from '@/features/news/api';
 import { StatsCounter } from '@/features/stats/components/StatsCounter';
 import { getStats } from '@/features/stats/api';
 import { getPageText } from '@/features/pageText/api';
+import { getGalleryImages } from '@/features/gallery/api';
+import DomeGallery from '@/features/gallery/components/DomeGallery';
 
 const btnPrimary =
   'inline-flex items-center gap-2 bg-brand-gradient px-8 py-4 text-xs font-bold uppercase tracking-[0.15em] text-accent-ink transition-transform hover:-translate-y-0.5';
+
+const NIGHT = 'oklch(16% 0.006 60)';
 
 /** Tiêu đề mục kiểu Colorbond: ô vuông gradient lớn + tiêu đề IN HOA. */
 function SectionHead({
@@ -70,14 +74,19 @@ export default async function HomePage({
   const t = await getTranslations();
 
   // Nội dung từ CMS (song song), fallback messages nếu trống/lỗi.
-  const [hero, about, collaborators, news, stats, px] = await Promise.all([
+  const [hero, about, collaborators, news, stats, px, gallery] = await Promise.all([
     getHero(locale as Locale),
     getAbout(locale as Locale),
     getCollaborators(locale as Locale),
     getNews(locale as Locale, 9),
     getStats(locale as Locale),
-    getPageText(locale as Locale)
+    getPageText(locale as Locale),
+    getGalleryImages(locale as Locale)
   ]);
+
+  const galleryImages = gallery
+    .map((d) => ({ src: d.image?.url ?? '', alt: d.caption || d.image?.alt || '' }))
+    .filter((i) => i.src);
 
   const statItems = (stats?.items ?? [])
     .filter((s) => typeof s.value === 'number')
@@ -293,6 +302,38 @@ export default async function HomePage({
               />
             </div>
           </Reveal>
+        </section>
+      )}
+
+      {/* THƯ VIỆN — vòm ảnh 3D (chỉ hiện khi CMS có ảnh) */}
+      {galleryImages.length > 0 && (
+        <section className="border-t border-night-rule bg-night text-white">
+          <div className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 lg:px-8">
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <SectionHead
+                eyebrow={t('galleryPage.eyebrow')}
+                title={t('galleryPage.title')}
+                dark
+              />
+              <Link
+                href="/thu-vien"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-accent transition-all hover:gap-3"
+              >
+                {t('news.viewAll')}
+                <ArrowUpRight className="size-4" aria-hidden />
+              </Link>
+            </div>
+          </div>
+          <div className="relative mt-8 h-[62vh] min-h-110 w-full">
+            <DomeGallery
+              images={galleryImages}
+              grayscale={false}
+              overlayBlurColor={NIGHT}
+              fit={0.6}
+              imageBorderRadius="18px"
+              openedImageBorderRadius="18px"
+            />
+          </div>
         </section>
       )}
 
