@@ -24,7 +24,7 @@ export function HeroLogo({ alt }: { alt: string }) {
 
   return (
     <div
-      className="hero-logo perspective-midrange mx-auto mb-12 w-fit"
+      className="hero-logo perspective-midrange mx-auto mb-10 w-fit"
       onMouseMove={onMove}
       onMouseLeave={reset}
     >
@@ -35,7 +35,7 @@ export function HeroLogo({ alt }: { alt: string }) {
           width={469}
           height={231}
           priority
-          className="block h-24 w-auto sm:h-32 lg:h-40"
+          className="block h-20 w-auto sm:h-28 lg:h-36"
         />
         <span className="hero-logo-sheen" aria-hidden />
       </div>
