@@ -1,1 +1,28 @@
-/* Tuỳ biến giao diện admin Payload tại đây (tuỳ chọn). */
+/* Tuỳ biến giao diện admin Payload. */
+
+/*
+ * Đổi font toàn trang quản trị sang bộ chữ hệ thống hiển thị TIẾNG VIỆT rõ ràng
+ * (Segoe UI trên Windows, San Francisco trên máy Mac). Font mặc định của Payload
+ * render dấu tiếng Việt hơi khó nhìn.
+ */
+:root {
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+}
+
+/* Ô nhập liệu + trình soạn thảo rich text: dùng font rõ, dòng thoáng cho dấu. */
+input,
+textarea,
+select,
+button,
+[contenteditable='true'] {
+  font-family: var(--font-body);
+}
+
+/* Vùng nhập nội dung dài (rich text, textarea): giãn dòng & cỡ chữ dễ đọc hơn. */
+textarea,
+[contenteditable='true'] {
+  line-height: 1.7;
+  font-size: 15px;
+}
