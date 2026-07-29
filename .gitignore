@@ -32,3 +32,4 @@ next-env.d.ts
 # tài liệu hạ tầng — lộ kiến trúc server của khách, không đẩy lên repo public
 /DEPLOY-VPS.md
 /DOMAIN.md
+/SEO.md
