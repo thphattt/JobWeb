@@ -20,7 +20,7 @@ Song ngữ Việt/Anh · nội dung quản trị hoàn toàn qua CMS · triển 
 [![Let's Encrypt](https://img.shields.io/badge/Let%27s%20Encrypt-003A70?style=for-the-badge&logo=letsencrypt&logoColor=white)](https://letsencrypt.org)
 [![Resend](https://img.shields.io/badge/Resend-000000?style=for-the-badge&logo=resend&logoColor=white)](https://resend.com)
 
-**[truyenthongtanchauthanh.vn](https://truyenthongtanchauthanh.vn)** · [Hướng dẫn deploy](DEPLOY-VPS.md) · [Kế hoạch dự án](PLAN.md)
+**[truyenthongtanchauthanh.vn](https://truyenthongtanchauthanh.vn)** · [Kế hoạch dự án](PLAN.md) · [Hệ thống thiết kế](design.md)
 
 </div>
 
@@ -150,10 +150,8 @@ Người dùng → DNS (Vietnix) → Nginx (SSL Let's Encrypt)
                                                     └── PostgreSQL (localhost)
 ```
 
-Hướng dẫn từng bước:
-
-- [`DEPLOY-VPS.md`](DEPLOY-VPS.md) — dựng server, bảo mật, Nginx, SSL, PM2, backup.
-- [`DOMAIN.md`](DOMAIN.md) — đăng ký tên miền `.vn` tại Vietnix đứng tên khách (kèm bản khai chủ thể).
+Quy trình dựng server, cấu hình bảo mật, SSL, backup và đăng ký tên miền được ghi
+trong tài liệu nội bộ, **không công khai** trong kho lưu trữ này.
 
 ## Tài liệu khác
 
@@ -162,8 +160,17 @@ Hướng dẫn từng bước:
 
 ## Trạng thái
 
-**P2 hoàn tất** — trang chủ đầy đủ (Hero, Stats, About, Why, Services, Projects, Testimonials, Clients), Tin tức, Tuyển dụng, form liên hệ, CMS quản trị toàn bộ nội dung, SEO (sitemap, robots, hreflang, canonical). Đang ở **giai đoạn triển khai production** theo `DEPLOY-VPS.md`.
+**P2 hoàn tất** — trang chủ đầy đủ (Hero, Stats, About, Why, Services, Projects, Testimonials, Clients), Tin tức, Tuyển dụng, form liên hệ, CMS quản trị toàn bộ nội dung, SEO (sitemap, robots, hreflang, canonical). Đang ở **giai đoạn triển khai production**.
 
 ---
 
-*Dự án riêng (private) — phát triển cho Công ty TNHH Tân Châu Thành.*
+## Bản quyền
+
+Mã nguồn được công khai để **tham khảo và giới thiệu năng lực** — không phải mã nguồn mở.
+Không sao chép, sửa đổi hay tái sử dụng khi chưa được cho phép bằng văn bản. Chi tiết tại [`LICENSE`](LICENSE).
+
+Nội dung, hình ảnh và nhận diện thương hiệu thuộc quyền sở hữu của **Công ty TNHH Tân Châu Thành**.
+
+---
+
+*Phát triển bởi [thphattt](https://github.com/thphattt) cho Công ty TNHH Tân Châu Thành.*

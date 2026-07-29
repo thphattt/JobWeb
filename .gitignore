@@ -28,3 +28,7 @@ next-env.d.ts
 /BANGIAO.md
 /Huong-dan-quan-tri-website.docx
 *.docx
+
+# tài liệu hạ tầng — lộ kiến trúc server của khách, không đẩy lên repo public
+/DEPLOY-VPS.md
+/DOMAIN.md
