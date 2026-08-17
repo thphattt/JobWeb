@@ -88,8 +88,9 @@ export default async function HomePage({
     .map((d) => ({ src: d.image?.url ?? '', alt: d.caption || d.image?.alt || '' }))
     .filter((i) => i.src);
 
+  // Chỉ hiện số liệu có giá trị thực (> 0) — tránh hiện "0+" khi CMS chưa nhập số.
   const statItems = (stats?.items ?? [])
-    .filter((s) => typeof s.value === 'number')
+    .filter((s) => typeof s.value === 'number' && s.value > 0)
     .map((s) => ({
       value: s.value as number,
       suffix: s.suffix ?? '',

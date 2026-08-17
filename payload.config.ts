@@ -69,7 +69,14 @@ export default buildConfig({
   // Dùng chung RESEND_API_KEY với form liên hệ. Thiếu key → Payload log ra console.
   email: resendAdapter({
     defaultFromName: 'Tân Châu Thành',
-    defaultFromAddress: process.env.CONTACT_FROM_ADDRESS || 'onboarding@resend.dev',
+    // Ưu tiên CONTACT_FROM_ADDRESS; nếu không có thì lấy phần địa chỉ trong
+    // CONTACT_FROM_EMAIL (dạng `Tên <mail@domain>`) — tránh việc email hệ thống
+    // vẫn gửi từ onboarding@resend.dev dù .env đã cấu hình domain riêng.
+    defaultFromAddress:
+      process.env.CONTACT_FROM_ADDRESS ||
+      (process.env.CONTACT_FROM_EMAIL?.match(/<(.+)>/)?.[1] ??
+        process.env.CONTACT_FROM_EMAIL) ||
+      'onboarding@resend.dev',
     apiKey: process.env.RESEND_API_KEY || ''
   }),
 

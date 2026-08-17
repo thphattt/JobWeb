@@ -41,6 +41,10 @@ async function clientIp(): Promise<string> {
   return (fwd ? fwd.split(',')[0].trim() : h.get('x-real-ip')) || 'unknown';
 }
 
+// Ô "contact" cho phép nhập email HOẶC số điện thoại. Nếu là email thì đặt làm
+// Reply-To để bấm "Trả lời" trong hộp thư là trả lời thẳng khách.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export async function submitContact(
   _prev: ContactState,
   formData: FormData
@@ -71,27 +75,55 @@ export async function submitContact(
 
   const data = parsed.data;
   const apiKey = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL ?? 'tanchauthanhhn@gmail.com';
+  // Hỗ trợ nhiều người nhận: CONTACT_TO_EMAIL="a@x.com, b@y.com"
+  const to = (process.env.CONTACT_TO_EMAIL ?? 'tanchauthanhhn@gmail.com')
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
 
-  if (apiKey) {
-    try {
-      const { Resend } = await import('resend');
-      const resend = new Resend(apiKey);
-      await resend.emails.send({
-        from:
-          process.env.CONTACT_FROM_EMAIL ??
-          'Tân Châu Thành <onboarding@resend.dev>',
-        to,
-        subject: `Liên hệ mới từ ${data.name}`,
-        text: `Tên: ${data.name}\nLiên hệ: ${data.contact}\n\nNội dung:\n${data.message}`
-      });
-    } catch (err) {
-      console.error('[contact] Resend error:', err);
+  if (!apiKey) {
+    // Thiếu key: ở production đây là LỖI THẬT (tin nhắn khách sẽ mất) nên phải
+    // báo lỗi ra form, không được báo thành công giả. Ở local thì cho qua.
+    console.error(
+      '[contact] THIẾU RESEND_API_KEY — KHÔNG gửi được email. Nội dung bị mất:',
+      data
+    );
+    return process.env.NODE_ENV === 'production'
+      ? { status: 'error' }
+      : { status: 'success' };
+  }
+
+  try {
+    const { Resend } = await import('resend');
+    const resend = new Resend(apiKey);
+
+    // QUAN TRỌNG: SDK Resend KHÔNG throw khi API trả lỗi (403/422/429…).
+    // Nó trả về { data, error } — phải kiểm tra `error`, nếu không lỗi sẽ bị
+    // nuốt mất và form vẫn báo "gửi thành công" dù email không hề được gửi.
+    const { data: sent, error } = await resend.emails.send({
+      from:
+        process.env.CONTACT_FROM_EMAIL ??
+        'Tân Châu Thành <onboarding@resend.dev>',
+      to,
+      replyTo: EMAIL_RE.test(data.contact) ? data.contact : undefined,
+      subject: `Liên hệ mới từ ${data.name}`,
+      text: `Tên: ${data.name}\nLiên hệ: ${data.contact}\n\nNội dung:\n${data.message}`
+    });
+
+    if (error) {
+      console.error(
+        `[contact] Resend TỪ CHỐI gửi → to=${to.join(', ')} | ${error.name}: ${error.message}`
+      );
+      console.error('[contact] Nội dung không gửi được:', data);
       return { status: 'error' };
     }
-  } else {
-    // Chưa cấu hình RESEND_API_KEY — log để dev xem; UX vẫn báo thành công.
-    console.log('[contact] (RESEND_API_KEY chưa cấu hình) submission:', data);
+
+    console.log(`[contact] Đã gửi email id=${sent?.id} → ${to.join(', ')}`);
+  } catch (err) {
+    // Chỉ còn lỗi mạng / cấu hình SDK mới rơi vào đây.
+    console.error('[contact] Lỗi khi gọi Resend:', err);
+    console.error('[contact] Nội dung không gửi được:', data);
+    return { status: 'error' };
   }
 
   return { status: 'success' };
